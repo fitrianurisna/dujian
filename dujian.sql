@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Mar 2020 pada 19.29
+-- Waktu pembuatan: 16 Jul 2020 pada 11.27
 -- Versi server: 10.1.35-MariaDB
 -- Versi PHP: 7.2.9
 
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `daftar` (
   `daftar_id` int(11) NOT NULL,
+  `npm` varchar(12) NOT NULL,
   `semester` varchar(128) NOT NULL,
   `ta_id` int(11) NOT NULL,
   `matkul_id` varchar(6) NOT NULL,
@@ -189,7 +190,7 @@ CREATE TABLE `user` (
   `email` varchar(128) NOT NULL,
   `npm` varchar(12) DEFAULT NULL,
   `nik` varchar(9) DEFAULT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `prodi` varchar(128) NOT NULL,
   `kelas` varchar(128) NOT NULL,
   `no_hp` varchar(128) NOT NULL,
