@@ -26,9 +26,32 @@
     <link href="<?php echo base_url(); ?>assets/admin/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url(); ?>assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- option by ketik -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.css" />
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url(); ?>assets/admin/build/css/custom.min.css" rel="stylesheet">
+    <style type="text/css">
+/*.select2-container--default .select2-selection--single {
+    height: 46px !important;
+    padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    border-radius: 6px;
+}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    top: 85% !important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 26px !important;
+}
+.select2-container--default .select2-selection--single {
+    border: 1px solid #CCC !important;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+}*/
+    </style>
   </head>
 
   <body class="nav-md footer_fixed">
@@ -94,70 +117,6 @@
                   </div>
                 </li>
 
-                <li role="presentation" class="nav-item dropdown open">
-                  <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
-                    <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">6</span>
-                  </a>
-                  <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="<?php echo base_url(); ?>assets/admin/production/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="<?php echo base_url(); ?>assets/admin/production/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="<?php echo base_url(); ?>assets/admin/production/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="dropdown-item">
-                        <span class="image"><img src="<?php echo base_url(); ?>assets/admin/production/images/img.jpg" alt="Profile Image" /></span>
-                        <span>
-                          <span>John Smith</span>
-                          <span class="time">3 mins ago</span>
-                        </span>
-                        <span class="message">
-                          Film festivals used to be do-or-die moments for movie makers. They were where...
-                        </span>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <div class="text-center">
-                        <a class="dropdown-item">
-                          <strong>See All Alerts</strong>
-                          <i class="fa fa-angle-right"></i>
-                        </a>
-                      </div>
-                    </li>
-                  </ul>
-                </li>
               </ul>
             </nav>
           </div>
@@ -229,6 +188,45 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url(); ?>assets/admin/build/js/custom.min.js"></script>
-	
+
+    <!-- JS option by ketik 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+	  <script type="text/javascript">
+      $(document).ready(function () {
+        $('select').select2();
+      });
+  </script>-->
+  <script type="text/javascript">
+  $(document).ready(function(){
+    $('#add-more').click( function() {      
+     // var table = document.getElementById('#coba');
+     var isi = '<div id="field0">'+
+                  '<div class="form-row">'+
+                      '<div class="col-md-6 mb-3">'+
+                        '<label for="inputmatkul1">Mata Kuliah</label>'+
+                        '<select class="custom-select" name="matkul_id">'+
+                          '<option selected>Pilihan</option>'+
+                         
+                        '</select>'+
+                        '<div class="invalid-feedback">'+
+                        '</div>'+
+                      '</div>'+
+                      '<div class="col-md-3 mb-3">'+
+                        '<label for="inputdosen1" >Dosen Pengajar</label>'+
+                        '<select class="custom-select" name="dosen_id">'+
+                          '<option selected>Pilihanlah sesuai</option>'+
+                          
+                        '</select>'+
+                        '<div class="invalid-feedback">'+
+                        '</div>'+
+                      '</div>'+
+                  '</div>';
+     $('#coba').append(isi);
+     console.log('ahay deuh');
+    });
+  });
+</script>
   </body>
 </html>

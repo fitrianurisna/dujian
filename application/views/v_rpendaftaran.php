@@ -79,8 +79,16 @@
                       </div>
 
                       <div id="field">
-                      <div id="field0">
+                      <div id="field1">
                       <div class="form-row">
+                          <!-- <div class="col-sm-4 padding-minimum">
+                          <label for="mobile" class="control-label"><span class="text-danger">*</span> Gender</label>
+                          <select name="gender" id="gender" class="form-control select2-container step2-select" data-placeholder="Select Gender">
+                              <option></option>
+                              <option value="1">Male</option>
+                              <option value="0">Female</option>
+                          </select>
+                      </div> -->
                           <div class="col-md-6 mb-3">
                             <label for="inputmatkul1">Mata Kuliah</label>
                             <select class="custom-select" name="matkul_id">
@@ -94,17 +102,18 @@
                             <label for="inputdosen1" >Dosen Pengajar</label>
                             <select class="custom-select" name="dosen_id">
                             <option selected>Pilihanlah sesuai</option>
-                            
                           </select>
                             <div class="invalid-feedback">
                             </div>
                           </div>
                       </div>
+                            <!-- <div class="form-group row" id="coba"></div>
+                                </div> -->
                       </div>  
                       </div>
                       <div class="form-group row">
                           <div class="col-md-3 mb-3">
-                		  	<button type="button" id="add-more" name="add-more" class="btn btn-success btn-sm">+</button>
+                		  	<button type="button" id="#add-more" name="add-more" class="btn btn-success btn-sm">+</button>
                           </div>
                       </div>
                       
@@ -164,36 +173,36 @@
                       </div>
 
                       <div id="field">
-                      <div id="field0">
-                      <div class="form-row">
-                          <div class="col-md-6 mb-3">
-                            <label for="inputmatkul1">Mata Kuliah</label>
-                            <select class="custom-select" name="matkul_id">
-                            <option selected>Pilihan</option>
-                           
-                          </select>
-                            <div class="invalid-feedback">
-                            </div>
+                        <div id="field0">
+                          <div class="form-row">
+                              <div class="col-md-6 mb-3">
+                                <label for="inputmatkul1">Mata Kuliah</label>
+                                <select class="custom-select" name="matkul_id">
+                                  <option selected>Pilihan</option>
+                                 
+                                </select>
+                                <div class="invalid-feedback">
+                                </div>
+                              </div>
+                              <div class="col-md-3 mb-3">
+                                <label for="inputdosen1" >Dosen Pengajar</label>
+                                <select class="custom-select" name="dosen_id">
+                                  <option selected>Pilihanlah sesuai</option>
+                                  
+                                </select>
+                                <div class="invalid-feedback">
+                                </div>
+                              </div>
                           </div>
-                          <div class="col-md-3 mb-3">
-                            <label for="inputdosen1" >Dosen Pengajar</label>
-                            <select class="custom-select" name="dosen_id">
-                            <option selected>Pilihanlah sesuai</option>
-                            
-                          </select>
-                            <div class="invalid-feedback">
-                            </div>
+                          <!-- buat duplicat matkul+dosen Pengajar -->
+                                <div class="form-group row" id="coba"></div>
+                                </div>  
+                          </div>
+                          <div class="form-group row">
+                            <div class="col-md-3 mb-3">
+                              <button type="button" id="add-more" name="add-more" class="btn btn-success btn-sm">+</button>
                           </div>
                       </div>
-                      </div>  
-                      </div>
-                      <div class="form-group row">
-                          <div class="col-md-3 mb-3">
-                        <button type="button" id="add-more" name="add-more" class="btn btn-success btn-sm">+</button>
-                          </div>
-                      </div>
-                      
-
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
 		        <button type="submit" class="btn btn-success btn-sm">Save</button>
@@ -205,53 +214,3 @@
 	</form>
 
 
-  <script type="text/javascript">
-  $(document).ready(function () {
-    //@naresh action dynamic childs
-    var next = 0;
-    $("#add-more").click(function(e){
-        e.preventDefault();
-        var addto = "#field" + next;
-        var addRemove = "#field" + (next);
-        next = next + 1;
-        var newIn = '<div id="field'+ next +'">'+
-          '<div id="field'+ next +'">'+
-            '<div class="form-row">'+
-              '<div class="col-md-6 mb-3">'+
-              '<label for="inputmatkul1">Mata Kuliah</label>'+  
-              '<select class="custom-select" name="matkul_id">'+
-                '<option selected>Pilihan</option>'+
-              '</select>'+
-            '<div class="invalid-feedback">'+
-            '</div>'+
-            '</div>'+
-            '<div class="col-md-3 mb-3">'+
-            '<label for="inputdosen1" >Dosen Pengajar</label>'+
-              '<select class="custom-select" name="dosen_id">'+  
-              '<option selected>Pilihanlah sesuai</option>'+
-                '</select>'+
-              '<div class="invalid-feedback">'+
-            '</div>'+
-          '</div>'+
-          '</div>'+
-        '<div id="field">';
-        
-        var newInput = $(newIn);
-        var removeBtn = '<button id="remove' + (next - 1) + '" class="btn btn-danger remove-me" >Remove</button></div></div><div id="field">';
-        var removeButton = $(removeBtn);
-        $(addto).after(newInput);
-        $(addRemove).after(removeButton);
-        $("#field" + next).attr('data-source',$(addto).attr('data-source'));
-        $("#count").val(next);  
-        
-            $('.remove-me').click(function(e){
-                e.preventDefault();
-                var fieldNum = this.id.charAt(this.id.length-1);
-                var fieldID = "#field" + fieldNum;
-                $(this).remove();
-                $(fieldID).remove();
-            });
-    });
-    // ' <div id="field'+ next +'" name="field'+ next +'"><!-- Text input--><div class="form-group row"> <label class="col-sm-3 col-form-label" for="action_id">Action Id</label> <div class="col-md-5"> <input id="action_id" name="action_id" type="text" placeholder="" class="form-control input-md"> </div></div><br><br> <!-- Text input--><div class="form-group"> <label class="col-md-4 control-label" for="action_name">Action Name</label> <div class="col-md-5"> <input id="action_name" name="action_name" type="text" placeholder="" class="form-control input-md"> </div></div><br><br><!-- File Button --> <div class="form-group"> <label class="col-md-4 control-label" for="action_json">Action JSON File</label> <div class="col-md-4"> <input id="action_json" name="action_json" class="input-file" type="file"> </div></div></div><div id="field">'
-});
-</script>

@@ -67,6 +67,7 @@
                   <li><a href="<?php echo base_url('C_admin/puts'); ?>"><i class="fa fa-credit-card"></i>Pembayaran UTS</span></a></li>
                   <li><a href="<?php echo base_url('C_admin/puas'); ?>"><i class="fa fa-credit-card"></i>Pembayaran UAS</span></a></li>
                   <li><a href="<?php echo base_url('C_admin/prt'); ?>"><i class="fa fa-credit-card"></i>Pembayaran Remedial Teaching</span></a></li>
+                  <li><a href="<?php echo base_url('Ca_matkul'); ?>"><i class="fa fa-archive"></i>Mata kuliah</span></a></li>
                   </ul>
                   </div>
 
