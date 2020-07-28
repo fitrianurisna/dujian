@@ -17,11 +17,12 @@
 				</tr>
 			</thead>
 			<tbody>
-				
+				<?php 
+        $No = 1;
+        foreach ($susulan_uts as $s){ ?>
         <tr>
-          
-          <td></td>
-          <td></td>
+          <td><?=$No++; ?></td>
+          <td><?=$s->nama_mahasiswa; ?></td>
           <td></td>
           <td></td>
           <td></td>
@@ -29,7 +30,7 @@
           <td></td>
           <td></td>
         </tr>
-				
+				<?php }?>
 			</tbody>
 			
 		</table>

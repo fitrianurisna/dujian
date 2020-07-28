@@ -19,9 +19,9 @@
                 <div>
                   <button type="submit" class="btn btn-primary btn-m" >Login</button> 
                 </div>
-                <p class="change_link">Belum Memiliki Akun?
-                  <a href="<?php echo base_url('Auth/daftar'); ?>" class="to_register"> Buat Akun </a>
-                </p>
+                <!-- <p class="change_link">Belum Memiliki Akun? -->
+                  <!-- <a href="<?php echo base_url('Auth/daftar'); ?>" class="to_register"> Buat Akun </a> -->
+                <!-- </p> -->
 
                 <br />
                 </div>

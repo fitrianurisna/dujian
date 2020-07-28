@@ -3,6 +3,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_package extends CI_Model{
 
+	public function Get()
+    {
+        return $this->db->get('susulan_uts')->result();
+    }
 	// get all daftar
 	public function get_daftar(){
 		$query = $this->db->get('daftar');

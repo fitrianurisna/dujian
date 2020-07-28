@@ -1,4 +1,4 @@
-<?php
+ <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_package extends CI_Controller{
@@ -15,7 +15,8 @@ class C_package extends CI_Controller{
 		$data['ta'] = $this->M_package->get_ta();
 		$data['matkul'] = $this->M_package->get_matkul();
 		$data['dosen'] = $this->M_package->get_dosen();
-		$data['tb_durt'] = $this->M_package->get_durt();	
+		$data['tb_durt'] = $this->M_package->get_durt();
+		$data['susulan_uts'] = $this->M_package->Get();	
 		$this->template->load('v_staticl','v_rpendaftaran',$data);
 	}
 
