@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="<?php echo base_url(); ?>assets/admin/production/images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    <title>PRODI TEKNIK INFORMATIKA</title>
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url(); ?>assets/admin/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -33,24 +33,6 @@
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url(); ?>assets/admin/build/css/custom.min.css" rel="stylesheet">
     <style type="text/css">
-/*.select2-container--default .select2-selection--single {
-    height: 46px !important;
-    padding: 10px 16px;
-    font-size: 18px;
-    line-height: 1.33;
-    border-radius: 6px;
-}
-.select2-container--default .select2-selection--single .select2-selection__arrow b {
-    top: 85% !important;
-}
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-    line-height: 26px !important;
-}
-.select2-container--default .select2-selection--single {
-    border: 1px solid #CCC !important;
-    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
-    transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
-}*/
     </style>
   </head>
 
@@ -60,7 +42,7 @@
         <div class="col-md-3 left_col menu_fixed">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+              <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>PROTIKA</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -72,7 +54,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2><?= $this->session->userdata('nama')?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -103,13 +85,12 @@
         <div class="top_nav">
           <div class="nav_menu">
               <div class="nav toggle">
-                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
               </div>
               <nav class="nav navbar-nav">
               <ul class=" navbar-right">
                 <li class="nav-item dropdown open" style="padding-left: 15px;">
                   <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                    <img src="<?php echo base_url(); ?>assets/admin/production/images/img.jpg" alt="">John Doe
+                    <img src="<?php echo base_url(); ?>assets/admin/production/images/" alt=""><?= $this->session->userdata('nama')?>
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item"  href="javascript:;"> Profile</a>

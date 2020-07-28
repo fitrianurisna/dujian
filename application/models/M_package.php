@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_package extends CI_Model{
-	 
+
 	// get all daftar
 	public function get_daftar(){
 		$query = $this->db->get('daftar');
@@ -28,7 +28,6 @@ class M_package extends CI_Model{
 		$query = $this->db->get('tb_durt');
 		return $query;
 	}
-
 	// READ
 	function get_packages(){
 		$this->db->select('d_package.*,COUNT(daftar_id) AS item_product');

@@ -29,24 +29,18 @@ class Auth extends CI_Controller {
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
-		$user = $this->db->get_where('user',['email'=> $email])->row_array();
+		$user = $this->db->get_where('user',['email'=> $email],['password'=> $password])->row_array();
 		// $cek = $this->M_login->cek_user($email,$password);
 		if($user){
 			if ($user['aktif']==1) {
 				if ($user['password']) {
-		
+		$this->session->set_userdata($user);
 						if($user['role_id'] == 1){
-							$this->session->set_userdata(array(
-							'is_Login' =>TRUE, //set data telah login
-							'email' => $email,//set session email
-							));
-								$this->template->load('admin/va_static','admin/va_uts');
+								redirect("C_admin/uts");
+								// $this->template->load('admin/va_static','admin/va_uts');
 						}else{
-							$this->session->set_userdata(array(
-							'is_Login' =>TRUE, //set data telah login
-							'email' => $email,//set session email
-							));
-							$this->template->load('v_staticl','v_mhs');
+							
+							redirect("C_package");
 						}
 				}else{
 					$this->session->set_flashdata('message','Maaf password yang anda masukkan salah!');

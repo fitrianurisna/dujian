@@ -2,11 +2,6 @@
 
 class M_matkul extends CI_Model
 { 
- 
-    // public function Getall()
-    // {
-    //     return $this->db->get('matkul')->result();
-    // }
     public function Tmatkul()
     {
         $query = $this->db->get('matkul');

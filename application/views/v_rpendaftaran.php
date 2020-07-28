@@ -19,6 +19,7 @@
 			<tbody>
 				
         <tr>
+          
           <td></td>
           <td></td>
           <td></td>
@@ -35,7 +36,7 @@
 	</div>
 
 	<!-- Modal Add New UTS-->
-	<form action="<?php echo base_url('C_package/create'); ?>" method="post">
+	<form action="<?php echo base_url('C_uts/add'); ?>" method="post">
 		<div class="modal fade" id="addNewuts" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
@@ -47,7 +48,12 @@
 		      </div>
 		      <div class="modal-body">
 
-				<div class="form-group row">
+            <div class="form-group">
+                <input type="hidden" name="nama_mahasiswa" class="form-control" value="<?= $this->session->userdata('nama')?>">
+                <input type="hidden" name="npm" class="form-control" value="<?= $this->session->userdata('npm')?>">
+                <input type="hidden" name="program_studi" class="form-control" value="Teknik Informatika"  >
+            </div>
+        				<div class="form-group row">
                         <label class="col-md-3 col-sm-3  control-label">Semester
                           <br>
                         </label>
@@ -55,12 +61,12 @@
                         <div class="col-md-9 col-sm-9 ">
                           <div class="radio">
                             <label>
-                              <input type="radio" class="flat" checked name="semester" value="0"> Genap
+                              <input type="radio" class="flat" checked name="semester" value="genap"> Genap
                             </label>
                           </div>
                           <div class="radio">
                             <label>
-                              <input type="radio" class="flat" name="semester" value="1"> Ganjil
+                              <input type="radio" class="flat" name="semester" value="ganjil"> Ganjil
                             </label>
                           </div>
                       </div>
@@ -68,41 +74,44 @@
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 ">Tahun Ajaran</label>
                         <div class="col-md-9 col-sm-9 ">
-                          <select class="form-control" class="custom-select" name="ta_id">
+                          <select class="form-control" class="custom-select" name="tahun_ajaran">
                             <option selected >Option</option>
                             <?php foreach ($ta->result() as $row):?>
-                            	<option value="<?php echo $row->id_ta;?>"><?php echo $row->tahun;?></option>
+                            	<option value="<?php echo $row->tahun;?>"><?php echo $row->tahun;?></option>
                             <?php endforeach; ?>
                           </select>
                         </div>
-                          <input type="hidden" name="durt_id" value="1"> 
+                          <!-- <input type="hidden" name="durt_id" value="1"> --> 
                       </div>
-
                       <div id="field">
                       <div id="field1">
                       <div class="form-row">
-                          <!-- <div class="col-sm-4 padding-minimum">
-                          <label for="mobile" class="control-label"><span class="text-danger">*</span> Gender</label>
-                          <select name="gender" id="gender" class="form-control select2-container step2-select" data-placeholder="Select Gender">
-                              <option></option>
-                              <option value="1">Male</option>
-                              <option value="0">Female</option>
-                          </select>
-                      </div> -->
                           <div class="col-md-6 mb-3">
                             <label for="inputmatkul1">Mata Kuliah</label>
-                            <select class="custom-select" name="matkul_id">
+                            <select class="custom-select" name="matkul">
                             <option selected>Pilihan</option>
-                           
+                              <?php $matkul = $this->db->get('matkul'); 
+                              foreach ($matkul->result() as $row) {
+                ?>
+                              <option value="<?php echo $row->nama_matkul;?>">
+                              <?php echo $row->nama_matkul;?>
+                            </option><?php } ?>
                           </select>
                             <div class="invalid-feedback">
                             </div>
                           </div>
                           <div class="col-md-3 mb-3">
                             <label for="inputdosen1" >Dosen Pengajar</label>
-                            <select class="custom-select" name="dosen_id">
-                            <option selected>Pilihanlah sesuai</option>
+                            <select class="custom-select" name="dosen">
+                            <option selected>Pilihan</option>
+                              <?php $dosen = $this->db->get('dosen'); 
+                              foreach ($dosen->result() as $row) {
+                                ?>
+                              <option value="<?php echo $row->nama_dosen;?>">
+                              <?php echo $row->nama_dosen;?>
+                              </option><?php } ?>
                           </select>
+                            <input type="hidden" name="verivikasi" class="form-control" value="0" >
                             <div class="invalid-feedback">
                             </div>
                           </div>
@@ -129,7 +138,7 @@
 	</form>
 
 <!-- Modal Add New UAS-->
-	<form action="" method="post">
+	<form action="<?php echo base_url('C_uas/add'); ?>" method="post">
 		<div class="modal fade" id="addNewuas" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">
@@ -141,7 +150,12 @@
 		      </div>
 		      <div class="modal-body">
 
-				<div class="form-group row">
+				<div class="form-group">
+                <input type="hidden" name="nama_mahasiswa" class="form-control" value="<?= $this->session->userdata('nama')?>">
+                <input type="hidden" name="npm" class="form-control" value="<?= $this->session->userdata('npm')?>">
+                <input type="hidden" name="program_studi" class="form-control" value="Teknik Informatika"  >
+            </div>
+        <div class="form-group row">
                         <label class="col-md-3 col-sm-3  control-label">Semester
                           <br>
                         </label>
@@ -149,12 +163,12 @@
                         <div class="col-md-9 col-sm-9 ">
                           <div class="radio">
                             <label>
-                              <input type="radio" class="flat" checked name="iCheck"> Genap
+                              <input type="radio" class="flat" checked name="semester" value="genap"> Genap
                             </label>
                           </div>
                           <div class="radio">
                             <label>
-                              <input type="radio" class="flat" name="iCheck"> Ganjil
+                              <input type="radio" class="flat" name="semester" value="ganjil"> Ganjil
                             </label>
                           </div>
                       </div>
@@ -162,42 +176,53 @@
                       <div class="form-group row">
                         <label class="control-label col-md-3 col-sm-3 ">Tahun Ajaran</label>
                         <div class="col-md-9 col-sm-9 ">
-                          <select class="form-control">
-                            <option>Option</option>
+                          <select class="form-control" class="custom-select" name="tahun_ajaran">
+                            <option selected >Option</option>
                             <?php foreach ($ta->result() as $row):?>
-                            	<option value="<?php echo $row->id_ta;?>"><?php echo $row->tahun;?></option>
+                              <option value="<?php echo $row->tahun;?>"><?php echo $row->tahun;?></option>
                             <?php endforeach; ?>
                           </select>
                         </div>
-                          <input type="hidden" name="durt_id" value="2"> 
+                          <!-- <input type="hidden" name="durt_id" value="1"> --> 
                       </div>
 
                       <div id="field">
-                        <div id="field0">
-                          <div class="form-row">
-                              <div class="col-md-6 mb-3">
-                                <label for="inputmatkul1">Mata Kuliah</label>
-                                <select class="custom-select" name="matkul_id">
-                                  <option selected>Pilihan</option>
-                                 
-                                </select>
-                                <div class="invalid-feedback">
-                                </div>
-                              </div>
-                              <div class="col-md-3 mb-3">
-                                <label for="inputdosen1" >Dosen Pengajar</label>
-                                <select class="custom-select" name="dosen_id">
-                                  <option selected>Pilihanlah sesuai</option>
-                                  
-                                </select>
-                                <div class="invalid-feedback">
-                                </div>
-                              </div>
+                      <div id="field1">
+                      <div class="form-row">
+                          <div class="col-md-6 mb-3">
+                            <label for="inputmatkul1">Mata Kuliah</label>
+                            <select class="custom-select" name="matkul">
+                            <option selected>Pilihan</option>
+                              <?php $matkul = $this->db->get('matkul'); 
+                              foreach ($matkul->result() as $row) {
+                ?>
+                              <option value="<?php echo $row->nama_matkul;?>">
+                              <?php echo $row->nama_matkul;?>
+                            </option><?php } ?>
+                          </select>
+                            <div class="invalid-feedback">
+                            </div>
                           </div>
-                          <!-- buat duplicat matkul+dosen Pengajar -->
-                                <div class="form-group row" id="coba"></div>
-                                </div>  
+                          <div class="col-md-3 mb-3">
+                            <label for="inputdosen1" >Dosen Pengajar</label>
+                            <select class="custom-select" name="dosen">
+                            <option selected>Pilihan</option>
+                              <?php $dosen = $this->db->get('dosen'); 
+                              foreach ($dosen->result() as $row) {
+                                ?>
+                              <option value="<?php echo $row->nama_dosen;?>">
+                              <?php echo $row->nama_dosen;?>
+                              </option><?php } ?>
+                          </select>
+                            <input type="hidden" name="verivikasi" class="form-control" value="0" >
+                            <div class="invalid-feedback">
+                            </div>
                           </div>
+                      </div>
+                            <!-- <div class="form-group row" id="coba"></div>
+                                </div> -->
+                      </div>  
+                      </div>
                           <div class="form-group row">
                             <div class="col-md-3 mb-3">
                               <button type="button" id="add-more" name="add-more" class="btn btn-success btn-sm">+</button>

@@ -15,9 +15,10 @@ class C_package extends CI_Controller{
 		$data['ta'] = $this->M_package->get_ta();
 		$data['matkul'] = $this->M_package->get_matkul();
 		$data['dosen'] = $this->M_package->get_dosen();
-		$data['tb_durt'] = $this->M_package->get_durt();
+		$data['tb_durt'] = $this->M_package->get_durt();	
 		$this->template->load('v_staticl','v_rpendaftaran',$data);
 	}
+
 
 	// create
 	public function create()
