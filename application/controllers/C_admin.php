@@ -25,6 +25,14 @@ class C_admin extends CI_Controller {
         $this->M_uts->update($where,$data,'susulan_uts');
         redirect('C_admin/uts');
     }
+	public function puts()
+	{
+		// print_r($this->session->userdata());
+		$data["susulan_uts"] = $this->M_uts->getwhere('verivikasi',1,'susulan_uts')->result();
+		$this->template->load('admin/va_static','admin/va_puts',$data);
+	}
+    
+
     // PDF inivoice Pembayaran
     public function invoice_pdf($npm = ''){
 
@@ -58,30 +66,5 @@ class C_admin extends CI_Controller {
     $this->pdf->setPaper('A4', 'potrait');
     $this->pdf->filename = "Futs.pdf";
     $this->pdf->load_view('admin/form_UTS', $data);
-	}
-
-
-
-	public function uas()
-	{
-		$this->template->load('admin/va_static','admin/va_uas');
-	}
-	public function rt()
-	{
-		$this->template->load('admin/va_static','admin/va_rt');
-	}
-	public function puts()
-	{
-		// print_r($this->session->userdata());
-		$data["susulan_uts"] = $this->M_uts->getwhere('verivikasi',1,'susulan_uts')->result();
-		$this->template->load('admin/va_static','admin/va_puts',$data);
-	}
-	public function puas()
-	{
-		$this->template->load('admin/va_static','admin/va_puas');
-	}
-	public function prt()
-	{
-		$this->template->load('admin/va_static','admin/va_prt');
 	}
 }

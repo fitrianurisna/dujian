@@ -67,6 +67,7 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><a href="<?php echo base_url('C_package'); ?>"><i class="fa fa-edit"></i>Pendaftaran susulan UTS & UAS</span></a></li>
+                  <!-- <li><a href="<?php echo base_url(''); ?>"><i class="fa fa-edit"></i>Pendaftaran Remedial teaching</span></a></li> -->
                   <li><a href="<?php echo base_url('C_prt'); ?>"><i class="fa fa-edit"></i>Pendaftaran Remedial teaching</span></a></li>
                   </div>
 
@@ -181,32 +182,132 @@
   </script>-->
   <script type="text/javascript">
   $(document).ready(function(){
+    let i = 1;
+//MODAL_UAS
     $('#add-more').click( function() {      
      // var table = document.getElementById('#coba');
-     var isi = '<div id="field0">'+
-                  '<div class="form-row">'+
-                      '<div class="col-md-6 mb-3">'+
-                        '<label for="inputmatkul1">Mata Kuliah</label>'+
-                        '<select class="custom-select" name="matkul_id">'+
-                          '<option selected>Pilihan</option>'+
+     var isi = `<div class="form-uas${i}">
+                  <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label for="inputmatkul1">Mata Kuliah</label>
+                        <select class="custom-select" name="matkul_id[]">
+                          <option selected>Pilihan</option>
                          
-                        '</select>'+
-                        '<div class="invalid-feedback">'+
-                        '</div>'+
-                      '</div>'+
-                      '<div class="col-md-3 mb-3">'+
-                        '<label for="inputdosen1" >Dosen Pengajar</label>'+
-                        '<select class="custom-select" name="dosen_id">'+
-                          '<option selected>Pilihanlah sesuai</option>'+
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="inputdosen1" >Dosen Pengajar</label>
+                        <select class="custom-select" name="dosen_id[]">
+                          <option selected>Pilihanlah sesuai</option>
                           
-                        '</select>'+
-                        '<div class="invalid-feedback">'+
-                        '</div>'+
-                      '</div>'+
-                  '</div>';
-     $('#coba').append(isi);
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mt-4 remove">
+                        <button type="button" data-id='${i}' name="remove" class="btn btn-danger btn-sm">-</button>
+                      </div>
+                    </div>
+                </div>`;
+     $('#container-clone').append(isi);
+     console.log('ahay deuh');
+    });    
+    $('#container-clone').on('click','.remove' ,function() {
+      console.log("ok");
+      $(this).parent().remove();
+    });
+
+
+//MODAL_UTS
+    $('#add-uts').click( function() {      
+     // var table = document.getElementById('#coba');
+     var isi = `<div class="form-uts${i}">
+                  <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label for="inputmatkul1">Mata Kuliah</label>
+                        <select class="custom-select" name="matkul_id[]">
+                          <option selected>Pilihan</option>
+                         
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="inputdosen1" >Dosen Pengajar</label>
+                        <select class="custom-select" name="dosen_id[]">
+                          <option selected>Pilihanlah sesuai</option>
+                          
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mt-4 remove">
+                        <button type="button" data-id='${i}' name="remove" class="btn btn-danger btn-sm">-</button>
+                      </div>
+                    </div>
+                </div>`;
+     $('#container-cl').append(isi);
      console.log('ahay deuh');
     });
+
+    $('#container-cl').on('click','.remove' ,function() {
+      console.log("ok");
+      $(this).parent().remove();
+    });
+
+//modal Remeedial Teaching
+    $('#add-rt').click( function() {      
+     // var table = document.getElementById('#coba');
+     var isi = `<div class="form-rt${i}">
+                  <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label for="inputmatkul1">Mata Kuliah</label>
+                        <select class="custom-select" name="matkul_id[]">
+                          <option selected>Pilihan</option>
+                         
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="inputdosen1" >Dosen Pengajar</label>
+                        <select class="custom-select" name="dosen_id[]">
+                          <option selected>Pilihanlah sesuai</option>
+                          
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                            <label for="inputdosen1" >sks</label>
+                            <select class="custom-select" name="sks">
+                            <option selected>Pilihanlah sesuai</option>
+
+                          </select> 
+                            <div class="invalid-feedback">
+                            </div>
+                    <div class="col-md-3 mb-3">
+                            <label for="inputdosen1"  >nilai</label>
+                            <input type="" name="nilai" class="form-control"> 
+                            <div class="invalid-feedback">
+                            </div>
+                          </div>
+                      <div class="col-md-3 mt-4 remove">
+                        <button type="button" data-id='${i}' name="remove" class="btn btn-danger btn-sm">-</button>
+                      </div>
+                      
+                    </div>
+                </div>`;
+     $('#container-rt').append(isi);
+     console.log('ahay deuh');
+    });
+
+    $('#container-rt').on('click','.remove' ,function() {
+      console.log("ok");
+      $(this).parent().remove();
+    });    
   });
 </script>
   </body>

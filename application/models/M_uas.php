@@ -1,9 +1,9 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_uas extends CI_Model
-{ 
+{
     private $_table = "susulan_uas";
- 
+
     public $nama_mahasiswa;
     public $npm;
     public $program_studi;
@@ -16,26 +16,16 @@ class M_uas extends CI_Model
     public $tanggal_uas;
     public $pukul;
     public $verivikasi;
- 
+
     public function Getall()
     {
+        // return $this->db->get('susulan_uts');
         return $this->db->get('susulan_uas')->result();
     }
-    public function Get($npm = '')
-    {
-        $this->db->where('npm', $npm);
-        return $this->db->get('susulan_uas')->row_array();   
-    }
-
-    public function getById($id)
+    
+    public function getById($npm)
     {
         return $this->db->get_where($this->_table, ["npm" => $npm])->row();
-    }
-
-    public function getnpm($field,$where,$table){
-        $this->db->where($field,$where);
-        $q = $this->db->get($table);
-        return $q->result();
     }
 
     public function save()
@@ -57,26 +47,21 @@ class M_uas extends CI_Model
         $inputan = $this->db->insert($this->_table, $data);
         return $inputan;
     }
-    public function getwhere($field,$where,$table)
+     public function getwhere($field,$where,$table)
     {
       $this->db->where($field,$where);
       $query = $this->db->get($table);
       return $query;
     }
- 
-   public function update($where,$data,$table)
+
+    public function update($where,$data,$table)
     {
       $this->db->where($where);
       $this->db->update($table,$data);
     }
 
-    public function delete($where,$table)
+    public function delete($id)
     {
-        $this->db->where($where);
-        $this->db->delete($table);
-    }
-    public function edit($where,$table)
-    {
-      return $this->db->get_where($table,$where);
+        return $this->db->delete($this->_table, array("npm" => $id));
     }
 }

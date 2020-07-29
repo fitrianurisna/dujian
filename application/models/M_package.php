@@ -3,10 +3,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_package extends CI_Model{
 
-	public function Get()
+	private $_table = "susulan_uts";
+ 
+    public $nama_mahasiswa;
+    public $npm;
+    public $program_studi;
+    public $kelas;
+    public $no_tlp;
+    public $matkul;
+    public $tahun_ajaran;
+    public $semester;
+    public $dosen;
+    public $tanggal_uas;
+    public $pukul;
+    public $verivikasi;
+ 
+   
+	public function Get($npm = '')
     {
-        return $this->db->get('susulan_uts')->result();
+    	$this->db->where('npm', $npm);
+        return $this->db->get('susulan_uts')->row_array();
     }
+    public function Getrt($npm = '')
+    {
+    	$this->db->where('npm', $npm);
+        return $this->db->get('rt')->row_array();
+    }
+    public function getBynpm($npm)
+    {
+        return $this->db->get_where($this->_table,['npm',$npm])->row();
+    }
+
 	// get all daftar
 	public function get_daftar(){
 		$query = $this->db->get('daftar');

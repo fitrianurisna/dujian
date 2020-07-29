@@ -63,11 +63,11 @@
                 <h3>Menu</h3>
                 <ul class="nav side-menu">
                   <li><a href="<?php echo base_url('C_admin/uts'); ?>"><i class="fa fa-edit"></i>Pendaftar Susulan UTS </span></a></li>
-                  <li><a href="<?php echo base_url('C_admin/uas'); ?>"><i class="fa fa-edit"></i>Pendaftar Susulan UAS </span></a></li>
-                  <li><a href="<?php echo base_url('C_admin/rt'); ?>"><i class="fa fa-edit"></i>Pendaftar Remedial Teaching</span></a></li>
+                  <li><a href="<?php echo base_url('C_uas'); ?>"><i class="fa fa-edit"></i>Pendaftar Susulan UAS </span></a></li>
+                  <li><a href="<?php echo base_url('C_prt/prt'); ?>"><i class="fa fa-edit"></i>Pendaftar Remedial Teaching</span></a></li>
                   <li><a href="<?php echo base_url('C_admin/puts'); ?>"><i class="fa fa-credit-card"></i>Pembayaran UTS</span></a></li>
-                  <li><a href="<?php echo base_url('C_admin/puas'); ?>"><i class="fa fa-credit-card"></i>Pembayaran UAS</span></a></li>
-                  <li><a href="<?php echo base_url('C_admin/prt'); ?>"><i class="fa fa-credit-card"></i>Pembayaran Remedial Teaching</span></a></li>
+                  <li><a href="<?php echo base_url('C_uas/puas'); ?>"><i class="fa fa-credit-card"></i>Pembayaran UAS</span></a></li>
+                  <li><a href="<?php echo base_url('C_prt/brt'); ?>"><i class="fa fa-credit-card"></i>Pembayaran Remedial Teaching</span></a></li>
                   <li><a href="<?php echo base_url('Ca_matkul'); ?>"><i class="fa fa-archive"></i>Mata kuliah</span></a></li>
                   </ul>
                   </div>

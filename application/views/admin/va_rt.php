@@ -11,17 +11,16 @@
 
                   <div class="x_content">
                     <div class="table-responsive">
+                      <form action="<?php echo base_url().'C_prt/update/';?>" method="post">
                       <table class="table table-striped jambo_table bulk_action">
                         <thead>
         <tr>
           <th>Nomer</th>
           <th>Nama</th>
           <th>NPM</th>
-          <th>Pendaftaran</th>
-          <th>Jumlah Mata Kuliah</th>
-          <th>Detail Mata Kuliah</th>
-          <th>Created At</th>
-          <th>Nominal Pembayaran</th>
+          <th>Semester</th>
+          <th>Mata Kuliah</th>
+          <th></th>
           <th>Verifikasi Pembayaran</th>
           <th>Action</th>
           <th>Cetak Invoice</th>
@@ -29,201 +28,26 @@
       </thead>
       <tbody>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <?php 
+                                        $no = 1;
+                                        foreach ($rt as $s)  {?>
+                                        <td><?php echo $no++ ?></td>
+                                        <td><?php echo $s->nama; ?></td>
+                                        <td><input type="hidden" name="npm" value="<?php echo $s->npm; ?>" class="form-control"><?php echo $s->npm; ?></td>
+                                        <td><?php echo $s->semester; ?></td>
+                                        <td><?php echo $s->matkul; ?></td>
+                                        <td></td>
+                                        <td>
+                                        <select name="verivikasi">
+                                            <option value="0">Belum dibayar</option>
+                                            <option value="1">Telah dibayar</option>
+                                        </select>
+                                        </td>
+                                        <td align="center"><input type="submit" value="Simpan"  class="fa fa-save"></td>
+                                        <td align="center"><a href="<?= base_url()?>C_admin/invoice_pdf/<?= $s->npm?>" class="fa fa-download" >Cetak Invoice</a></td>
 
         </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-
-        </tr>
+        <?php } ?>
       </tbody>
       
                       </table>

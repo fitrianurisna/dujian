@@ -15,6 +15,8 @@
   </style>
 </head>
 <body>
+  <p>Jurusan/PS.Teknik Informatika Fakultas Teknik-UIKA <br>Sholeh Iskandar km.2 Bogor 16162<br>
+  Tel.Fax.0251-380993</p>
   <table style="width: 100%;" class="table table-bordered">
     <tr>
       <td align="center">
@@ -25,24 +27,42 @@
   <p>Run date (tgl cetak)</p>
   <table class="table table-bordered">
     <tr>
-      <td>No</td>
-      <td>:</td>
-      <td>10</td>
+      <td>
+        No
+        <br>Telah Terima Dari
+        <br>Uang Sejumlah
+        <br>Untuk Pembayaran
+      </td>
+      <td>
+        :<br>:<br>:<br>:
+      </td>
+      <td>
+        10
+        <br><?php echo $susulan_uts['nama_mahasiswa'];?>
+        <br>RP.
+        <br>UTS Susulan <?php echo $susulan_uts['matkul'];?>
+      </td>
     </tr>
     <tr>
-      <td>Telah terima dari</td>
-      <td>:</td>
-      <td><?php echo $susulan_uts['nama_mahasiswa'];?></td>
+      <td></td>
+      <td></td>
+      <td>Bogor</td>
+      <td>tgl</td>
     </tr>
     <tr>
-      <td>Uang Sejumlah</td>
-      <td>:</td>
-      <td>RP</td>
+      <td>RP.</td>
+      <td>0</td>
+      <td>Yang Menerima,</td>
     </tr>
     <tr>
-      <td>untuk pembayaran</td>
-      <td>:</td>
-      <td>UTS Susulan <?php echo $susulan_uts['matkul'];?></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><?php echo $this->session->userdata('nama'); ?></td>
     </tr>
   </table>
   

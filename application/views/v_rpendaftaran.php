@@ -16,17 +16,19 @@
 					<th>Cetak Invoice</th>
 				</tr>
 			</thead>
-			<tbody>
+      <tbody>
 				<?php 
         $No = 1;
-        foreach ($susulan_uts as $s){ ?>
+        $npm = $this->session->userdata('npm');
+        $verifikasi = $this->db->get_where('susulan_uts', array('npm'=> $npm))->result();
+        foreach ($verifikasi as $v) {?>
         <tr>
           <td><?=$No++; ?></td>
-          <td><?=$s->nama_mahasiswa; ?></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td><?= $v->nama_mahasiswa; ?></td>
+          <td><?= $v->npm; ?></td>
+          <td><?= $v->matkul; ?></td>
+          <td><?= $v->semester; ?></td>
+          <td><a href="<?= base_url()?>C_package/invoice_pdf/<?= $v->npm?>" class="fa fa-download" >Cetak Invoice</a></td>
           <td></td>
           <td></td>
         </tr>
@@ -53,6 +55,7 @@
                 <input type="hidden" name="nama_mahasiswa" class="form-control" value="<?= $this->session->userdata('nama')?>">
                 <input type="hidden" name="npm" class="form-control" value="<?= $this->session->userdata('npm')?>">
                 <input type="hidden" name="program_studi" class="form-control" value="Teknik Informatika"  >
+                <input type="hidden" name="verivikasi" class="form-control" value="0" >
             </div>
         				<div class="form-group row">
                         <label class="col-md-3 col-sm-3  control-label">Semester
@@ -81,19 +84,23 @@
                             	<option value="<?php echo $row->tahun;?>"><?php echo $row->tahun;?></option>
                             <?php endforeach; ?>
                           </select>
+                        </div> 
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-3 mb-3">
+                          <button type="button" id="add-uts" name="add-more" class="btn btn-success btn-sm">+</button>
+                          
                         </div>
-                          <!-- <input type="hidden" name="durt_id" value="1"> --> 
                       </div>
                       <div id="field">
-                      <div id="field1">
+                      <div id="container-cl">
                       <div class="form-row">
                           <div class="col-md-6 mb-3">
                             <label for="inputmatkul1">Mata Kuliah</label>
                             <select class="custom-select" name="matkul">
                             <option selected>Pilihan</option>
                               <?php $matkul = $this->db->get('matkul'); 
-                              foreach ($matkul->result() as $row) {
-                ?>
+                              foreach ($matkul->result() as $row) {?>
                               <option value="<?php echo $row->nama_matkul;?>">
                               <?php echo $row->nama_matkul;?>
                             </option><?php } ?>
@@ -112,22 +119,14 @@
                               <?php echo $row->nama_dosen;?>
                               </option><?php } ?>
                           </select>
-                            <input type="hidden" name="verivikasi" class="form-control" value="0" >
                             <div class="invalid-feedback">
                             </div>
                           </div>
                       </div>
-                            <!-- <div class="form-group row" id="coba"></div>
-                                </div> -->
                       </div>  
                       </div>
-                      <div class="form-group row">
-                          <div class="col-md-3 mb-3">
-                		  	<button type="button" id="#add-more" name="add-more" class="btn btn-success btn-sm">+</button>
-                          </div>
-                      </div>
                       
-
+                      </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
 		        <button type="submit" class="btn btn-success btn-sm">Save</button>
@@ -183,51 +182,49 @@
                               <option value="<?php echo $row->tahun;?>"><?php echo $row->tahun;?></option>
                             <?php endforeach; ?>
                           </select>
+                        </div> 
+                      </div>
+                      <div class="form-group row">
+                        <div class="col-md-3 mb-3">
+                          <button type="button" id="add-more" name="add-more" class="btn btn-success btn-sm">+</button>
+                          
                         </div>
-                          <!-- <input type="hidden" name="durt_id" value="1"> --> 
                       </div>
 
                       <div id="field">
-                      <div id="field1">
-                      <div class="form-row">
-                          <div class="col-md-6 mb-3">
-                            <label for="inputmatkul1">Mata Kuliah</label>
-                            <select class="custom-select" name="matkul">
-                            <option selected>Pilihan</option>
-                              <?php $matkul = $this->db->get('matkul'); 
-                              foreach ($matkul->result() as $row) {
-                ?>
-                              <option value="<?php echo $row->nama_matkul;?>">
-                              <?php echo $row->nama_matkul;?>
-                            </option><?php } ?>
-                          </select>
-                            <div class="invalid-feedback">
+                        <div id="container-clone">
+                            <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                  <label for="inputmatkul1">Mata Kuliah</label>
+                                    <select class="custom-select" name="matkul">
+                                      <option selected>Pilihan</option>
+                                        <?php $matkul = $this->db->get('matkul'); 
+                                        foreach ($matkul->result() as $row) {?>
+                                        <option value="<?php echo $row->nama_matkul;?>">
+                                        <?php echo $row->nama_matkul;?>
+                                      </option><?php } ?>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                    </div>
+                                  </div>
+                                <div class="col-md-3 mb-3">
+                                  <label for="inputdosen1" >Dosen Pengajar</label>
+                                  <select class="custom-select" name="dosen">
+                                    <option selected>Pilihan</option>
+                                      <?php $dosen = $this->db->get('dosen'); 
+                                      foreach ($dosen->result() as $row) {
+                                        ?>
+                                      <option value="<?php echo $row->nama_dosen;?>">
+                                      <?php echo $row->nama_dosen;?>
+                                      </option><?php } ?>
+                                  </select>
+                                    <input type="hidden" name="verivikasi" class="form-control" value="0" >
+                                    <div class="invalid-feedback">
+                                    </div>
+                                  </div>
                             </div>
-                          </div>
-                          <div class="col-md-3 mb-3">
-                            <label for="inputdosen1" >Dosen Pengajar</label>
-                            <select class="custom-select" name="dosen">
-                            <option selected>Pilihan</option>
-                              <?php $dosen = $this->db->get('dosen'); 
-                              foreach ($dosen->result() as $row) {
-                                ?>
-                              <option value="<?php echo $row->nama_dosen;?>">
-                              <?php echo $row->nama_dosen;?>
-                              </option><?php } ?>
-                          </select>
-                            <input type="hidden" name="verivikasi" class="form-control" value="0" >
-                            <div class="invalid-feedback">
-                            </div>
-                          </div>
-                      </div>
-                            <!-- <div class="form-group row" id="coba"></div>
-                                </div> -->
+                        </div>
                       </div>  
-                      </div>
-                          <div class="form-group row">
-                            <div class="col-md-3 mb-3">
-                              <button type="button" id="add-more" name="add-more" class="btn btn-success btn-sm">+</button>
-                          </div>
                       </div>
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
