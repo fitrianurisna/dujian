@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_uas extends CI_Model
 {
@@ -22,7 +22,7 @@ class M_uas extends CI_Model
         // return $this->db->get('susulan_uts');
         return $this->db->get('susulan_uas')->result();
     }
-    
+
     public function getById($npm)
     {
         return $this->db->get_where($this->_table, ["npm" => $npm])->row();
@@ -43,21 +43,22 @@ class M_uas extends CI_Model
             'tanggal_uas' => $this->input->post('tanggal_uas'),
             'pukul' => $this->input->post('pukul'),
             'verivikasi' => $this->input->post('verivikasi'),
+            'createdAt' => date("Y-m-d")
         ];
         $inputan = $this->db->insert($this->_table, $data);
         return $inputan;
     }
-     public function getwhere($field,$where,$table)
+    public function getwhere($field, $where, $table)
     {
-      $this->db->where($field,$where);
-      $query = $this->db->get($table);
-      return $query;
+        $this->db->where($field, $where);
+        $query = $this->db->get($table);
+        return $query;
     }
 
-    public function update($where,$data,$table)
+    public function update($where, $data, $table)
     {
-      $this->db->where($where);
-      $this->db->update($table,$data);
+        $this->db->where($where);
+        $this->db->update($table, $data);
     }
 
     public function delete($id)
