@@ -27,7 +27,7 @@
   <p>Run date (tgl cetak)</p>
   <table class="table table-bordered">
     <tr>
-      <td>
+      <td >
         No
         <br>Telah Terima Dari
         <br>Uang Sejumlah
@@ -36,13 +36,15 @@
       <td>
         :<br>:<br>:<br>:
       </td>
-      <td>
+      <td  colspan="2">
         10
         <br><?php echo $susulan_uts['nama_mahasiswa'];?>
         <br>RP.
         <br>UTS Susulan <?php echo $susulan_uts['matkul'];?>
       </td>
+      <td colspan="2"></td>
     </tr>
+
     <tr>
       <td></td>
       <td></td>
