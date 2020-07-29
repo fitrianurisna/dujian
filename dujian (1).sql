@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 16 Jul 2020 pada 11.27
+-- Waktu pembuatan: 29 Jul 2020 pada 11.22
 -- Versi server: 10.1.35-MariaDB
 -- Versi PHP: 7.2.9
 
@@ -142,6 +142,116 @@ INSERT INTO `matkul` (`id_matkul`, `kode_matkul`, `nama_matkul`, `semester`, `sk
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `rt`
+--
+
+CREATE TABLE `rt` (
+  `nama` varchar(100) DEFAULT NULL,
+  `npm` varchar(13) NOT NULL,
+  `program_studi` varchar(20) NOT NULL,
+  `n_hp` varchar(12) DEFAULT NULL,
+  `ta` varchar(9) DEFAULT NULL,
+  `kls` varchar(8) DEFAULT NULL,
+  `semester` varchar(6) DEFAULT NULL,
+  `matkul` varchar(100) DEFAULT NULL,
+  `sks` varchar(1) DEFAULT NULL,
+  `dosen` varchar(100) DEFAULT NULL,
+  `nilai` varchar(20) DEFAULT NULL,
+  `khs` varchar(50) DEFAULT NULL,
+  `tanggal_rt` date DEFAULT NULL,
+  `pukul` time DEFAULT NULL,
+  `verivikasi` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `rt`
+--
+
+INSERT INTO `rt` (`nama`, `npm`, `program_studi`, `n_hp`, `ta`, `kls`, `semester`, `matkul`, `sks`, `dosen`, `nilai`, `khs`, `tanggal_rt`, `pukul`, `verivikasi`) VALUES
+('', '', 'Teknik Informatika', NULL, '2020/2021', NULL, 'genap', 'Statistika dan Probabilitas II\r\n', '3', 'Ritzkal, S.Kom., M.Kom.\r\n', '65', 'KTP BAYU OKTAVIANI.pdf', NULL, NULL, '1'),
+('Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, '2020/2021', NULL, 'ganjil', 'Statistika dan Probabilitas I\r\n', '3', 'Freza Riana, S.Si., M.Si.\r\n', '65', 'KTP BAYU OKTAVIANI.pdf', NULL, NULL, '1'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `susulan_uas`
+--
+
+CREATE TABLE `susulan_uas` (
+  `npm` varchar(12) NOT NULL,
+  `nama_mahasiswa` varchar(100) DEFAULT NULL,
+  `program_studi` varchar(20) DEFAULT NULL,
+  `tahun_ajaran` varchar(10) DEFAULT NULL,
+  `kelas` varchar(10) DEFAULT NULL,
+  `no_tlp` varchar(13) DEFAULT NULL,
+  `matkul` varchar(100) DEFAULT NULL,
+  `semester` varchar(6) DEFAULT NULL,
+  `dosen` varchar(100) DEFAULT NULL,
+  `tanggal_uas` date DEFAULT NULL,
+  `pukul` time DEFAULT NULL,
+  `verivikasi` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `susulan_uas`
+--
+
+INSERT INTO `susulan_uas` (`npm`, `nama_mahasiswa`, `program_studi`, `tahun_ajaran`, `kelas`, `no_tlp`, `matkul`, `semester`, `dosen`, `tanggal_uas`, `pukul`, `verivikasi`) VALUES
+('161105150523', 'agung hapsah', 'Teknik Informatika', '2020/2021', NULL, NULL, 'Pengantar Teknologi Informasi\r\n', 'genap', 'Berlina Wulandari, S.T., M.Kom.\r\n', NULL, NULL, '1'),
+('161105150596', 'Fitria Nur Isna', 'Teknik Informatika', '2019/2020', NULL, NULL, 'Pengantar Teknologi Informasi\r\n', 'ganjil', 'Berlina Wulandari, S.T., M.Kom.\r\n', NULL, NULL, '1'),
+('161105150596', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0'),
+('161105150596', 'Fitria Nur Isna', 'Teknik Informatika', '2020/2021', NULL, NULL, 'Fisika Dasar II + Praktikum\r\n', 'genap', 'Ritzkal, S.Kom., M.Kom.\r\n', NULL, NULL, '0');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `susulan_uts`
+--
+
+CREATE TABLE `susulan_uts` (
+  `nama_mahasiswa` varchar(100) DEFAULT NULL,
+  `npm` varchar(12) NOT NULL,
+  `program_studi` varchar(20) DEFAULT NULL,
+  `tahun_ajaran` varchar(10) DEFAULT NULL,
+  `kelas` varchar(10) DEFAULT NULL,
+  `no_tlp` varchar(13) DEFAULT NULL,
+  `matkul` varchar(100) DEFAULT NULL,
+  `semester` varchar(6) DEFAULT NULL,
+  `dosen` varchar(100) DEFAULT NULL,
+  `tanggal_uts` date DEFAULT NULL,
+  `pukul` time DEFAULT NULL,
+  `verivikasi` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `susulan_uts`
+--
+
+INSERT INTO `susulan_uts` (`nama_mahasiswa`, `npm`, `program_studi`, `tahun_ajaran`, `kelas`, `no_tlp`, `matkul`, `semester`, `dosen`, `tanggal_uts`, `pukul`, `verivikasi`) VALUES
+('Fitria Nur Isna', '161105150596', 'Teknik Informatika', '2020/2021', NULL, NULL, 'Pendidikan Pancasila dan Kewarganegaraan\r\n', 'ganjil', 'Foni Agus Setiawan, S.Kom., M.Kom.\r\n', NULL, NULL, '1'),
+('Fitria Nur Isna', '161105150596', 'Teknik Informatika', '2020/2021', NULL, NULL, 'Pengantar Teknologi Informasi\r\n', 'ganjil', 'Yuggo Afrianto, S.T., M.Kom\r\n', NULL, NULL, '1'),
+('Fitria Nur Isna', '161105150596', 'Teknik Informatika', '2019/2020', NULL, NULL, 'Fisika Dasar I\r\n', 'ganjil', 'Freza Riana, S.Si., M.Si.\r\n', NULL, NULL, '1'),
+('agung hapsah', '161105150523', 'Teknik Informatika', '2019/2020', NULL, NULL, 'Pendidikan Pancasila dan Kewarganegaraan\r\n', 'ganjil', 'Berlina Wulandari, S.T., M.Kom.\r\n', NULL, NULL, '0'),
+('Fitria Nur Isna', '161105150596', 'Teknik Informatika', '2020/2021', NULL, NULL, 'Pengantar Teknologi Informasi\r\n', 'genap', 'Berlina Wulandari, S.T., M.Kom.\r\n', NULL, NULL, '1'),
+('Fitria Nur Isna', '161105150596', 'Teknik Informatika', '2019/2020', NULL, NULL, 'Pengantar Teknologi Informasi\r\n', 'ganjil', 'Foni Agus Setiawan, S.Kom., M.Kom.\r\n', NULL, NULL, '0'),
+('agung hapsah', '161105150523', 'Teknik Informatika', '2019/2020', NULL, NULL, 'Studi Islam I\r\n', 'ganjil', 'Berlina Wulandari, S.T., M.Kom.\r\n', NULL, NULL, '0');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `ta`
 --
 
@@ -156,7 +266,8 @@ CREATE TABLE `ta` (
 
 INSERT INTO `ta` (`id_ta`, `tahun`) VALUES
 (1, '2019/2020'),
-(2, '2020/2021');
+(2, '2020/2021'),
+(3, '2020/2021');
 
 -- --------------------------------------------------------
 
@@ -203,9 +314,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nama`, `email`, `npm`, `nik`, `password`, `prodi`, `kelas`, `no_hp`, `role_id`, `aktif`) VALUES
-(1, 'Fitria Nur Isna', 'fitrianurisna@gmail.com', '161105150596', '', 'jibff1b5', '', '', '', 2, 1),
+(1, 'Fitria Nur Isna', 'fitrianurisna@gmail.com', '161105150596', '', 'jibff1b5', 'Teknik Informatika', '', '', 2, 1),
 (4, 'nash', 'fitrianurisna@yahoo.com', '161105153422', NULL, '$2y$10$6udQdW6930jSXL5GZlsqOOQZgRueuF/hprer0GG4sHz', 'Teknik Informatika', '0', '089606987532', 2, 0),
-(5, 'admin1', 'admin@gmail.com', NULL, NULL, 'jibff1b4', '', '', '', 1, 1);
+(5, 'admin1', 'admin@gmail.com', NULL, NULL, 'jibff1b4', '', '', '', 1, 1),
+(6, 'agung hapsah', 'agung@gmail.com', '161105150523', NULL, 'jibff1b2', 'Teknik  Informatika', 'Reguler', '089608937612', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -351,7 +463,7 @@ ALTER TABLE `matkul`
 -- AUTO_INCREMENT untuk tabel `ta`
 --
 ALTER TABLE `ta`
-  MODIFY `id_ta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_durt`
@@ -363,7 +475,7 @@ ALTER TABLE `tb_durt`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`
