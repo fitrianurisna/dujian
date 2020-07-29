@@ -20,13 +20,16 @@
           <th>Nama Dosen</th>
           <th>Semester</th>
           <th>SKS</th>
+          <th>Tahun Ajaran</th>
+          <th>Jadwal Pelaksanaan</th>
+          <th>action</th>
           
         </tr>
       </thead>
       <tbody>
        
         <tr>
-       <!--  <?php 
+        <?php 
           $no = 1;
           foreach ($matkul as $m) { ?>
           <td><?php echo $no++ ?></td>
@@ -35,8 +38,11 @@
           <td><?php echo $m->nama_dosen; ?></td>
           <td><?php echo $m->semester; ?></td>
           <td><?php echo $m->sks; ?></td>
+          <td></td>
+          <th></th>
+          <th></th>
         </tr>
-        <?php } ?> -->
+        <?php } ?>
         
       </tbody>
       
