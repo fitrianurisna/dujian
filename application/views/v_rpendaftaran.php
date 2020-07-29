@@ -19,9 +19,9 @@
         <th>Nomer</th>
         <th>Nama</th>
         <th>NPM</th>
-        <th>Pendaftaran</th>
         <th>Jumlah Mata Kuliah</th>
         <th>Detail Mata Kuliah</th>
+        <th>Tahun Ajaran</th>
         <th>Created At</th>
         <th>Cetak Invoice</th>
       </tr>
@@ -36,11 +36,11 @@
           <td><?= $No++; ?></td>
           <td><?= $v->nama_mahasiswa; ?></td>
           <td><?= $v->npm; ?></td>
-          <td><?= $v->matkul; ?></td>
-          <td><?= $v->semester; ?></td>
-          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $v->npm ?>" class="fa fa-download">Cetak Invoice</a></td>
-          <td><?= $v->createdAt ?></td>
           <td></td>
+          <td><?= $v->matkul; ?></td>
+          <td><?= $v->tahun_ajaran; ?></td>
+          <td><?= $v->createdAt ?></td>
+          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $v->npm ?>" class="fa fa-download">Cetak Invoice</a></td>
         </tr>
       <?php } ?>
     </tbody>
@@ -52,15 +52,30 @@
         <th>Nomer</th>
         <th>Nama</th>
         <th>NPM</th>
-        <th>Pendaftaran</th>
         <th>Jumlah Mata Kuliah</th>
         <th>Detail Mata Kuliah</th>
+        <th>Tahun Ajaran</th>
         <th>Created At</th>
         <th>Cetak Invoice</th>
       </tr>
     </thead>
     <tbody>
-
+      <?php
+      $No = 1;
+      $npm = $this->session->userdata('npm');
+      $verifikasi = $this->db->get_where('susulan_uas', array('npm' => $npm))->result();
+      foreach ($verifikasi as $f) { ?>
+        <tr>
+          <td><?= $No++; ?></td>
+          <td><?= $f->nama_mahasiswa; ?></td>
+          <td><?= $f->npm; ?></td>
+          <td></td>
+          <td><?= $f->matkul; ?></td>
+          <td><?= $f->tahun_ajaran; ?></td>
+          <td><?= $f->createdAt ?></td>
+          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $f->npm ?>" class="fa fa-download">Cetak Invoice</a></td>
+        </tr>
+      <?php } ?>
     </tbody>
 
   </table>

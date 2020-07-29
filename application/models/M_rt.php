@@ -59,4 +59,9 @@ class M_rt extends CI_Model
       $this->db->where($where);
       $this->db->update($table,$data);
     }
+    public function Get($npm = '')
+    {
+        $this->db->where('npm', $npm);
+        return $this->db->get('susulan_uas')->row_array();
+    }
 }

@@ -26,7 +26,7 @@
       <tbody>
        
         <tr>
-        <?php 
+       <!--  <?php 
           $no = 1;
           foreach ($matkul as $m) { ?>
           <td><?php echo $no++ ?></td>
@@ -36,7 +36,7 @@
           <td><?php echo $m->semester; ?></td>
           <td><?php echo $m->sks; ?></td>
         </tr>
-        <?php } ?>
+        <?php } ?> -->
         
       </tbody>
       

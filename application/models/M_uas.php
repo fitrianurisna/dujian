@@ -22,6 +22,11 @@ class M_uas extends CI_Model
         // return $this->db->get('susulan_uts');
         return $this->db->get('susulan_uas')->result();
     }
+    public function Get($npm = '')
+    {
+        $this->db->where('npm', $npm);
+        return $this->db->get('susulan_uas')->row_array();
+    }
 
     public function getById($npm)
     {
