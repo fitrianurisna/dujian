@@ -41,5 +41,38 @@ class C_prt extends CI_Controller {
         $this->M_rt->update($where,$data,'rt');
         redirect('C_prt/prt');
     }
+    // PDF inivoice Pembayaran
+    public function invoice_rt($npm = ''){
+
+    $data["rt"] = $this->M_rt->Get($npm); 
+
+    $this->load->library('pdf');
+
+    $this->pdf->setPaper('A4', 'potrait');
+    $this->pdf->filename = "invoicert.pdf";
+    $this->pdf->load_view('admin/invoice_rt', $data);
+    }
+    // PDF inivoice Pembayaran
+    public function kwitansi_rtpdf($npm = ''){
+
+    $data["rt"] = $this->M_rt->Get($npm); 
+
+    $this->load->library('pdf');
+
+    $this->pdf->setPaper('A4', 'potrait');
+    $this->pdf->filename = "kwitansi_rt.pdf";
+    $this->pdf->load_view('admin/kwitansi_rtpdf', $data);
+    }
+    // PDF inivoice Pembayaran
+    public function form_rt_pdf($npm = ''){
+
+    $data["rt"] = $this->M_rt->Get($npm); 
+
+    $this->load->library('pdf');
+
+    $this->pdf->setPaper('A4', 'potrait');
+    $this->pdf->filename = "kwitansi_rt.pdf";
+    $this->pdf->load_view('admin/form_rt_pdf', $data);
+    }
 
 }

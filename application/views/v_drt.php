@@ -22,13 +22,33 @@
       $verifikasi = $this->db->get_where('rt', array('npm' => $npm))->result();
       foreach ($verifikasi as $v) { ?>
         <tr>
-          <td><?= $No++; ?></td>
+          <th>Nomer</th>
+          <th>Nama</th>
+          <th>NPM</th>
+          <th>Jumlah Mata Kuliah</th>
+          <th>Detail Mata Kuliah</th>
+          <th>Tahun Ajaran</th>
+          <th>Created At</th>
+          <th>Cetak Invoice</th>
+        </tr>
+      </thead>
+      <tbody>  
+        <?php
+       $No = 1;
+        $npm = $this->session->userdata('npm');
+        $verifikasi = $this->db->get_where('rt', array('npm'=> $npm))->result();
+        foreach ($verifikasi as $v) {?>
+        <tr>
+          <td><?=$No++; ?></td>
           <td><?= $v->nama; ?></td>
           <td><?= $v->npm; ?></td>
+          <td></td>
           <td><?= $v->matkul; ?></td>
           <td><?= $v->ta; ?></td>
-          <td><a href="<?= base_url() ?>C_package/invoice_rt_pdf/<?= $v->npm ?>" class="fa fa-download">Cetak Invoice</a></td>
-          <td></td>
+
+          <td><!-- <?= $v->createdAt ?> --></td>
+          <td><a href="<?= base_url()?>C_package/invoice_rt_pdf/<?= $v->npm?>" class="fa fa-download" >Cetak Invoice</a></td>
+
           <td></td>
         </tr>
       <?php } ?>

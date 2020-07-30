@@ -141,6 +141,82 @@ class Auth extends CI_Controller {
 
 	}
 	//blm ada send email naa//
+	private function _sendEmail($token, $type)
+	{
+		$config = [
+
+			'protocol'  => 'smtp',
+			'smtp_host' => 'ssl://smtp.googlemail.com',
+			'smtp_user' => 'fitrianurisna@gmail.com',
+			'smtp_pass' => 'jibff1b5',
+			'smtp_port' =>  465,
+			'mailtype'  => 'html',
+			'charset'   => 'utf-8',
+			'newline'   => "\r\n"
+		];
+
+		$this->load->library('email', $config);
+		$this->email->initialize($config);
+
+		$this->email->from('fitrianurisna@gmail.com', 'Prodi TI');
+		$this->email->to($this->input->post('email'));
+
+		if ($type == 'verify') {
+
+			$this->email->subject('Verifikasi Akun');
+			$this->email->message('klik link untuk verifikasi akun anda : <a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Aktif</a>');
+		}
+
+
+		if ($this->email->send()) {
+			return true;
+		} else {
+			echo $this->email->print_debugger();
+			die;
+		}
+	}
+	public function verify()
+	{
+		$email = $this->input->get('email');
+		$token = $this->input->get('token');
+
+		$user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+		if ($user) {
+			$user_token = $this->db->get_where('user_token', ['token' => $token])->row_array();
+
+			if ($user_token) {
+
+				if (time() - $user_token['dibuat'] < (60 * 60 * 24)) {
+					$this->db->set('aktif', 1);
+					$this->db->where('email', $email);
+					$this->db->update('user');
+
+					$this->db->delete('user_token', ['email' => $email]);
+
+
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">' . $email . ' akun berhasil di aktivasi! silahkan masuk</div>');
+					redirect('auth');
+				} else {
+
+
+					$this->db->delete('user', ['email' => $email]);
+					$this->db->delete('user_token', ['email' => $email]);
+
+
+					$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">akun anda gagal diverifikasi! token kadaluarsa</div>');
+					redirect('auth');
+				}
+			} else {
+
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">akun anda gagal diverifikasi! token salah</div>');
+				redirect('auth');
+			}
+		} else {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">akun anda gagal diverifikasi! email salah</div>');
+			redirect('auth');
+		}
+	}
 
 		public function logout(){
 			$this->session->unset_userdata('email');

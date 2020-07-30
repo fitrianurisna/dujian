@@ -12,7 +12,7 @@ class Ca_matkul extends CI_Controller {
 	{
 		$data['matkul'] = $this->M_matkul->Tmatkul();
 		$data['matkul1'] = $this->M_matkul->Get();
-		$this->template->load('admin/va_static','admin/va_matkul',$data);	
+		$this->template->load('admin/va_static','admin/va_matkul');	
 		
 	}
 		

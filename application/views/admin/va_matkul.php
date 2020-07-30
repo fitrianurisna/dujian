@@ -20,6 +20,9 @@
           <th>Nama Dosen</th>
           <th>Semester</th>
           <th>SKS</th>
+          <th>Tahun Ajaran</th>
+          <th>Jadwal Pelaksanaan</th>
+          <th>action</th>
           
         </tr>
       </thead>
@@ -35,6 +38,9 @@
           <td><?php echo $m->nama_dosen; ?></td>
           <td><?php echo $m->semester; ?></td>
           <td><?php echo $m->sks; ?></td>
+          <td></td>
+          <th></th>
+          <th></th>
         </tr>
         <?php } ?>
         
