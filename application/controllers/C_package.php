@@ -12,7 +12,7 @@
 		public function index($npm = '')
 		{
 			$data['daftar'] = $this->M_package->get_daftar()->result();
-			$data['package'] = $this->M_package->get_packages()->result();
+			// $data['package'] = $this->M_package->get_packages()->result();
 			$data['ta'] = $this->M_package->get_ta()->result();
 			$data['matkul'] = $this->M_package->get_matkul()->result();
 			$data['dosen'] = $this->M_package->get_dosen()->result();

@@ -202,18 +202,27 @@
                   <div class="form-row">
                       <div class="col-md-6 mb-3">
                         <label for="inputmatkul1">Mata Kuliah</label>
-                        <select class="custom-select" name="matkul_id[]">
+                        <select class="custom-select" name="matkul[]">
                           <option selected>Pilihan</option>
-                         
+                          <?php
+                          foreach ($matkul as $row) { ?>
+                      <option value="<?php echo $row->id_matkul; ?>">
+                        <?php echo $row->nama_matkul; ?>
+                      </option><?php } ?>
                         </select>
                         <div class="invalid-feedback">
                         </div>
                       </div>
                       <div class="col-md-3 mb-3">
                         <label for="inputdosen1" >Dosen Pengajar</label>
-                        <select class="custom-select" name="dosen_id[]">
+                        <select class="custom-select" name="dosen[]">
                           <option selected>Pilihanlah sesuai</option>
-                          
+                          <?php
+                          foreach ($dosen as $row) {
+                          ?>
+                      <option value="<?php echo $row->id_dosen; ?>">
+                        <?php echo $row->nama_dosen; ?>
+                      </option><?php } ?>
                         </select>
                         <div class="invalid-feedback">
                         </div>
@@ -239,18 +248,27 @@
                   <div class="form-row">
                       <div class="col-md-6 mb-3">
                         <label for="inputmatkul1">Mata Kuliah</label>
-                        <select class="custom-select" name="matkul_id[]">
+                        <select class="custom-select" name="matkul[]">
                           <option selected>Pilihan</option>
-                         
+                          <?php
+                          foreach ($matkul as $row) { ?>
+                      <option value="<?php echo $row->id_matkul; ?>">
+                        <?php echo $row->nama_matkul; ?>
+                      </option><?php } ?>
                         </select>
                         <div class="invalid-feedback">
                         </div>
                       </div>
                       <div class="col-md-3 mb-3">
                         <label for="inputdosen1" >Dosen Pengajar</label>
-                        <select class="custom-select" name="dosen_id[]">
+                        <select class="custom-select" name="dosen[]">
                           <option selected>Pilihanlah sesuai</option>
-                          
+                          <?php
+                          foreach ($dosen as $row) {
+                          ?>
+                      <option value="<?php echo $row->id_dosen; ?>">
+                        <?php echo $row->nama_dosen; ?>
+                      </option><?php } ?>
                         </select>
                         <div class="invalid-feedback">
                         </div>
