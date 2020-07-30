@@ -283,3 +283,153 @@
   </div>
   </div>
 </form>
+<script type="text/javascript" src="<?php echo base_url('assets/mulse/js/jquery-3.4.1.min.js'); ?>"></script>
+<script>
+  $(document).ready(function() {
+    let i = 1;
+    //MODAL_UAS
+    $('#add-more').click(function() {
+      // var table = document.getElementById('#coba');
+      var isi = `<div class="form-uas${i}">
+                  <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label for="inputmatkul1">Mata Kuliah</label>
+                        <select class="custom-select" name="matkul[]">
+                          <option selected>Pilihan</option>
+                          <?php
+                          foreach ($matkul as $row) { ?>
+                      <option value="<?php echo $row->id_matkul; ?>">
+                        <?php echo $row->nama_matkul; ?>
+                      </option><?php } ?>
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="inputdosen1" >Dosen Pengajar</label>
+                        <select class="custom-select" name="dosen[]">
+                          <option selected>Pilihanlah sesuai</option>
+                          <?php
+                          foreach ($dosen as $row) {
+                          ?>
+                      <option value="<?php echo $row->id_dosen; ?>">
+                        <?php echo $row->nama_dosen; ?>
+                      </option><?php } ?>
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mt-4 remove">
+                        <button type="button" data-id='${i}' name="remove" class="btn btn-danger btn-sm">-</button>
+                      </div>
+                    </div>
+                </div>`;
+      $('#container-clone').append(isi);
+      console.log('ahay deuh');
+    });
+    $('#container-clone').on('click', '.remove', function() {
+      console.log("ok");
+      $(this).parent().remove();
+    });
+
+
+    //MODAL_UTS
+    $('#add-uts').click(function() {
+      // var table = document.getElementById('#coba');
+      var isi = `<div class="form-uts${i}">
+                  <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label for="inputmatkul1">Mata Kuliah</label>
+                        <select class="custom-select" name="matkul[]">
+                          <option selected>Pilihan</option>
+                          <?php
+                          foreach ($matkul as $row) { ?>
+                      <option value="<?php echo $row->id_matkul; ?>">
+                        <?php echo $row->nama_matkul; ?>
+                      </option><?php } ?>
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="inputdosen1" >Dosen Pengajar</label>
+                        <select class="custom-select" name="dosen[]">
+                          <option selected>Pilihanlah sesuai</option>
+                          <?php
+                          foreach ($dosen as $row) {
+                          ?>
+                      <option value="<?php echo $row->id_dosen; ?>">
+                        <?php echo $row->nama_dosen; ?>
+                      </option><?php } ?>
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mt-4 remove">
+                        <button type="button" data-id='${i}' name="remove" class="btn btn-danger btn-sm">-</button>
+                      </div>
+                    </div>
+                </div>`;
+      $('#container-cl').append(isi);
+      console.log('ahay deuh');
+    });
+
+    $('#container-cl').on('click', '.remove', function() {
+      console.log("ok");
+      $(this).parent().remove();
+    });
+
+    //modal Remeedial Teaching
+    $('#add-rt').click(function() {
+
+      // var table = document.getElementById('#coba');
+      var isi = `<div class="form-rt${i}">
+                  <div class="form-row">
+                      <div class="col-md-6 mb-3">
+                        <label for="inputmatkul1">Mata Kuliah</label>
+                        <select class="custom-select" name="matkul_id[]">
+                          <option selected>Pilihan</option>
+                         
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                        <label for="inputdosen1" >Dosen Pengajar</label>
+                        <select class="custom-select" name="dosen_id[]">
+                          <option selected>Pilihanlah sesuai</option>
+                          
+                        </select>
+                        <div class="invalid-feedback">
+                        </div>
+                      </div>
+                      <div class="col-md-3 mb-3">
+                            <label for="inputdosen1" >sks</label>
+                            <select class="custom-select" name="sks">
+                            <option selected>Pilihanlah sesuai</option>
+
+                          </select> 
+                            <div class="invalid-feedback">
+                            </div>
+                    <div class="col-md-3 mb-3">
+                            <label for="inputdosen1"  >nilai</label>
+                            <input type="" name="nilai" class="form-control"> 
+                            <div class="invalid-feedback">
+                            </div>
+                          </div>
+                      <div class="col-md-3 mt-4 remove">
+                        <button type="button" data-id='${i}' name="remove" class="btn btn-danger btn-sm">-</button>
+                      </div>
+                      
+                    </div>
+                </div>`;
+      $('#container-rt').append(isi);
+      console.log('ahay deuh');
+    });
+
+    $('#container-rt').on('click', '.remove', function() {
+      console.log("ok");
+      $(this).parent().remove();
+    });
+  });
+</script>
