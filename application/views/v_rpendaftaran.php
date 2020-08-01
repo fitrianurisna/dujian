@@ -36,7 +36,7 @@
           <td><?= $No++; ?></td>
           <td><?= $v->nama_mahasiswa; ?></td>
           <td><?= $v->npm; ?></td>
-          <td></td>
+          <td><!-- <?= $v->item_product.' Items';?> --></td>
           <td><?= $v->matkul; ?></td>
           <td><?= $v->tahun_ajaran; ?></td>
           <td><?= $v->createdAt ?></td>

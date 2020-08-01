@@ -75,6 +75,14 @@ class M_package extends CI_Model
 		$this->db->group_by('package_id');
 		$query = $this->db->get();
 		return $query;
+	//tadi isna coba yg ini 
+		// $this->db->select('d_package.*,COUNT(matkul_id) AS item_product');
+		// $this->db->from('d_package');
+		// $this->db->join('susulan_uts', 'susulan_id=id');
+		// // $this->db->join('daftar', 'detail_daftar_id=daftar_id');
+		// $this->db->group_by('susulan_id');
+		// $query = $this->db->get();
+		// return $query;
 	}
 
 
