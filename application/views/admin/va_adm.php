@@ -55,7 +55,14 @@
             </div>
           </div>
         </div>
-  <form action="<?php echo base_url('Ca_adm/add'); ?>" method="post">
+        <?php 
+        if(isset($error))
+        {
+            echo "ERROR UPLOAD : <br/>";
+            print_r($error);
+            echo "<hr/>";
+        }?>
+  <form action="<?php echo base_url('Ca_adm/add');?>" method="post"enctype="multipart/form-data">
   <div class="modal fade" id="addNewadm" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
@@ -82,6 +89,11 @@
           <div class="col-md-12 mb-12">
             <label>NIK</label>
             <input type="text" name="nik" placeholder="nik">
+          </div>
+          <div class="form-group row">
+            <label class="control-label col-md-7 col-sm-7" for="ControlFile1">Upload Tanda Tangan:</label>
+            <input type="file" name="ttd" class="form-control-file" id="ControlFile1">
+            <label>max:2MB</label>
           </div>
           <div class="col-md-12 mb-12">
             <label>Password</label>

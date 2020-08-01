@@ -15,9 +15,21 @@ class Ca_adm extends CI_Controller {
         }
     public function add()
     {
+    	$config['upload_path']          = './ttd/';
+        $config['allowed_types']        = 'png|jpg';
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('ttd'))
+        {
+                $error = array('error' => $this->upload->display_errors());
+                $this->template->load('admin/va_static','admin/va_adm',$error);
+        }
+        else
+        {
     	$dujian = $this->M_adm->save();
         redirect('Ca_adm');
     }
+	}
+
     public function delete($id_user)
         {
             $where = array('id_user' => $id_user);

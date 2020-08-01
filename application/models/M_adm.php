@@ -17,6 +17,7 @@ class M_adm extends CI_Model
             'email' => $this->input->post('email'),
             'nik' => $this->input->post('nik'),
             'password' => $this->input->post('password'),
+            'ttd' => $this->upload->data('file_name'), 
             'role_id' => $this->input->post('role_id'),
             'aktif' => $this->input->post('aktif'),
             // 'createdAt' => date("Y-m-d")
@@ -29,5 +30,5 @@ class M_adm extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
     }
-    
+
 }
