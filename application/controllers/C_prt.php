@@ -28,25 +28,14 @@ class C_prt extends CI_Controller {
     {
         $config['upload_path']          = './upload_khs/';
         $config['allowed_types']        = 'pdf';
-        // $config['max_size']             = 100;
-        // $config['max_width']            = 1024;
-        // $config['max_height']           = 768;
-        // $config['encrypt_name']         = TRUE;
         $this->load->library('upload', $config);
         if ( ! $this->upload->do_upload('khs'))
         {
                 $error = array('error' => $this->upload->display_errors());
                 $this->template->load('v_staticl','v_drt',$error);
-                // $this->load->view('form_upload', $error);
         }
         else
         {
-            // $data['nama_berkas'] = $this->upload->data("file_name");
-            // $data['keterangan_berkas'] = $this->input->post('keterangan_berkas');
-            // $data['tipe_berkas'] = $this->upload->data('file_ext');
-            // $data['ukuran_berkas'] = $this->upload->data('file_size');
-            // $this->db->insert('tb_berkas',$data);
-            // redirect('upload');
             $dujian = $this->M_rt->save();
             redirect('C_prt');
                 
