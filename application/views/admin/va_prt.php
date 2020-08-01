@@ -32,8 +32,8 @@
               <td><input type="hidden" name="npm" value="<?php echo $s->npm; ?>" class="form-control"><?php echo $s->npm; ?></td>
               </td>
               <td><?php echo $s->matkul; ?></td>
-              <td align="center"><a href="<?= base_url()?>C_prt/kwitansi_rtpdf/<?= $s->npm?>" class="fa fa-download" >CETAK</a></td>
-              <td align="center"><a href="<?= base_url()?>C_prt/form_rt_pdf/<?= $s->npm?>" class="fa fa-download" >CETAK</a></td>
+              <td align="center"><a href="<?= base_url()?>C_prt/kwitansi_rtpdf/<?= $s->id?>" class="fa fa-download" >CETAK</a></td>
+              <td align="center"><a href="<?= base_url()?>C_prt/form_rt_pdf/<?= $s->id?>" class="fa fa-download" >CETAK</a></td>
         </tr>
       <?php } ?>
       </tbody>

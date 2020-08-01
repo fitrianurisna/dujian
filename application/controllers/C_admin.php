@@ -34,9 +34,9 @@ class C_admin extends CI_Controller {
     
 
     // PDF inivoice Pembayaran
-    public function invoice_pdf($npm = ''){
+    public function invoice_pdf($id = ''){
 
-    $data["susulan_uts"] = $this->M_uts->Get($npm); 
+    $data["susulan_uts"] = $this->M_uts->Get($id); 
 
     $this->load->library('pdf');
 
@@ -46,9 +46,9 @@ class C_admin extends CI_Controller {
 	}
 
 	// PDF Kwitansi Pembayaran
-    public function kwitansi_pdf($npm =''){
+    public function kwitansi_pdf($id =''){
 
-    $data["susulan_uts"] = $this->M_uts->Get($npm); 
+    $data["susulan_uts"] = $this->M_uts->Get($id); 
 
     $this->load->library('pdf');
 
@@ -57,9 +57,9 @@ class C_admin extends CI_Controller {
     $this->pdf->load_view('admin/kwitansi_pdf', $data);
 	}
 	// PDF form_uts
-    public function form_uts_pdf($npm =''){
+    public function form_uts_pdf($id =''){
 
-    $data["susulan_uts"] = $this->M_uts->Get($npm); 
+    $data["susulan_uts"] = $this->M_uts->Get($id); 
 
     $this->load->library('pdf');
 

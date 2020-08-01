@@ -32,8 +32,8 @@
                                         <td><input type="hidden" name="npm" value="<?php echo $suts->npm; ?>" class="form-control"><?php echo $suts->npm; ?></td>
                                         </td>
                                         <td><?php echo $suts->matkul; ?></td>
-                                        <td align="center"><a href="<?= base_url()?>C_admin/kwitansi_pdf/<?= $suts->npm?>" class="fa fa-download" >CETAK</a></td>
-                                        <td align="center"><a href="<?= base_url()?>C_admin/form_uts_pdf/<?= $suts->npm?>" class="fa fa-download" >CETAK</a></td>
+                                        <td align="center"><a href="<?= base_url()?>C_admin/kwitansi_pdf/<?= $suts->id?>" class="fa fa-download" >CETAK</a></td>
+                                        <td align="center"><a href="<?= base_url()?>C_admin/form_uts_pdf/<?= $suts->id?>" class="fa fa-download" >CETAK</a></td>
         </tr>
       <?php } ?>
       </tbody>

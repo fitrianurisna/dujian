@@ -49,7 +49,7 @@
                                         </select>
                                         </td>
                                         <td align="center"><input type="submit" value="Simpan"  class="fa fa-save"></td>
-                                        <td align="center"><a href="<?= base_url()?>C_admin/invoice_pdf/<?= $suts->npm?>" class="fa fa-download" >Cetak Invoice</a></td>
+                                        <td align="center"><a href="<?= base_url()?>C_admin/invoice_pdf/<?= $suts->id?>" class="fa fa-download" >Cetak Invoice</a></td>
 
         </tr>
         <?php } ?>

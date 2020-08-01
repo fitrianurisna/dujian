@@ -41,7 +41,7 @@ class M_rt extends CI_Model
             'sks' => $this->input->post('sks'),
             'dosen' => $this->input->post('dosen'),
             'nilai' => $this->input->post('nilai'),
-            'khs' => $this->input->post('khs'),
+            'khs' => $this->upload->data('file_name'),
             'pukul' => $this->input->post('pukul'),
             'verivikasi' => $this->input->post('verivikasi'),
         ];
@@ -59,9 +59,9 @@ class M_rt extends CI_Model
       $this->db->where($where);
       $this->db->update($table,$data);
     }
-    public function Get($npm = '')
+    public function Get($id = '')
     {
-        $this->db->where('npm', $npm);
-        return $this->db->get('susulan_uas')->row_array();
+        $this->db->where('id', $id);
+        return $this->db->get('rt')->row_array();
     }
 }

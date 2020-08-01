@@ -22,9 +22,9 @@ class M_uas extends CI_Model
         // return $this->db->get('susulan_uts');
         return $this->db->get('susulan_uas')->result();
     }
-    public function Get($npm = '')
+    public function Get($id = '')
     {
-        $this->db->where('npm', $npm);
+        $this->db->where('id', $id);
         return $this->db->get('susulan_uas')->row_array();
     }
 
@@ -42,9 +42,7 @@ class M_uas extends CI_Model
             'tahun_ajaran' => $this->input->post('tahun_ajaran'),
             'kelas' => $this->input->post('kelas'),
             'no_tlp' => $this->input->post('no_tlp'),
-            'matkul' => $this->input->post('matkul'),
             'semester' => $this->input->post('semester'),
-            'dosen' => $this->input->post('dosen'),
             'tanggal_uas' => $this->input->post('tanggal_uas'),
             'pukul' => $this->input->post('pukul'),
             'verivikasi' => $this->input->post('verivikasi'),

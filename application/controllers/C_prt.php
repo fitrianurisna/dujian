@@ -26,8 +26,58 @@ class C_prt extends CI_Controller {
 	}
 	public function add()
     {
-        $dujian = $this->M_rt->save();
-        redirect('C_prt');
+        $config['upload_path']          = './upload_khs/';
+        $config['allowed_types']        = 'pdf';
+        // $config['max_size']             = 100;
+        // $config['max_width']            = 1024;
+        // $config['max_height']           = 768;
+        // $config['encrypt_name']         = TRUE;
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('khs'))
+        {
+                $error = array('error' => $this->upload->display_errors());
+                $this->template->load('v_staticl','v_drt',$error);
+                // $this->load->view('form_upload', $error);
+        }
+        else
+        {
+            // $data['nama_berkas'] = $this->upload->data("file_name");
+            // $data['keterangan_berkas'] = $this->input->post('keterangan_berkas');
+            // $data['tipe_berkas'] = $this->upload->data('file_ext');
+            // $data['ukuran_berkas'] = $this->upload->data('file_size');
+            // $this->db->insert('tb_berkas',$data);
+            // redirect('upload');
+            $dujian = $this->M_rt->save();
+            redirect('C_prt');
+                
+        }
+         // $this->db->select('MAX(id) as id_terakhir')->from('rt');
+         //    $get_id = $this->db->get()->row_array();
+
+         //    $matkul = $this->input->post('matkul');
+         //    $dosen = $this->input->post('dosen');
+         //    $sks = $this->input->post('sks');
+         //    $nilai = $this->input->post('nilai');
+         //    if (count($matkul) == count($dosen)) {
+         //        for ($i = 0; $i < count($matkul); $i++) {
+         //            $data = [
+         //                'susulan_id' => $get_id['id_terakhir'] + 1,
+         //                'matkul_id' => $matkul[$i],
+         //                'dosen_id' => $dosen[$i],
+         //                'sks_id' => $sks[$i],
+         //                'nilai' => $nilai[$i],
+         //                'tipe' => '3'
+         //            ];
+         //            $this->db->insert('d_package', $data);
+         //        }
+         //    } else {
+         //        echo "
+         //            <script>
+         //                alert('Gagal')
+         //                location.href = " . base_url('C_package') . "
+         //            </script>
+         //        ";
+         //    }
     }
     public function update()
     {
@@ -42,9 +92,9 @@ class C_prt extends CI_Controller {
         redirect('C_prt/prt');
     }
     // PDF inivoice Pembayaran
-    public function invoice_rt($npm = ''){
+    public function invoice_rt($id = ''){
 
-    $data["rt"] = $this->M_rt->Get($npm); 
+    $data["rt"] = $this->M_rt->Get($id); 
 
     $this->load->library('pdf');
 
@@ -53,9 +103,9 @@ class C_prt extends CI_Controller {
     $this->pdf->load_view('admin/invoice_rt', $data);
     }
     // PDF inivoice Pembayaran
-    public function kwitansi_rtpdf($npm = ''){
+    public function kwitansi_rtpdf($id = ''){
 
-    $data["rt"] = $this->M_rt->Get($npm); 
+    $data["rt"] = $this->M_rt->Get($id); 
 
     $this->load->library('pdf');
 
@@ -64,9 +114,9 @@ class C_prt extends CI_Controller {
     $this->pdf->load_view('admin/kwitansi_rtpdf', $data);
     }
     // PDF inivoice Pembayaran
-    public function form_rt_pdf($npm = ''){
+    public function form_rt_pdf($id = ''){
 
-    $data["rt"] = $this->M_rt->Get($npm); 
+    $data["rt"] = $this->M_rt->Get($id); 
 
     $this->load->library('pdf');
 
@@ -74,5 +124,6 @@ class C_prt extends CI_Controller {
     $this->pdf->filename = "kwitansi_rt.pdf";
     $this->pdf->load_view('admin/form_rt_pdf', $data);
     }
+
 
 }

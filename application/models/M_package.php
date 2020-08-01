@@ -20,9 +20,9 @@ class M_package extends CI_Model
 	public $verivikasi;
 
 
-	public function Get($npm = '')
+	public function Get($id = '')
 	{
-		$this->db->where('npm', $npm);
+		$this->db->where('id', $id);
 		return $this->db->get('susulan_uts')->row_array();
 	}
 	public function Getrt($npm = '')

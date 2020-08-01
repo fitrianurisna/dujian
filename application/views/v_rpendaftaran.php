@@ -40,7 +40,7 @@
           <td><?= $v->matkul; ?></td>
           <td><?= $v->tahun_ajaran; ?></td>
           <td><?= $v->createdAt ?></td>
-          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $v->npm ?>" class="fa fa-download">Cetak Invoice</a></td>
+          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $v->id ?>" class="fa fa-download">Cetak Invoice</a></td>
         </tr>
       <?php } ?>
     </tbody>
@@ -73,7 +73,7 @@
           <td><?= $f->matkul; ?></td>
           <td><?= $f->tahun_ajaran; ?></td>
           <td><?= $f->createdAt ?></td>
-          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $f->npm ?>" class="fa fa-download">Cetak Invoice</a></td>
+          <td><a href="<?= base_url()?>C_uas/invoice_uaspdf/<?= $v->id?>" class="fa fa-download">Cetak Invoice</a></td>
         </tr>
       <?php } ?>
     </tbody>
