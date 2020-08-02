@@ -29,6 +29,10 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url(); ?>assets/admin/build/css/custom.min.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="<?php echo base_url(); ?>assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+    <!-- bootstrap-datetimepicker -->
+    <link href="<?php echo base_url(); ?>assets/admin/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
   </head>
 
   <body class="nav-md footer_fixed">
@@ -68,8 +72,9 @@
                   <li><a href="<?php echo base_url('C_admin/puts'); ?>"><i class="fa fa-credit-card"></i>Pembayaran UTS</span></a></li>
                   <li><a href="<?php echo base_url('C_uas/puas'); ?>"><i class="fa fa-credit-card"></i>Pembayaran UAS</span></a></li>
                   <li><a href="<?php echo base_url('C_prt/brt'); ?>"><i class="fa fa-credit-card"></i>Pembayaran Remedial Teaching</span></a></li>
-                  <li><a href="<?php echo base_url('Ca_matkul'); ?>"><i class="fa fa-archive"></i>Mata kuliah</span></a></li>
+                  <li><a href="<?php echo base_url('Ca_jadwal'); ?>"><i class="fa fa-archive"></i>Jadwal</span></a></li>
                   <li><a href="<?php echo base_url('Ca_adm'); ?>"><i class="fa fa-archive"></i>Admin</span></a></li>
+                  <li><a href="<?php echo base_url('Ca_matkul'); ?>"><i class="fa fa-archive"></i>Mata kuliah</span></a></li>
                   </ul>
                   </div>
 
@@ -168,6 +173,8 @@
 
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url(); ?>assets/admin/build/js/custom.min.js"></script>
+    <!-- bootstrap-datetimepicker -->    
+    <script src="<?php echo base_url(); ?>assets/admin/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 	
   </body>
 </html>

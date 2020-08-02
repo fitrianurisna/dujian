@@ -16,7 +16,7 @@ class Ca_adm extends CI_Controller {
     public function add()
     {
     	$config['upload_path']          = './ttd/';
-        $config['allowed_types']        = 'png|jpg';
+        $config['allowed_types']        = 'gif|png|jpg';
         $this->load->library('upload', $config);
         if ( ! $this->upload->do_upload('ttd'))
         {

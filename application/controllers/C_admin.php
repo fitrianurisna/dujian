@@ -48,7 +48,8 @@ class C_admin extends CI_Controller {
 	// PDF Kwitansi Pembayaran
     public function kwitansi_pdf($id =''){
 
-    $data["susulan_uts"] = $this->M_uts->Get($id); 
+    $data["susulan_uts"] = $this->M_uts->Get($id);
+    // $data['file'] = $this->db->get('user'); 
 
     $this->load->library('pdf');
 

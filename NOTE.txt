@@ -1,0 +1,22 @@
+1. penambahan mata kuliah pada saat mahasiswa melakukan pendaftaran (Sudah)
+	->tapi blm bisa nampilin count matkul yg diambil berdasarkan id pendaftaran yg pake inner join 
+2. perhitungan pembayaran tagihan 
+(Pembayaran UTS susulan: view : admin/va_uts, controller : C_admin, Model : M_uts)
+(Pembayaran UAS Susulan : view : admin/va_uas,controller : C_uas, Model : M_uas)
+
+3. invoice mahasiswa(Sudah)
+4.tanda tangan digital berdasarkan login admin dengan gambar 
+(gambarnya belum muncul isna coba di kwitansi uts uknown size,tapi dataudah masuk db)
+5. pengaturan Jadwal di halaman jadwal
+(Datepickernya gamuncul Js,sama script nya udah dimasukin padahal) 
+6. download absen
+
+------------------
+1 agustus :
+1. klik invoice sesuai id dan data /pendafataran
+(sudah kecuali uas karena ambil id nya 11 semua padahal di database gaada id 11 
+buat susulan uas)
+2. membuat upload khs(Sudah)
+3. buat halaman admin untuk tambah admin + input data admin(sudaaaah)
+
+

@@ -17,7 +17,9 @@ class M_adm extends CI_Model
             'email' => $this->input->post('email'),
             'nik' => $this->input->post('nik'),
             'password' => $this->input->post('password'),
-            'ttd' => $this->upload->data('file_name'), 
+            'ttd' => $this->upload->data('file_name'),
+            'tipe_file'=> $this->upload->data('file_ext'),
+            'ukuran_file'=> $this->upload->data('file_size'), 
             'role_id' => $this->input->post('role_id'),
             'aktif' => $this->input->post('aktif'),
             // 'createdAt' => date("Y-m-d")

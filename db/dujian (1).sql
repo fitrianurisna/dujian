@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 29 Jul 2020 pada 15.04
--- Versi server: 10.4.6-MariaDB
--- Versi PHP: 7.3.9
+-- Waktu pembuatan: 02 Agu 2020 pada 14.55
+-- Versi server: 10.1.35-MariaDB
+-- Versi PHP: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -87,9 +87,56 @@ INSERT INTO `dosen` (`id_dosen`, `nik`, `nama_dosen`, `matkul_kode`) VALUES
 --
 
 CREATE TABLE `d_package` (
-  `package_id` int(11) NOT NULL,
-  `package_created_at` datetime NOT NULL
+  `id` int(11) NOT NULL,
+  `susulan_id` int(11) DEFAULT NULL,
+  `matkul_id` int(11) DEFAULT NULL,
+  `dosen_id` int(11) DEFAULT NULL,
+  `sks_id` int(11) NOT NULL,
+  `nilai` int(11) NOT NULL,
+  `tipe` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `d_package`
+--
+
+INSERT INTO `d_package` (`id`, `susulan_id`, `matkul_id`, `dosen_id`, `sks_id`, `nilai`, `tipe`) VALUES
+(18, 11, 7, 7, 0, 0, 1),
+(19, 11, 1, 1, 0, 0, 1),
+(20, 11, 12, 6, 0, 0, 1),
+(21, 11, 9, 2, 0, 0, 1),
+(22, 10, 2, 1, 0, 0, 1),
+(23, 10, 12, 3, 0, 0, 1),
+(24, 11, 4, 3, 0, 0, 1),
+(25, 11, 15, 2, 0, 0, 1),
+(26, 6, 16, 1, 0, 0, 2),
+(27, 6, 14, 9, 0, 0, 2),
+(28, 18, 0, 0, 2, 4, 1),
+(29, 19, 0, 0, 2, 2, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `jadwal`
+--
+
+CREATE TABLE `jadwal` (
+  `id` int(11) NOT NULL,
+  `tipe` int(11) NOT NULL,
+  `ta_id` int(11) NOT NULL,
+  `matkul` int(11) NOT NULL,
+  `dosen` int(11) NOT NULL,
+  `Hari` varchar(11) NOT NULL,
+  `Tanggal` date NOT NULL,
+  `Pukul` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `jadwal`
+--
+
+INSERT INTO `jadwal` (`id`, `tipe`, `ta_id`, `matkul`, `dosen`, `Hari`, `Tanggal`, `Pukul`) VALUES
+(1, 1, 2, 4, 1, '', '0000-00-00', '00:00:00');
 
 -- --------------------------------------------------------
 
@@ -183,7 +230,38 @@ INSERT INTO `rt` (`id`, `nama`, `npm`, `program_studi`, `n_hp`, `ta`, `kls`, `se
 (12, 'agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
 (13, 'agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
 (14, 'agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
-(15, 'agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0');
+(15, 'agung hapsah', '161105150523', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+(16, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+(17, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, 'Option', NULL, 'genap', 'Pilihan', 'P', 'Pilihanlah sesuai', '', '', NULL, NULL, '0'),
+(18, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, '1', NULL, 'genap', NULL, NULL, NULL, NULL, '', NULL, NULL, '0'),
+(19, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, '2', NULL, 'genap', NULL, NULL, NULL, NULL, '', NULL, NULL, '0'),
+(20, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, '2', NULL, 'genap', 'Aljabar Linear\r\n', '2', 'Foni Agus Setiawan, S.Kom., M.Kom.\r\n', '65', '', NULL, NULL, '0'),
+(21, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, '2', NULL, 'genap', 'Studi Islam I\r\n', '2', 'Yuggo Afrianto, S.T., M.Kom\r\n', '45', NULL, NULL, NULL, '0'),
+(22, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, '3', NULL, 'genap', 'Pendidikan Pancasila dan Kewarganegaraan\r\n', '2', 'Ritzkal, S.Kom., M.Kom.\r\n', '65', NULL, NULL, NULL, '0'),
+(23, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, '1', NULL, 'genap', 'Studi Islam I\r\n', '2', 'Gibtha Fitri Laxmi, S.Kom., M.Kom.\r\n', '65', NULL, NULL, NULL, '0'),
+(24, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, '1', NULL, 'genap', 'Matematika Diskrit\r\n', '2', 'Foni Agus Setiawan, S.Kom., M.Kom.\r\n', '45', NULL, NULL, NULL, '0'),
+(25, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, '2', NULL, 'genap', 'Pengantar Teknologi Informasi\r\n', '3', 'Bayu Adhi Prakosa, S.Kom., M.T\r\n', '45', '0191897848b606f51aed68d26440d6c3.pdf', NULL, NULL, '0'),
+(26, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', NULL, '2', NULL, 'ganjil', 'Pendidikan Pancasila dan Kewarganegaraan\r\n', '2', 'Yuggo Afrianto, S.T., M.Kom\r\n', '45', 'KTP_BAYU_OKTAVIANI3.pdf', NULL, NULL, '0');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `sks`
+--
+
+CREATE TABLE `sks` (
+  `id` int(11) NOT NULL,
+  `sks` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `sks`
+--
+
+INSERT INTO `sks` (`id`, `sks`) VALUES
+(1, 2),
+(2, 3),
+(3, 4);
 
 -- --------------------------------------------------------
 
@@ -217,7 +295,8 @@ INSERT INTO `susulan_uas` (`id`, `npm`, `nama_mahasiswa`, `program_studi`, `tahu
 (2, '161105150596', 'Fitria Nur Isna', 'Teknik Informatika', '2019/2020', NULL, NULL, 'Pengantar Teknologi Informasi\r\n', 'ganjil', 'Berlina Wulandari, S.T., M.Kom.\r\n', NULL, NULL, '1', NULL),
 (3, '161105150596', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '0', NULL),
 (4, '161105150596', 'Fitria Nur Isna', 'Teknik Informatika', '2020/2021', NULL, NULL, 'Fisika Dasar II + Praktikum\r\n', 'genap', 'Ritzkal, S.Kom., M.Kom.\r\n', NULL, NULL, '0', NULL),
-(5, '161105150596', 'Fitria Nur Isna', 'Teknik Informatika', '2020/2021', NULL, NULL, 'Matematika Diskrit\r\n', 'ganjil', 'Yuggo Afrianto, S.T., M.Kom\r\n', NULL, NULL, '0', '2020-07-29 00:00:00');
+(5, '161105150596', 'Fitria Nur Isna', 'Teknik Informatika', '2020/2021', NULL, NULL, 'Matematika Diskrit\r\n', 'ganjil', 'Yuggo Afrianto, S.T., M.Kom\r\n', NULL, NULL, '0', '2020-07-29 00:00:00'),
+(6, '161105150596', 'Fitria Nur Isna', 'Teknik Informatika', '2020/2021', NULL, NULL, NULL, 'genap', NULL, NULL, NULL, '0', '2020-07-30 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -255,7 +334,9 @@ INSERT INTO `susulan_uts` (`id`, `nama_mahasiswa`, `npm`, `program_studi`, `tahu
 (6, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', '2019/2020', NULL, NULL, 'Pengantar Teknologi Informasi\r\n', 'ganjil', 'Foni Agus Setiawan, S.Kom., M.Kom.\r\n', NULL, NULL, '0', NULL),
 (7, 'agung hapsah', '161105150523', 'Teknik Informatika', '2019/2020', NULL, NULL, 'Studi Islam I\r\n', 'ganjil', 'Berlina Wulandari, S.T., M.Kom.\r\n', NULL, NULL, '0', NULL),
 (8, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', '2019/2020', NULL, NULL, 'Pengantar Teknologi Informasi\r\n', 'ganjil', 'Yuggo Afrianto, S.T., M.Kom\r\n', NULL, NULL, '0', '2020-07-29'),
-(9, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', '2020/2021', NULL, NULL, 'Pengantar Teknologi Informasi\r\n', 'genap', 'Berlina Wulandari, S.T., M.Kom.\r\n', NULL, NULL, '0', '2020-07-29');
+(9, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', '2020/2021', NULL, NULL, 'Pengantar Teknologi Informasi\r\n', 'genap', 'Berlina Wulandari, S.T., M.Kom.\r\n', NULL, NULL, '0', '2020-07-29'),
+(10, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', '2020/2021', NULL, NULL, NULL, 'ganjil', NULL, NULL, NULL, '0', '2020-07-30'),
+(11, 'Fitria Nur Isna', '161105150596', 'Teknik Informatika', '2020/2021', NULL, NULL, NULL, 'genap', NULL, NULL, NULL, '0', '2020-07-30');
 
 -- --------------------------------------------------------
 
@@ -311,7 +392,10 @@ CREATE TABLE `user` (
   `nik` varchar(9) DEFAULT NULL,
   `password` varchar(100) NOT NULL,
   `prodi` varchar(128) NOT NULL,
+  `ttd` varchar(128) NOT NULL,
   `kelas` varchar(128) NOT NULL,
+  `tipe_file` varchar(100) NOT NULL,
+  `ukuran_file` float NOT NULL,
   `no_hp` varchar(128) NOT NULL,
   `role_id` int(11) NOT NULL,
   `aktif` int(1) DEFAULT NULL
@@ -321,11 +405,13 @@ CREATE TABLE `user` (
 -- Dumping data untuk tabel `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama`, `email`, `npm`, `nik`, `password`, `prodi`, `kelas`, `no_hp`, `role_id`, `aktif`) VALUES
-(1, 'Fitria Nur Isna', 'fitrianurisna@gmail.com', '161105150596', '', 'jibff1b5', 'Teknik Informatika', '', '', 2, 1),
-(4, 'nash', 'fitrianurisna@yahoo.com', '161105153422', NULL, '$2y$10$6udQdW6930jSXL5GZlsqOOQZgRueuF/hprer0GG4sHz', 'Teknik Informatika', '0', '089606987532', 2, 0),
-(5, 'admin1', 'admin@gmail.com', NULL, NULL, 'jibff1b4', '', '', '', 1, 1),
-(6, 'agung hapsah', 'agung@gmail.com', '161105150523', NULL, 'jibff1b2', 'Teknik  Informatika', 'Reguler', '089608937612', 2, 1);
+INSERT INTO `user` (`id_user`, `nama`, `email`, `npm`, `nik`, `password`, `prodi`, `ttd`, `kelas`, `tipe_file`, `ukuran_file`, `no_hp`, `role_id`, `aktif`) VALUES
+(1, 'Fitria Nur Isna', 'fitrianurisna@gmail.com', '161105150596', '', 'jibff1b5', 'Teknik Informatika', '', '', '', 0, '', 2, 1),
+(4, 'nash', 'fitrianurisna@yahoo.com', '161105153422', NULL, '$2y$10$6udQdW6930jSXL5GZlsqOOQZgRueuF/hprer0GG4sHz', 'Teknik Informatika', '', '0', '', 0, '089606987532', 2, 0),
+(5, 'admin1', 'admin@gmail.com', NULL, NULL, 'jibff1b4', '', '', '', '', 0, '', 1, 1),
+(6, 'agung hapsah', 'agung@gmail.com', '161105150523', NULL, 'jibff1b2', 'Teknik  Informatika', '', 'Reguler', '', 0, '089608937612', 2, 1),
+(10, 'nanonano', 'na@gmail.com', NULL, '86757', 'jibff1b1', '', '12.jpg', '', '', 0, '', 1, 1),
+(11, 'ayu', 'ayu@gmail.com', NULL, '7667', 'jibggfd', '', 'A1.JPG', '', '.JPG', 8.43, '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -393,7 +479,13 @@ ALTER TABLE `dosen`
 -- Indeks untuk tabel `d_package`
 --
 ALTER TABLE `d_package`
-  ADD PRIMARY KEY (`package_id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `jadwal`
+--
+ALTER TABLE `jadwal`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `matkul`
@@ -406,6 +498,12 @@ ALTER TABLE `matkul`
 -- Indeks untuk tabel `rt`
 --
 ALTER TABLE `rt`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `sks`
+--
+ALTER TABLE `sks`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -477,7 +575,13 @@ ALTER TABLE `dosen`
 -- AUTO_INCREMENT untuk tabel `d_package`
 --
 ALTER TABLE `d_package`
-  MODIFY `package_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT untuk tabel `jadwal`
+--
+ALTER TABLE `jadwal`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT untuk tabel `matkul`
@@ -489,19 +593,25 @@ ALTER TABLE `matkul`
 -- AUTO_INCREMENT untuk tabel `rt`
 --
 ALTER TABLE `rt`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT untuk tabel `sks`
+--
+ALTER TABLE `sks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `susulan_uas`
 --
 ALTER TABLE `susulan_uas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT untuk tabel `susulan_uts`
 --
 ALTER TABLE `susulan_uts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `ta`
@@ -519,7 +629,7 @@ ALTER TABLE `tb_durt`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `user_role`
