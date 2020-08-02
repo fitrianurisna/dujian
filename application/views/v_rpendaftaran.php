@@ -30,13 +30,17 @@
       <?php
       $No = 1;
       $npm = $this->session->userdata('npm');
-      $verifikasi = $this->db->get_where('susulan_uts', array('npm' => $npm))->result();
+      $this->db->select('*, count(*) as jumlah')->from('susulan_uts');
+      $this->db->where('npm', $npm);
+      $this->db->group_by('npm');
+      $verifikasi = $this->db->get()->result();
+
       foreach ($verifikasi as $v) { ?>
         <tr>
           <td><?= $No++; ?></td>
           <td><?= $v->nama_mahasiswa; ?></td>
           <td><?= $v->npm; ?></td>
-          <td></td>
+          <td><?= $v->jumlah ?></td>
           <td><?= $v->matkul; ?></td>
           <td><?= $v->tahun_ajaran; ?></td>
           <td><?= $v->createdAt ?></td>
@@ -63,13 +67,17 @@
       <?php
       $No = 1;
       $npm = $this->session->userdata('npm');
-      $verifikasi = $this->db->get_where('susulan_uas', array('npm' => $npm))->result();
-      foreach ($verifikasi as $f) { ?>
+      // $verifikasi = $this->db->get_where('susulan_uas', array('npm' => $npm))->result();
+      $this->db->select('*, count(*) as jumlah')->from('susulan_uas');
+      $this->db->where('npm', $npm);
+      $this->db->group_by('npm');
+      $verifikasis = $this->db->get()->result();
+      foreach ($verifikasis as $f) { ?>
         <tr>
           <td><?= $No++; ?></td>
           <td><?= $f->nama_mahasiswa; ?></td>
           <td><?= $f->npm; ?></td>
-          <td></td>
+          <td><?= $v->jumlah ?></td>
           <td><?= $f->matkul; ?></td>
           <td><?= $f->tahun_ajaran; ?></td>
           <td><?= $f->createdAt ?></td>
