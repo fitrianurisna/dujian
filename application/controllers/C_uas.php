@@ -39,8 +39,31 @@ class C_uas extends CI_Controller {
     }
     public function add()
     {
-        $dujian = $this->M_uas->save();
-        redirect('C_package');
+         $this->db->select('MAX(id) as id_terakhir')->from('susulan_uas');
+            $get_id = $this->db->get()->row_array();
+
+            $matkul = $this->input->post('matkul');
+            $dosen = $this->input->post('dosen');
+            if (count($matkul) == count($dosen)) {
+                for ($i = 0; $i < count($matkul); $i++) {
+                    $data = [
+                        'susulan_id' => $get_id['id_terakhir'] + 1,
+                        'matkul_id' => $matkul[$i],
+                        'dosen_id' => $dosen[$i],
+                        'tipe' => '2'
+                    ];
+                    $this->db->insert('d_package', $data);
+                }
+                $this->M_uas->save();
+                redirect('C_package');
+            } else {
+                echo "
+                    <script>
+                        alert('Gagal')
+                        location.href = " . base_url('C_package') . "
+                    </script>
+                ";
+            }
     }
     public function puas()
 	{
@@ -48,9 +71,9 @@ class C_uas extends CI_Controller {
 		$this->template->load('admin/va_static','admin/va_puas',$data);
 	}
     // PDF inivoice Pembayaran
-    public function invoice_uaspdf($npm = ''){
+    public function invoice_uaspdf($id = ''){
 
-    $data["susulan_uas"] = $this->M_uas->Get($npm); 
+    $data["susulan_uas"] = $this->M_uas->Get($id); 
 
     $this->load->library('pdf');
 
@@ -59,9 +82,9 @@ class C_uas extends CI_Controller {
     $this->pdf->load_view('admin/invoice_uaspdf', $data);
     }
     // PDF inivoice Pembayaran
-    public function kwitansi_uaspdf($npm = ''){
+    public function kwitansi_uaspdf($id = ''){
 
-    $data["susulan_uas"] = $this->M_uas->Get($npm); 
+    $data["susulan_uas"] = $this->M_uas->Get($id); 
 
     $this->load->library('pdf');
 
@@ -70,9 +93,9 @@ class C_uas extends CI_Controller {
     $this->pdf->load_view('admin/kwitansi_uaspdf', $data);
     }
     // PDF form_uts
-    public function form_uas_pdf($npm =''){
+    public function form_uas_pdf($id =''){
 
-    $data["susulan_uas"] = $this->M_uas->Get($npm); 
+    $data["susulan_uas"] = $this->M_uas->Get($id); 
 
     $this->load->library('pdf');
 

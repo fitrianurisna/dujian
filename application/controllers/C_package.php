@@ -26,10 +26,10 @@
 			// echo "</pre>";
 			$this->template->load('v_staticl', 'v_rpendaftaran', $data);
 		}
-		public function invoice_pdf($npm = '')
+		public function invoice_pdf($id = '')
 		{
 
-			$data["susulan_uts"] = $this->M_package->Get($npm);
+			$data["susulan_uts"] = $this->M_package->Get($id);
 
 			// var_dump($data);
 			// die();

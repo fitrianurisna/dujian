@@ -44,7 +44,7 @@
           <td><?= $v->matkul; ?></td>
           <td><?= $v->tahun_ajaran; ?></td>
           <td><?= $v->createdAt ?></td>
-          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $v->npm ?>" class="fa fa-download">Cetak Invoice</a></td>
+          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $v->id ?>" class="fa fa-download">Cetak Invoice</a></td>
         </tr>
       <?php } ?>
     </tbody>
@@ -81,7 +81,7 @@
           <td><?= $f->matkul; ?></td>
           <td><?= $f->tahun_ajaran; ?></td>
           <td><?= $f->createdAt ?></td>
-          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $f->npm ?>" class="fa fa-download">Cetak Invoice</a></td>
+          <td><a href="<?= base_url()?>C_uas/invoice_uaspdf/<?= $v->id?>" class="fa fa-download">Cetak Invoice</a></td>
         </tr>
       <?php } ?>
     </tbody>
@@ -397,7 +397,7 @@
                         <label for="inputmatkul1">Mata Kuliah</label>
                         <select class="custom-select" name="matkul_id[]">
                           <option selected>Pilihan</option>
-                         
+
                         </select>
                         <div class="invalid-feedback">
                         </div>
@@ -406,7 +406,7 @@
                         <label for="inputdosen1" >Dosen Pengajar</label>
                         <select class="custom-select" name="dosen_id[]">
                           <option selected>Pilihanlah sesuai</option>
-                          
+
                         </select>
                         <div class="invalid-feedback">
                         </div>
@@ -416,19 +416,19 @@
                             <select class="custom-select" name="sks">
                             <option selected>Pilihanlah sesuai</option>
 
-                          </select> 
+                          </select>
                             <div class="invalid-feedback">
                             </div>
                     <div class="col-md-3 mb-3">
                             <label for="inputdosen1"  >nilai</label>
-                            <input type="" name="nilai" class="form-control"> 
+                            <input type="" name="nilai" class="form-control">
                             <div class="invalid-feedback">
                             </div>
                           </div>
                       <div class="col-md-3 mt-4 remove">
                         <button type="button" data-id='${i}' name="remove" class="btn btn-danger btn-sm">-</button>
                       </div>
-                      
+
                     </div>
                 </div>`;
       $('#container-rt').append(isi);

@@ -63,7 +63,7 @@
     </tr>
     <tr>
       <td></td>
-      <td></td>
+      <td><img width=""src="<?php echo base_url(); ?>ttd/<?php echo $this->session->userdata('ttd'); ?>"/></td>
       <td><?php echo $this->session->userdata('nama'); ?></td>
     </tr>
   </table>

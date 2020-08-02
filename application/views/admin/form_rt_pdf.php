@@ -46,15 +46,15 @@
       </td>
     </tr>
        <tr>
-         <td>  <br>Nama      : <?php echo $rt['nama_mahasiswa'];?>
+         <td>  <br>Nama      : <?php echo $rt['nama'];?>
         <br>NPM       : <?php echo $rt['npm'];?>
         <br>Program Studi   : <?php echo $rt['program_studi'];?>
-        <br>Kelas     : <?php echo $rt['kelas'];?>
+        <br>Kelas     : <?php echo $rt['kls'];?>
       </td>
        </tr>
        <tr>
        <td> 
-        <br>Kepada mahasiswa tersebut di atas diberikan izin untuk melaksanakan UTS/UAS*) susulan di Semester <?php echo $rt['semester'];?> TA. <?php echo $rt['tahun_ajaran'];?> dengan rincian  sebagai berikut:
+        <br>Kepada mahasiswa tersebut di atas diberikan izin untuk melaksanakan UTS/UAS*) susulan di Semester <?php echo $rt['semester'];?> TA. <?php echo $rt['ta'];?> dengan rincian  sebagai berikut:
        </td>  
        </tr> 
   </table>

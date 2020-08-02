@@ -39,11 +39,11 @@
       <th>NPM</th>
       <th><?php echo $rt['npm'];?></th>
       <th>Tahun Ajaran</th>
-      <th><?php echo $rt['tahun_ajaran'];?></th>
+      <th><?php echo $rt['ta'];?></th>
     </tr>
     <tr>
       <th>Nama</th>
-      <th><?php echo $rt['nama_mahasiswa'];?></th>
+      <th><?php echo $rt['nama'];?></th>
       <th>Program Studi</th>
       <th><?php echo $rt['program_studi'];?></th>
     </tr>

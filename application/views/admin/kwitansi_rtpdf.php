@@ -38,7 +38,7 @@
       </td>
       <td  colspan="2">
         10
-        <br><?php echo $rt['nama_mahasiswa'];?>
+        <br><?php echo $rt['nama'];?>
         <br>RP.
         <br>Remedial teaching <?php echo $rt['matkul'];?>
       </td>
