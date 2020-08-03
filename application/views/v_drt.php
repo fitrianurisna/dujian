@@ -16,21 +16,27 @@
       </tr>
     </thead>
     <tbody>
-        <?php
-       $No = 1;
-        $npm = $this->session->userdata('npm');
-        $verifikasi = $this->db->get_where('rt', array('npm'=> $npm))->result();
-        foreach ($verifikasi as $v) {?>
+      <?php
+      $No = 1;
+      $npm = $this->session->userdata('npm');
+      // $verifikasi = $this->db->get_where('rt', array('npm' => $npm))->result();
+      $this->db->select('*, count(*) as jumlah')->from('rt');
+      $this->db->where('npm', $npm);
+      $this->db->group_by('npm');
+      $verifikasis = $this->db->get()->result();
+      foreach ($verifikasis as $v) { ?>
         <tr>
-          <td><?=$No++; ?></td>
+          <td><?= $No++; ?></td>
           <td><?= $v->nama; ?></td>
           <td><?= $v->npm; ?></td>
-          <td></td>
+          <td><?= $v->jumlah ?></td>
           <td><?= $v->matkul; ?></td>
           <td><?= $v->ta; ?></td>
 
-          <td><!-- <?= $v->createdAt ?> --></td>
-          <td><a href="<?= base_url()?>C_prt/invoice_rt/<?= $v->id?>" class="fa fa-download" >Cetak Invoice</a></td>
+          <td>
+            <!-- <?= $v->createdAt ?> -->
+          </td>
+          <td><a href="<?= base_url() ?>C_prt/invoice_rt/<?= $v->id ?>" class="fa fa-download">Cetak Invoice</a></td>
 
           <td></td>
         </tr>
@@ -42,13 +48,12 @@
 </div>
 
 <!-- Modal Add remedial teaching-->
-<?php 
-        if(isset($error))
-        {
-            echo "ERROR UPLOAD : <br/>";
-            print_r($error);
-            echo "<hr/>";
-        }?>
+<?php
+if (isset($error)) {
+  echo "ERROR UPLOAD : <br/>";
+  print_r($error);
+  echo "<hr/>";
+} ?>
 <form action="<?php echo base_url('C_prt/add'); ?>" method="post" enctype="multipart/form-data">
   <div class="modal fade" id="addNewrt" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
@@ -112,7 +117,7 @@
               <div class="form-row">
                 <div class="col-md-3 mb-3">
                   <label for="inputmatkul1">Mata Kuliah</label>
-                  <select class="custom-select" name="matkul">
+                  <select class="custom-select" name="matkul[]">
                     <option selected>Pilihan</option>
                     <?php $matkul = $this->db->get('matkul');
                     foreach ($matkul->result() as $row) { ?>
@@ -125,7 +130,7 @@
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="inputdosen1">Dosen Pengajar</label>
-                  <select class="custom-select" name="dosen">
+                  <select class="custom-select" name="dosen[]">
                     <option selected>Pilihanlah sesuai</option>
                     <?php $dosen = $this->db->get('dosen');
                     foreach ($dosen->result() as $row) { ?>
@@ -138,7 +143,7 @@
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="inputdosen1">sks</label>
-                  <select class="custom-select" name="sks">
+                  <select class="custom-select" name="sks[]">
                     <option selected>Pilihanlah sesuai</option>
                     <?php $sks = $this->db->get('sks');
                     foreach ($sks->result() as $row) {
@@ -152,7 +157,7 @@
                 </div>
                 <div class="col-md-2 mb-3">
                   <label for="inputdosen1">nilai</label>
-                  <input type="" name="nilai" class="form-control">
+                  <input type="" name="nilai[]" class="form-control">
                   <div class="invalid-feedback">
                   </div>
                 </div>
@@ -196,7 +201,7 @@
       <div class="form-row">
                 <div class="col-md-3 mb-3">
                   <label for="inputmatkul1">Mata Kuliah</label>
-                  <select class="custom-select" name="matkul">
+                  <select class="custom-select" name="matkul[]">
                     <option selected>Pilihan</option>
                     <?php $matkul = $this->db->get('matkul');
                     foreach ($matkul->result() as $row) { ?>
@@ -209,7 +214,7 @@
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="inputdosen1">Dosen Pengajar</label>
-                  <select class="custom-select" name="dosen">
+                  <select class="custom-select" name="dosen[]">
                     <option selected>Pilihanlah sesuai</option>
                     <?php $dosen = $this->db->get('dosen');
                     foreach ($dosen->result() as $row) { ?>
@@ -222,7 +227,7 @@
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="inputdosen1">sks</label>
-                  <select class="custom-select" name="sks">
+                  <select class="custom-select" name="sks[]">
                     <option selected>Pilihanlah sesuai</option>
                     <?php $sks = $this->db->get('sks');
                     foreach ($sks->result() as $row) {
@@ -236,7 +241,7 @@
                 </div>
                 <div class="col-md-2 mb-3">
                   <label for="inputdosen1">nilai</label>
-                  <input type="" name="nilai" class="form-control">
+                  <input type="" name="nilai[]" class="form-control">
                   <div class="invalid-feedback">
                   </div>
                 </div>

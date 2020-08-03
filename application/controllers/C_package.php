@@ -26,10 +26,23 @@
 			// echo "</pre>";
 			$this->template->load('v_staticl', 'v_rpendaftaran', $data);
 		}
-		public function invoice_pdf($id = '')
+		public function invoice_pdf($id = '', $tipe)
 		{
 
-			$data["susulan_uts"] = $this->M_package->Get($id);
+
+			switch ($tipe) {
+				case 'uts':
+					$tabel = 'susulan_uts';
+					break;
+				case 'uas':
+					$tabel = 'susulan_uas';
+					break;
+				case 'remedial':
+					$tabel = 'rt';
+					break;
+				default:
+			}
+			$data["susulan_uts"] = $this->M_package->Get_invoices($id, $tabel);
 
 			// var_dump($data);
 			// die();

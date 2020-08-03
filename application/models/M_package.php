@@ -25,6 +25,11 @@ class M_package extends CI_Model
 		$this->db->where('id', $id);
 		return $this->db->get('susulan_uts')->row_array();
 	}
+	public function Get_invoices($id, $tabel)
+	{
+		$this->db->where('id', $id);
+		return $this->db->get($tabel)->row_array();
+	}
 	public function Getrt($npm = '')
 	{
 		$this->db->where('npm', $npm);
@@ -75,7 +80,7 @@ class M_package extends CI_Model
 		// $this->db->group_by('package_id');
 		// $query = $this->db->get();
 		// return $query;
-	// tadi isna coba yg ini 
+		// tadi isna coba yg ini 
 		// $this->db->select('d_package.*,COUNT(matkul_id) AS item_product');
 		// $this->db->from('d_package');
 		// $this->db->join('susulan_uts', 'susulan_id=id');

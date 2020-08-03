@@ -30,21 +30,26 @@
       <?php
       $No = 1;
       $npm = $this->session->userdata('npm');
-      $this->db->select('*, count(*) as jumlah')->from('susulan_uts');
+      $this->db->select('*')->from('susulan_uts');
       $this->db->where('npm', $npm);
-      $this->db->group_by('npm');
+
       $verifikasi = $this->db->get()->result();
 
-      foreach ($verifikasi as $v) { ?>
+      foreach ($verifikasi as $v) {
+        $this->db->select('count(*) AS jumlah')->from('d_package');
+        $this->db->where('susulan_id', $v->id);
+        $this->db->where('tipe', 1);
+        $this->db->group_by('susulan_id');
+      ?>
         <tr>
           <td><?= $No++; ?></td>
           <td><?= $v->nama_mahasiswa; ?></td>
           <td><?= $v->npm; ?></td>
-          <td><?= $v->jumlah ?></td>
+          <td><?= $this->db->get()->row_array()['jumlah'] ?></td>
           <td><?= $v->matkul; ?></td>
           <td><?= $v->tahun_ajaran; ?></td>
           <td><?= $v->createdAt ?></td>
-          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $v->id ?>" class="fa fa-download">Cetak Invoice</a></td>
+          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $v->id ?>/uts" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
         </tr>
       <?php } ?>
     </tbody>
@@ -68,20 +73,24 @@
       $No = 1;
       $npm = $this->session->userdata('npm');
       // $verifikasi = $this->db->get_where('susulan_uas', array('npm' => $npm))->result();
-      $this->db->select('*, count(*) as jumlah')->from('susulan_uas');
+      $this->db->select('*')->from('susulan_uas');
       $this->db->where('npm', $npm);
-      $this->db->group_by('npm');
       $verifikasis = $this->db->get()->result();
-      foreach ($verifikasis as $f) { ?>
+      foreach ($verifikasis as $f) {
+        $this->db->select('count(*) AS jumlah')->from('d_package');
+        $this->db->where('susulan_id', $f->id);
+        $this->db->where('tipe', 2);
+        $this->db->group_by('susulan_id');
+      ?>
         <tr>
           <td><?= $No++; ?></td>
           <td><?= $f->nama_mahasiswa; ?></td>
           <td><?= $f->npm; ?></td>
-          <td><?= $v->jumlah ?></td>
+          <td><?= $this->db->get()->row_array()['jumlah'] ?></td>
           <td><?= $f->matkul; ?></td>
           <td><?= $f->tahun_ajaran; ?></td>
           <td><?= $f->createdAt ?></td>
-          <td><a href="<?= base_url()?>C_uas/invoice_uaspdf/<?= $v->id?>" class="fa fa-download">Cetak Invoice</a></td>
+          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $f->id ?>/uas" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
         </tr>
       <?php } ?>
     </tbody>
