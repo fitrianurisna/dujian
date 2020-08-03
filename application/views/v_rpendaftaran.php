@@ -30,13 +30,17 @@
       <?php
       $No = 1;
       $npm = $this->session->userdata('npm');
-      $verifikasi = $this->db->get_where('susulan_uts', array('npm' => $npm))->result();
+      $this->db->select('*, count(*) as jumlah')->from('susulan_uts');
+      $this->db->where('npm', $npm);
+      $this->db->group_by('npm');
+      $verifikasi = $this->db->get()->result();
+
       foreach ($verifikasi as $v) { ?>
         <tr>
           <td><?= $No++; ?></td>
           <td><?= $v->nama_mahasiswa; ?></td>
           <td><?= $v->npm; ?></td>
-          <td><!-- <?= $v->item_product.' Items';?> --></td>
+          <td><?= $v->jumlah ?></td>
           <td><?= $v->matkul; ?></td>
           <td><?= $v->tahun_ajaran; ?></td>
           <td><?= $v->createdAt ?></td>
@@ -63,13 +67,17 @@
       <?php
       $No = 1;
       $npm = $this->session->userdata('npm');
-      $verifikasi = $this->db->get_where('susulan_uas', array('npm' => $npm))->result();
-      foreach ($verifikasi as $f) { ?>
+      // $verifikasi = $this->db->get_where('susulan_uas', array('npm' => $npm))->result();
+      $this->db->select('*, count(*) as jumlah')->from('susulan_uas');
+      $this->db->where('npm', $npm);
+      $this->db->group_by('npm');
+      $verifikasis = $this->db->get()->result();
+      foreach ($verifikasis as $f) { ?>
         <tr>
           <td><?= $No++; ?></td>
           <td><?= $f->nama_mahasiswa; ?></td>
           <td><?= $f->npm; ?></td>
-          <td></td>
+          <td><?= $v->jumlah ?></td>
           <td><?= $f->matkul; ?></td>
           <td><?= $f->tahun_ajaran; ?></td>
           <td><?= $f->createdAt ?></td>
@@ -389,7 +397,7 @@
                         <label for="inputmatkul1">Mata Kuliah</label>
                         <select class="custom-select" name="matkul_id[]">
                           <option selected>Pilihan</option>
-                         
+
                         </select>
                         <div class="invalid-feedback">
                         </div>
@@ -398,7 +406,7 @@
                         <label for="inputdosen1" >Dosen Pengajar</label>
                         <select class="custom-select" name="dosen_id[]">
                           <option selected>Pilihanlah sesuai</option>
-                          
+
                         </select>
                         <div class="invalid-feedback">
                         </div>
@@ -408,19 +416,19 @@
                             <select class="custom-select" name="sks">
                             <option selected>Pilihanlah sesuai</option>
 
-                          </select> 
+                          </select>
                             <div class="invalid-feedback">
                             </div>
                     <div class="col-md-3 mb-3">
                             <label for="inputdosen1"  >nilai</label>
-                            <input type="" name="nilai" class="form-control"> 
+                            <input type="" name="nilai" class="form-control">
                             <div class="invalid-feedback">
                             </div>
                           </div>
                       <div class="col-md-3 mt-4 remove">
                         <button type="button" data-id='${i}' name="remove" class="btn btn-danger btn-sm">-</button>
                       </div>
-                      
+
                     </div>
                 </div>`;
       $('#container-rt').append(isi);
