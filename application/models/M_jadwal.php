@@ -35,7 +35,9 @@ class M_jadwal extends CI_Model
             'tipe' => $this->input->post('tipe'),
             'ta_id' => $this->input->post('ta_id'),
             'matkul' => $this->input->post('matkul'),
-            'dosen' => $this->input->post('dosen')
+            'dosen' => $this->input->post('dosen'),
+            'tanggal' => $this->input->post('tanggal'),
+            'pukul' => $this->input->post('pukul'),
             // 'password' => $this->input->post('password'),
             // 'ttd' => $this->upload->data('file_name'),
             // 'tipe_file'=> $this->upload->data('file_ext'),

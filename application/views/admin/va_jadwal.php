@@ -121,6 +121,12 @@
                   <div class="invalid-feedback">
                   </div>
                 </div>
+                <div class="col-md-3 mb-3">
+                  <label for="inputdosen1">WAKTU</label>
+                  <input type='text' id='pukul' name="pukul" class="form-control" />
+                  <div class="invalid-feedback">
+                  </div>
+                </div>
 
                 <!-- date -->
               </div>

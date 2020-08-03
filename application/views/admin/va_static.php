@@ -25,15 +25,9 @@
   <link href="<?php echo base_url(); ?>assets/admin/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
   <!-- JQVMap -->
   <link href="<?php echo base_url(); ?>assets/admin/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
-  <!-- bootstrap-daterangepicker -->
-  <!-- <link href="<?php echo base_url(); ?>assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet"> -->
-
   <!-- Custom Theme Style -->
   <link href="<?php echo base_url(); ?>assets/admin/build/css/custom.min.css" rel="stylesheet">
-  <!-- bootstrap-daterangepicker -->
-  <!-- <link href="<?php echo base_url(); ?>assets/admin/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet"> -->
-  <!-- bootstrap-datetimepicker -->
-  <!-- <link href="<?php echo base_url(); ?>assets/admin/vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet"> -->
+ 
 
 
   <link rel="stylesheet" href="<?php echo base_url(); ?>assets/ttd/jquery.signature.css" />
@@ -189,8 +183,6 @@
 
   <!-- Custom Theme Scripts -->
   <script src="<?php echo base_url(); ?>assets/admin/build/js/custom.min.js"></script>
-  <!-- bootstrap-datetimepicker -->
-  <!-- <script src="<?php echo base_url(); ?>assets/admin/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script> -->
   <script src="<?php echo base_url(); ?>assets/ttd/jquery.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url(); ?>assets/ttd/jquery-ui.min.js" type="text/javascript"> </script>
   <script src="<?php echo base_url(); ?>assets/ttd/jquery.signature.js" type="text/javascript"></script>
@@ -203,6 +195,11 @@
         autoclose: true,
         todayHighlight: true
       });
+      // $('#pukul').timepicker({
+      //   format: 'hh:mm A',
+      //   autoclose: true,
+      //   todayHighlight: true
+      // });
       $('#tandatangan').signature({
         guideline: true
       });
