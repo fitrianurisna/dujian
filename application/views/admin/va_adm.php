@@ -93,7 +93,7 @@ if (isset($error)) {
             <label>Password</label>
             <input type="password" name="password" placeholder="password">
           </div>
-          <div class="form-group row">
+          <div class="col-md-12 mb-12">
             <label class="control-label col-md-10 col-sm-10" for="ControlFile1">Upload Tanda Tangan:</label>
             <br>
             <div id="tandatangan"></div>
