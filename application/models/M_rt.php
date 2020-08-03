@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') OR exit('No direct script access allowed');
+<?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_rt extends CI_Model
 {
@@ -19,7 +19,7 @@ class M_rt extends CI_Model
     public $tanggal_rt;
     public $pukul;
     public $verivikasi;
- 
+
 
     public function ta()
     {
@@ -31,16 +31,16 @@ class M_rt extends CI_Model
         $data = [
             'nama' => $this->input->post('nama'),
             'npm' => $this->input->post('npm'),
-            'program_studi'=> $this->input->post('program_studi'),
+            'program_studi' => $this->input->post('program_studi'),
             'n_hp' => $this->input->post('n_hp'),
             'ta' => $this->input->post('ta'),
             'kls' => $this->input->post('kls'),
-            'matkul' => $this->input->post('matkul'),
+            // 'matkul' => $this->input->post('matkul'),
             'semester' => $this->input->post('semester'),
-            'matkul' => $this->input->post('matkul'),
-            'sks' => $this->input->post('sks'),
-            'dosen' => $this->input->post('dosen'),
-            'nilai' => $this->input->post('nilai'),
+            // 'matkul' => $this->input->post('matkul'),
+            // 'sks' => $this->input->post('sks'),
+            // 'dosen' => $this->input->post('dosen'),
+            // 'nilai' => $this->input->post('nilai'),
             'khs' => $this->upload->data('file_name'),
             'pukul' => $this->input->post('pukul'),
             'verivikasi' => $this->input->post('verivikasi'),
@@ -48,16 +48,16 @@ class M_rt extends CI_Model
         $inputan = $this->db->insert($this->_table, $data);
         return $inputan;
     }
-    public function getwhere($field,$where,$table)
+    public function getwhere($field, $where, $table)
     {
-      $this->db->where($field,$where);
-      $query = $this->db->get($table);
-      return $query;
+        $this->db->where($field, $where);
+        $query = $this->db->get($table);
+        return $query;
     }
-    public function update($where,$data,$table)
+    public function update($where, $data, $table)
     {
-      $this->db->where($where);
-      $this->db->update($table,$data);
+        $this->db->where($where);
+        $this->db->update($table, $data);
     }
     public function Get($id = '')
     {
