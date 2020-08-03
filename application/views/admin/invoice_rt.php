@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,13 +8,14 @@
   <link rel="stylesheet" href="">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <style>
-    .line-title{
+    .line-title {
       border: 0;
       border-style: inset;
       border-top: 1px solid #000;
     }
   </style>
 </head>
+
 <body>
   <img src="assets/img/ft.jpg" style="position: absolute; width: 110px; height: auto;">
   <table style="width: 100%;">
@@ -21,7 +23,7 @@
       <td align="center">
         <span style="line-height: 1.6; font-weight: bold;">
           UNIVERSITAS IBN KHALDUN BOGOR
-          <br>FAKULTAS TEKNIK DAN SAINS 
+          <br>FAKULTAS TEKNIK DAN SAINS
           <br>TEKNIK INFORMATIKA
           <br>JL.K.H.Sholeh Iskandar km.2 Bogor.Telepon/fax:(0251)8356884
         </span>
@@ -29,23 +31,23 @@
     </tr>
   </table>
 
-  <hr class="line-title"> 
+  <hr class="line-title">
   <p align="center">
     Rincian Pembayaran<br>
-    
+
   </p>
   <table class="table table-bordered">
     <tr>
       <th>NPM</th>
-      <th><?php echo $rt['npm'];?></th>
+      <th><?php echo $rt['npm']; ?></th>
       <th>Tahun Ajaran</th>
-      <th><?php echo $rt['ta'];?></th>
+      <th><?php echo $rt['ta']; ?></th>
     </tr>
     <tr>
       <th>Nama</th>
-      <th><?php echo $rt['nama'];?></th>
+      <th><?php echo $rt['nama']; ?></th>
       <th>Program Studi</th>
-      <th><?php echo $rt['program_studi'];?></th>
+      <th><?php echo $rt['program_studi']; ?></th>
     </tr>
   </table>
 
@@ -55,18 +57,45 @@
       <th>Item Pembayaran</th>
       <th>Nominal(Rp)</th>
     </tr>
+    <?php
+    $id = $this->uri->segment(3);
+    switch ($this->uri->segment(4)) {
+      case 'uts':
+        $tabel = 'susulan_uts';
+        $join = 'susulan_uts.id=d_package.susulan_id';
+
+        break;
+      case 'uas':
+        $tabel = 'susulan_uas';
+        $join = 'susulan_uas.id=d_package.susulan_id';
+        break;
+      case 'remedial':
+        $tabel = 'rt';
+        $join = 'rt.id=d_package.susulan_id';
+        break;
+      default:
+    }
+    $this->db->select('*')->from('d_package');
+    $this->db->join($tabel, $join, 'left');
+    $this->db->join('matkul', 'matkul.id_matkul=d_package.matkul_id', 'left');
+    $this->db->where('susulan_id', $id);
+    $result = $this->db->get()->result();
+    $no = 1;
+    $total = 0;
+    foreach ($result as $y) :
+      $total += $y->harga_remedial;
+    ?>
       <tr>
-        <?php echo $no=1; {?>
-        <td><?php echo $no++?></td>
-        <td><?php echo $rt['matkul'];?></td>
-        <td></td>
-      <?php } ?>
+        <td><?php echo $no++ ?></td>
+        <td><?php echo $y->nama_matkul; ?></td>
+        <td><?php echo $y->harga_remedial; ?></td>
+      <?php endforeach; ?>
       </tr>
-    <tr>
-    	<th></th>
-    	<th>Jumlah</th>
-    	<th>0</th>
-    </tr>
+      <tr>
+        <th></th>
+        <th>Jumlah</th>
+        <th><?= $total ?></th>
+      </tr>
   </table>
 
   <table class="table table-bordered">
@@ -77,5 +106,5 @@
   </table>
 
 </body>
+
 </html>
-    

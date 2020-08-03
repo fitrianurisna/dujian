@@ -18,26 +18,27 @@
     <tbody>
       <?php
       $No = 1;
-      $npm = $this->session->userdata('npm');
-      // $verifikasi = $this->db->get_where('rt', array('npm' => $npm))->result();
-      $this->db->select('*, count(*) as jumlah')->from('rt');
+     $npm = $this->session->userdata('npm');
+      $this->db->select('*')->from('rt');
       $this->db->where('npm', $npm);
-      $this->db->group_by('npm');
       $verifikasis = $this->db->get()->result();
-      foreach ($verifikasis as $v) { ?>
+
+
+      foreach ($verifikasis as $v) { 
+      $this->db->select('count(*) AS jumlah')->from('d_package');
+        $this->db->where('susulan_id', $v->id);
+        $this->db->where('tipe', 3);
+        $this->db->group_by('susulan_id');
+      ?>
         <tr>
           <td><?= $No++; ?></td>
           <td><?= $v->nama; ?></td>
           <td><?= $v->npm; ?></td>
-          <td><?= $v->jumlah ?></td>
+          <td><?= $this->db->get()->row_array()['jumlah'] ?></td>
           <td><?= $v->matkul; ?></td>
           <td><?= $v->ta; ?></td>
-
-          <td>
-            <!-- <?= $v->createdAt ?> -->
-          </td>
-          <td><a href="<?= base_url() ?>C_prt/invoice_rt/<?= $v->id ?>" class="fa fa-download">Cetak Invoice</a></td>
-
+          <td><!-- <?= $v->createdAt ?> --></td>
+          <td><a href="<?= base_url() ?>C_prt/invoice_rt/<?= $v->id ?>/remedial" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
           <td></td>
         </tr>
       <?php } ?>
@@ -97,7 +98,7 @@ if (isset($error)) {
               <select class="form-control" name="ta">
                 <option>Option</option>
                 <?php foreach ($ta as $row) : ?>
-                  <option value="<?php echo $row->id_ta; ?>"><?php echo $row->tahun; ?></option>
+                  <option value="<?php echo $row->tahun; ?>"><?php echo $row->tahun; ?></option>
                 <?php endforeach; ?>
               </select>
             </div>
@@ -121,7 +122,7 @@ if (isset($error)) {
                     <option selected>Pilihan</option>
                     <?php $matkul = $this->db->get('matkul');
                     foreach ($matkul->result() as $row) { ?>
-                      <option value="<?php echo $row->nama_matkul; ?>">
+                      <option value="<?php echo $row->id_matkul; ?>">
                         <?php echo $row->nama_matkul; ?>
                       </option><?php } ?>
                   </select>
@@ -134,7 +135,7 @@ if (isset($error)) {
                     <option selected>Pilihanlah sesuai</option>
                     <?php $dosen = $this->db->get('dosen');
                     foreach ($dosen->result() as $row) { ?>
-                      <option value="<?php echo $row->nama_dosen; ?>">
+                      <option value="<?php echo $row->id_dosen; ?>">
                         <?php echo $row->nama_dosen; ?>
                       </option><?php } ?>
                   </select>
@@ -205,7 +206,7 @@ if (isset($error)) {
                     <option selected>Pilihan</option>
                     <?php $matkul = $this->db->get('matkul');
                     foreach ($matkul->result() as $row) { ?>
-                      <option value="<?php echo $row->nama_matkul; ?>">
+                      <option value="<?php echo $row->id_matkul; ?>">
                         <?php echo $row->nama_matkul; ?>
                       </option><?php } ?>
                   </select>
@@ -218,7 +219,7 @@ if (isset($error)) {
                     <option selected>Pilihanlah sesuai</option>
                     <?php $dosen = $this->db->get('dosen');
                     foreach ($dosen->result() as $row) { ?>
-                      <option value="<?php echo $row->nama_dosen; ?>">
+                      <option value="<?php echo $row->id_dosen; ?>">
                         <?php echo $row->nama_dosen; ?>
                       </option><?php } ?>
                   </select>

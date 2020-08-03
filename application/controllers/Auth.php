@@ -29,8 +29,8 @@ class Auth extends CI_Controller
 	function do_login()
 	{
 		if ($this->session->userdata('id_user')) {
-			redirect("C_package");
-		} else {
+			// redirect("C_package");
+		// } else {
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
 

@@ -44,7 +44,7 @@
                                         </select>
                                         </td>
                                         <td align="center"><input type="submit" value="Simpan"  class="fa fa-save"></td>
-                                        <td align="center"><a href="<?= base_url()?>C_prt/invoice_rt/<?= $s->id?>" class="fa fa-download" >Cetak Invoice</a></td>
+                                        <td align="center"><a href="<?= base_url() ?>C_prt/invoice_rt/<?= $s->id ?>/remedial" target="_blank" class="fa fa-download" >Cetak Invoice</a></td>
 
         </tr>
         <?php } ?>

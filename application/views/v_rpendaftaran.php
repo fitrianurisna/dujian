@@ -27,7 +27,7 @@
       </tr>
     </thead>
     <tbody>
-      <?php
+     <?php
       $No = 1;
       $npm = $this->session->userdata('npm');
       $this->db->select('*')->from('susulan_uts');

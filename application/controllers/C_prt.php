@@ -34,36 +34,36 @@ class C_prt extends CI_Controller
             $error = array('error' => $this->upload->display_errors());
             $this->template->load('v_staticl', 'v_drt', $error);
         } else {
+        $this->db->select('MAX(id) as id_terakhir')->from('rt');
+           $get_id = $this->db->get()->row_array();
+
+           $matkul = $this->input->post('matkul');
+           $dosen = $this->input->post('dosen');
+           $sks = $this->input->post('sks');
+           $nilai = $this->input->post('nilai');
+           if (count($matkul) == count($dosen)) {
+               for ($i = 0; $i < count($matkul); $i++) {
+                   $data = [
+                       'susulan_id' => $get_id['id_terakhir'] + 1,
+                       'matkul_id' => $matkul[$i],
+                       'dosen_id' => $dosen[$i],
+                       'sks_id' => $sks[$i],
+                       'nilai' => $nilai[$i],
+                       'tipe' => '3'
+                   ];
+                   $this->db->insert('d_package', $data);
+               }
+           } else {
+               echo "
+                   <script>
+                       alert('Gagal')
+                       location.href = " . base_url('C_package') . "
+                   </script>
+               ";
+           }
             $dujian = $this->M_rt->save();
             redirect('C_prt');
         }
-        // $this->db->select('MAX(id) as id_terakhir')->from('rt');
-        //    $get_id = $this->db->get()->row_array();
-
-        //    $matkul = $this->input->post('matkul');
-        //    $dosen = $this->input->post('dosen');
-        //    $sks = $this->input->post('sks');
-        //    $nilai = $this->input->post('nilai');
-        //    if (count($matkul) == count($dosen)) {
-        //        for ($i = 0; $i < count($matkul); $i++) {
-        //            $data = [
-        //                'susulan_id' => $get_id['id_terakhir'] + 1,
-        //                'matkul_id' => $matkul[$i],
-        //                'dosen_id' => $dosen[$i],
-        //                'sks_id' => $sks[$i],
-        //                'nilai' => $nilai[$i],
-        //                'tipe' => '3'
-        //            ];
-        //            $this->db->insert('d_package', $data);
-        //        }
-        //    } else {
-        //        echo "
-        //            <script>
-        //                alert('Gagal')
-        //                location.href = " . base_url('C_package') . "
-        //            </script>
-        //        ";
-        //    }
     }
     public function update()
     {
