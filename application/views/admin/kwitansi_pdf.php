@@ -39,11 +39,22 @@
         :<br>:<br>:<br>:
       </td>
       <td colspan="2">
+        <?php
+                  $no = 1;
+                  $this->db->select('*')->from('susulan_uts');
+                  $susulan_uts = $this->db->get()->result();
+                  foreach ($susulan_uts as $suts) { 
+                    $this->db->select('count(*) AS jumlah')->from('d_package');
+                    $this->db->where('susulan_id', $suts->id);
+                    $this->db->where('tipe', 1);
+                    $this->db->group_by('susulan_id');
+                    ?>
         10
-        <br><?php echo $susulan_uts['nama_mahasiswa']; ?>
+        <br><?php echo $suts->nama_mahasiswa; ?>
         <br>RP.
-        <br>UTS Susulan <?php echo $susulan_uts['matkul']; ?>
+        <br>UTS Susulan <?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah
       </td>
+    <?php } ?>
       <td colspan="2"></td>
     </tr>
 
