@@ -55,18 +55,45 @@
       <th>Item Pembayaran</th>
       <th>Nominal(Rp)</th>
     </tr>
+    <?php
+    $id = $this->uri->segment(3);
+    switch ($this->uri->segment(4)) {
+      case 'uts':
+        $tabel = 'susulan_uts';
+        $join = 'susulan_uts.id=d_package.susulan_id';
+
+        break;
+      case 'uas':
+        $tabel = 'susulan_uas';
+        $join = 'susulan_uas.id=d_package.susulan_id';
+        break;
+      case 'remedial':
+        $tabel = 'rt';
+        $join = 'rt.id=d_package.susulan_id';
+        break;
+      default:
+    }
+    $this->db->select('*')->from('d_package');
+    $this->db->join($tabel, $join, 'left');
+    $this->db->join('matkul', 'matkul.id_matkul=d_package.matkul_id', 'left');
+    $this->db->where('susulan_id', $id);
+    $result = $this->db->get()->result();
+    $no = 1;
+    $total = 0;
+    foreach ($result as $y) :
+      $total += $y->harga_susulan;
+    ?>
       <tr>
-        <?php echo $no=1; {?>
-        <td><?php echo $no++?></td>
-        <td><?php echo $susulan_uas['matkul'];?></td>
-        <td></td>
-      <?php } ?>
+        <td><?php echo $no++ ?></td>
+        <td><?php echo $y->nama_matkul; ?></td>
+        <td><?php echo $y->harga_susulan; ?></td>
+      <?php endforeach; ?>
       </tr>
-    <tr>
-    	<th></th>
-    	<th>Jumlah</th>
-    	<th>0</th>
-    </tr>
+      <tr>
+        <th></th>
+        <th>Jumlah</th>
+        <th><?= $total ?></th>
+      </tr>
   </table>
 
   <table class="table table-bordered">

@@ -5,8 +5,9 @@ class M_login extends CI_Model {
 
 	function cek_user($email="",$password="")
 	{
+		// $user = $this->db->get('user')->row_array();
 		$query = $this->db->get_where('user',array('email'=> $email, 'password'=>$password));
-		$query = $query->result_array();
+		$query = $query->row_array();
 		return $query;
 	}
 

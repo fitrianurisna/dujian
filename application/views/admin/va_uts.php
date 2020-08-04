@@ -23,7 +23,7 @@
                  <th>Nama</th>
                  <th>NPM</th>
                  <th>Semester</th>
-                 <th>Mata Kuliah</th>
+                 <th>Jumlah Mata Kuliah</th>
                  <th></th>
                  <th>Verifikasi Pembayaran</th>
                  <th>Action</th>
@@ -35,12 +35,17 @@
                <tr>
                  <?php
                   $no = 1;
-                  foreach ($susulan_uts as $suts) { ?>
+                  foreach ($susulan_uts as $suts) { 
+                    $this->db->select('count(*) AS jumlah')->from('d_package');
+                    $this->db->where('susulan_id', $suts->id);
+                    $this->db->where('tipe', 1);
+                    $this->db->group_by('susulan_id');
+                    ?>
                    <td><?php echo $no++ ?></td>
                    <td><?php echo $suts->nama_mahasiswa; ?></td>
                    <td><input type="hidden" name="npm" value="<?php echo $suts->npm; ?>" class="form-control"><?php echo $suts->npm; ?></td>
                    <td><?php echo $suts->semester; ?></td>
-                   <td><?php echo $suts->matkul; ?></td>
+                   <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
                    <td></td>
                    <td>
                      <select name="verivikasi">

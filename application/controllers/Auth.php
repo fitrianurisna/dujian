@@ -29,8 +29,8 @@ class Auth extends CI_Controller
 	function do_login()
 	{
 		if ($this->session->userdata('id_user')) {
-			// redirect("C_package");
-		// } else {
+			redirect("C_package");
+		} else {
 			$email = $this->input->post('email');
 			$password = $this->input->post('password');
 
@@ -58,9 +58,12 @@ class Auth extends CI_Controller
 					$this->session->set_flashdata('message', 'email belum terdaftar!');
 					$this->template->load('v_static', 'v_home');
 				}
+			} else {
+				redirect('Auth');
 			}
 		}
 	}
+
 
 	public function daftar()
 	{
@@ -229,8 +232,7 @@ class Auth extends CI_Controller
 
 	public function logout()
 	{
-		$this->session->unset_userdata('email');
-		$this->session->unset_userdata('role_id');
+		$this->session->sess_destroy();
 
 		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">anda telah keluar!</div>');
 		redirect('Auth');
