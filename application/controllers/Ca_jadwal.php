@@ -22,5 +22,27 @@ class Ca_jadwal extends CI_Controller {
     	$dujian = $this->M_jadwal->save();
         redirect('Ca_jadwal');
 	}
+	public function dh_uts_pdf($id = '')
+    {
+
+        $data["jadwal"] = $this->M_jadwal->Get($id);
+
+        $this->load->library('pdf');
+
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = "Daftar Hadir Susulan UTS.pdf";
+        $this->pdf->load_view('admin/dh_uts_pdf', $data);
+    }
+    public function rekap_uts_pdf()
+    {
+
+        $data["jadwal"] = $this->M_jadwal->Get();
+
+        $this->load->library('pdf');
+
+        $this->pdf->setPaper('A4', 'landscape');
+        $this->pdf->filename = "Rekap Pendaftar Susulan UTS.pdf";
+        $this->pdf->load_view('admin/rekap_uts_pdf', $data);
+    }
 		
 }

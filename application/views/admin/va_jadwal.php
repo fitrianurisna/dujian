@@ -5,6 +5,7 @@
       <br><br>
       <div class="col-md-4">
         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addNewjadwal">Tambah Jadwal</button>
+        <br><a href="<?= base_url() ?>Ca_jadwal/rekap_uts_pdf" target="_blank"class="fa fa-download">Cetak Daftar</a>
       </div>
       <ul class="nav navbar-center panel_toolbox">
         <li><a class="collapse-link"><i class="fa fa-chevron-center"></i></a>
@@ -25,6 +26,7 @@
                 <th>Dosen Pengajar</th>
                 <th>Hari/Tanggal</th>
                 <th>Pukul</th>
+                <th>Daftar Hadir</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -32,13 +34,21 @@
 
               <tr>
                 <?php $no = 1;
+                // $tabel = 'matkul';
+                // $join = 'matkul.id_matkul=jadwal.matkul';
+                // $this->db->select('*')->from('jadwal');
+                // $this->db->join($tabel, $join, 'left');
+                // $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
+                // $this->db->where('matkul', $id_matkul);
+                // $result = $this->db->get()->result();
                 foreach ($jadwal as $j) { ?>
                   <td><?php echo $no++ ?></td>
                   <td><?php echo $j->ta_id; ?></td>
                   <td><?php echo $j->matkul; ?></td>
                   <td><?php echo $j->dosen; ?></td>
-                  <td></td>
-                  <td></td>
+                  <td><?php echo $j->Hari; ?>,<?php echo $j->Tanggal; ?></td>
+                  <td><?php echo $j->Pukul; ?></td>
+                  <td><a href="<?= base_url() ?>Ca_jadwal/dh_uts_pdf/<?= $j->id ?>" target="_blank" class="fa fa-download">Cetak Daftar</a></td>
                   <td><button type="button" class="btn btn-primary">Edit</button> <button type="button" class="btn btn-danger">Hapus</button> </td>
               </tr>
             <?php } ?>
@@ -91,7 +101,7 @@
                 <div class="col-md-6 mb-3">
                   <label for="inputmatkul1">Mata Kuliah</label>
                   <select class="custom-select" name="matkul">
-                    <option selected>Pilihan</option>
+                    <option selected>Mata Kuliah</option>
                     <?php
                     foreach ($matkul as $row) { ?>
                       <option value="<?php echo $row->id_matkul; ?>">
@@ -104,7 +114,7 @@
                 <div class="col-md-3 mb-3">
                   <label for="inputdosen1">Dosen Pengajar</label>
                   <select class="custom-select" name="dosen">
-                    <option selected>Pilihan</option>
+                    <option selected>Dosen Pengajar</option>
                     <?php
                     foreach ($dosen as $row) {
                     ?>
@@ -116,6 +126,26 @@
                   </div>
                 </div>
                 <div class="col-md-3 mb-3">
+                  <label for="inputdosen1">Dosen Penguji</label>
+                  <select class="custom-select" name="dosen_penguji">
+                    <option selected>Dosen Penguji</option>
+                    <?php
+                    foreach ($dosen as $row) {
+                    ?>
+                      <option value="<?php echo $row->id_dosen; ?>">
+                        <?php echo $row->nama_dosen; ?>
+                      </option><?php } ?>
+                  </select>
+                  <div class="invalid-feedback">
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
+                  <label for="inputdosen1">Hari</label>
+                  <input type='text' id='' name="Hari" class="form-control" placeholder="Senin" />
+                  <div class="invalid-feedback">
+                  </div>
+                </div>
+                <div class="col-md-3 mb-3">
                   <label for="inputdosen1">Tanggal</label>
                   <input type='text' id='tanggalaja' name="tanggal" class="form-control" />
                   <div class="invalid-feedback">
@@ -123,7 +153,7 @@
                 </div>
                 <div class="col-md-3 mb-3">
                   <label for="inputdosen1">WAKTU</label>
-                  <input type='text' id='pukul' name="pukul" class="form-control" />
+                  <input type='text' id='pukul' name="pukul" class="form-control" placeholder="07:30" />
                   <div class="invalid-feedback">
                   </div>
                 </div>

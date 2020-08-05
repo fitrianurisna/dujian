@@ -29,6 +29,11 @@ class M_jadwal extends CI_Model
         $query = $this->db->get('jadwal');
         return $query;
     }
+    public function Get($id = '')
+    {
+        $this->db->where('id', $id);
+        return $this->db->get('jadwal')->row_array();
+    }
     public function save()
     {
         $data = [
@@ -36,6 +41,8 @@ class M_jadwal extends CI_Model
             'ta_id' => $this->input->post('ta_id'),
             'matkul' => $this->input->post('matkul'),
             'dosen' => $this->input->post('dosen'),
+            'dosen_penguji' => $this->input->post('dosen_penguji'),
+            'Hari' => $this->input->post('Hari'),
             'tanggal' => $this->input->post('tanggal'),
             'pukul' => $this->input->post('pukul'),
             // 'password' => $this->input->post('password'),
