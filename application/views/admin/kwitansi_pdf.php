@@ -17,6 +17,13 @@
 </head>
 
 <body>
+  <?php
+  $harga = 0;
+  foreach ($susulan_utst as $k) {
+    $harga += $k->harga_susulan;
+  }
+
+  ?>
   <p>Jurusan/PS.Teknik Informatika Fakultas Teknik-UIKA <br>Sholeh Iskandar km.2 Bogor 16162<br>
     Tel.Fax.0251-380993</p>
   <table style="width: 100%;" class="table table-bordered">
@@ -26,7 +33,7 @@
       </td>
     </tr>
   </table>
-  <p>Run date (tgl cetak)</p>
+  <p>Run date (<?= date('d-m-Y') ?>)</p>
   <table class="table table-bordered">
     <tr>
       <td>
@@ -39,22 +46,12 @@
         :<br>:<br>:<br>:
       </td>
       <td colspan="2">
-        <?php
-                  $no = 1;
-                  $this->db->select('*')->from('susulan_uts');
-                  $susulan_uts = $this->db->get()->result();
-                  foreach ($susulan_uts as $suts) { 
-                    $this->db->select('count(*) AS jumlah')->from('d_package');
-                    $this->db->where('susulan_id', $suts->id);
-                    $this->db->where('tipe', 1);
-                    $this->db->group_by('susulan_id');
-                    ?>
         10
-        <br><?php echo $suts->nama_mahasiswa; ?>
-        <br>RP.
-        <br>UTS Susulan <?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah
+        <br><?php echo $susulan_uts['nama_mahasiswa']; ?>
+        <br>RP. <?= $harga ?>
+        <br>UTS Susulan <?= count($susulan_utst) ?> Mata Kuliah
       </td>
-    <?php } ?>
+
       <td colspan="2"></td>
     </tr>
 
