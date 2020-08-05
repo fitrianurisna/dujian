@@ -83,15 +83,21 @@ class C_uas extends CI_Controller {
     }
     // PDF inivoice Pembayaran
     public function kwitansi_uaspdf($id = ''){
+        $data["susulan_uast"] = $this->M_uas->Get($id);
+        $this->db->select('*')->from('susulan_uas');
+        $this->db->where('id', $id);
+        $data['susulan_uas'] = $this->db->get()->row_array();
+        // $data['file'] = $this->db->get('user'); 
+        // echo "<pre>";
+        // print_r($data);
+        // echo "</pre>";
+        $this->load->library('pdf');
 
-    $data["susulan_uas"] = $this->M_uas->Get($id); 
-
-    $this->load->library('pdf');
-
-    $this->pdf->setPaper('A4', 'potrait');
-    $this->pdf->filename = "kwitansi.pdf";
-    $this->pdf->load_view('admin/kwitansi_uaspdf', $data);
+        $this->pdf->setPaper('A4', 'potrait');
+        $this->pdf->filename = "kwitansi.pdf";
+        $this->pdf->load_view('admin/kwitansi_uaspdf', $data);
     }
+
     // PDF form_uts
     public function form_uas_pdf($id =''){
 

@@ -15,19 +15,26 @@
   </style>
 </head>
 <body>
+  <?php
+  $harga = 0;
+  foreach ($susulan_uast as $k) {
+    $harga += $k->harga_susulan;
+  }
+
+  ?>
   <p>Jurusan/PS.Teknik Informatika Fakultas Teknik-UIKA <br>Sholeh Iskandar km.2 Bogor 16162<br>
-  Tel.Fax.0251-380993</p>
+    Tel.Fax.0251-380993</p>
   <table style="width: 100%;" class="table table-bordered">
     <tr>
       <td align="center">
-          KWITANSI
+        KWITANSI
       </td>
     </tr>
   </table>
-  <p>Run date (tgl cetak)</p>
+  <p>Run date (<?= date('d-m-Y') ?>)</p>
   <table class="table table-bordered">
     <tr>
-      <td >
+      <td>
         No
         <br>Telah Terima Dari
         <br>Uang Sejumlah
@@ -36,12 +43,13 @@
       <td>
         :<br>:<br>:<br>:
       </td>
-      <td  colspan="2">
+      <td colspan="2">
         10
-        <br><?php echo $susulan_uas['nama_mahasiswa'];?>
-        <br>RP.
-        <br>Uas Susulan <?php echo $susulan_uas['matkul'];?>
+        <br><?php echo $susulan_uas['nama_mahasiswa']; ?>
+        <br>RP. <?= $harga ?>
+        <br>UTS Susulan <?= count($susulan_uas) ?> Mata Kuliah
       </td>
+
       <td colspan="2"></td>
     </tr>
 

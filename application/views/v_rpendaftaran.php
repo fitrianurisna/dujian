@@ -72,11 +72,12 @@
       <?php
       $No = 1;
       $npm = $this->session->userdata('npm');
-      // $verifikasi = $this->db->get_where('susulan_uas', array('npm' => $npm))->result();
       $this->db->select('*')->from('susulan_uas');
       $this->db->where('npm', $npm);
-      $verifikasis = $this->db->get()->result();
-      foreach ($verifikasis as $f) {
+
+      $verifikasi = $this->db->get()->result();
+
+      foreach ($verifikasi as $f) {
         $this->db->select('count(*) AS jumlah')->from('d_package');
         $this->db->where('susulan_id', $f->id);
         $this->db->where('tipe', 2);

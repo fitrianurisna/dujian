@@ -24,14 +24,40 @@ class M_uas extends CI_Model
     }
     public function Get($id = '')
     {
-        $this->db->where('id', $id);
-        return $this->db->get('susulan_uas')->row_array();
+        // $this->db->where('id', $id);
+        // return $this->db->get('susulan_uts')->row_array();
+        $this->db->select('matkul.harga_susulan')->from('d_package');
+        $this->db->join('matkul', 'matkul.id_matkul=d_package.matkul_id',' left');
+        $this->db->where('susulan_id', $id);
+        $this->db->where('tipe', 2);
+
+        $this->db->group_by('matkul_id');
+        return $this->db->get('susulan_uas')->result();
     }
 
     public function getById($npm)
     {
         return $this->db->get_where($this->_table, ["npm" => $npm])->row();
     }
+
+    // public function save()
+    // {
+    //     $data = [
+    //         'nama_mahasiswa' => $this->input->post('nama_mahasiswa'),
+    //         'npm' => $this->input->post('npm'),
+    //         'program_studi' => $this->input->post('program_studi'),
+    //         'tahun_ajaran' => $this->input->post('tahun_ajaran'),
+    //         'kelas' => $this->input->post('kelas'),
+    //         'no_tlp' => $this->input->post('no_tlp'),
+    //         'semester' => $this->input->post('semester'),
+    //         'tanggal_uas' => $this->input->post('tanggal_uas'),
+    //         'pukul' => $this->input->post('pukul'),
+    //         'verivikasi' => $this->input->post('verivikasi'),
+    //         'createdAt' => date("Y-m-d")
+    //     ];
+    //     $inputan = $this->db->insert($this->_table, $data);
+    //     return $inputan;
+    // }
 
     public function save()
     {
@@ -48,6 +74,8 @@ class M_uas extends CI_Model
             'verivikasi' => $this->input->post('verivikasi'),
             'createdAt' => date("Y-m-d")
         ];
+        // var_dump($data);
+        // die();
         $inputan = $this->db->insert($this->_table, $data);
         return $inputan;
     }
