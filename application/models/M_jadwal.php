@@ -26,7 +26,12 @@ class M_jadwal extends CI_Model
     }
     public function get_jadwal()
     {
-        $query = $this->db->get('jadwal');
+        $this->db->select('*')->from('jadwal');
+        $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
+        $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
+        $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
+        $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
+        $query = $this->db->get();
         return $query;
     }
     public function Get($id = '')
@@ -62,5 +67,4 @@ class M_jadwal extends CI_Model
         $this->db->where($where);
         $this->db->delete($table);
     }
-
 }

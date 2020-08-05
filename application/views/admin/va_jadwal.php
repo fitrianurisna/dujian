@@ -5,7 +5,7 @@
       <br><br>
       <div class="col-md-4">
         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addNewjadwal">Tambah Jadwal</button>
-        <br><a href="<?= base_url() ?>Ca_jadwal/rekap_uts_pdf" target="_blank"class="fa fa-download">Cetak Daftar</a>
+        <br><a href="<?= base_url() ?>Ca_jadwal/rekap_uts_pdf" target="_blank" class="fa fa-download">Cetak Daftar</a>
       </div>
       <ul class="nav navbar-center panel_toolbox">
         <li><a class="collapse-link"><i class="fa fa-chevron-center"></i></a>
@@ -43,9 +43,9 @@
                 // $result = $this->db->get()->result();
                 foreach ($jadwal as $j) { ?>
                   <td><?php echo $no++ ?></td>
-                  <td><?php echo $j->ta_id; ?></td>
-                  <td><?php echo $j->matkul; ?></td>
-                  <td><?php echo $j->dosen; ?></td>
+                  <td><?php echo $j->tahun; ?></td>
+                  <td><?php echo $j->nama_matkul; ?></td>
+                  <td><?php echo $j->nama_dosen; ?></td>
                   <td><?php echo $j->Hari; ?>,<?php echo $j->Tanggal; ?></td>
                   <td><?php echo $j->Pukul; ?></td>
                   <td><a href="<?= base_url() ?>Ca_jadwal/dh_uts_pdf/<?= $j->id ?>" target="_blank" class="fa fa-download">Cetak Daftar</a></td>
