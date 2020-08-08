@@ -71,10 +71,21 @@
         <th>Pukul (WIB)</th>
     </tr>
     <tr>
-      <?php $no=1; { ?>
+      <?php
+      // $tabel = 'susulan_uts';
+      // $join = 'susulan_uts.id=d_package.susulan_id';
+      $this->db->select('*')->from('d_package');
+      $this->db->join('susulan_uts', 'susulan_uts.id=d_package.susulan_id', 'left');
+      $this->db->join('matkul', 'matkul.id_matkul=d_package.matkul_id', 'left');
+      $this->db->join('dosen', 'dosen.id_dosen=d_package.dosen_id', 'left');
+      $this->db->where('susulan_id', $id);
+      $dta = $this->db->get()->result();
+       $no=1; 
+        foreach ($dta as $k)
+          { ?>
       <td><?php echo $no++; ?></td>
-      <td><?php echo $susulan_uts['matkul'];?></td>
-      <td><?php echo $susulan_uts['dosen'];?></td>
+      <td><?php echo $k->nama_matkul; ?></td>
+      <td><?php echo $k->nama_dosen; ?></td>
       <td></td>
       <td></td>
     </tr>

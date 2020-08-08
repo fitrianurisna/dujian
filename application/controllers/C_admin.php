@@ -69,8 +69,10 @@ class C_admin extends CI_Controller
     // PDF form_uts
     public function form_uts_pdf($id = '')
     {
-
-        $data["susulan_uts"] = $this->M_uts->Get($id);
+        $data["susulan_utst"] = $this->M_uts->Get($id);
+        $this->db->select('*')->from('susulan_uts');
+        $this->db->where('id', $id);
+        $data['susulan_uts'] = $this->db->get()->row_array();
 
         $this->load->library('pdf');
 
