@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+ <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_uts extends CI_Model
 {

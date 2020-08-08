@@ -92,8 +92,12 @@ class C_prt extends CI_Controller
     // PDF inivoice Pembayaran
     public function kwitansi_rtpdf($id = '')
     {
+        $data["remedialt"] = $this->M_rt->Get($id);
+        $this->db->select('*')->from('rt');
+        $this->db->where('id', $id);
+        $data['rt'] = $this->db->get()->row_array();
 
-        $data["rt"] = $this->M_rt->Get($id);
+        // $data["rt"] = $this->M_rt->Get($id);
 
         $this->load->library('pdf');
 

@@ -15,6 +15,11 @@
   </style>
 </head>
 <body>
+  <?php
+  $harga = 0;
+  foreach ($remedialt as $k) {
+    $harga += $k->harga_susulan;
+  }?>
   <p>Jurusan/PS.Teknik Informatika Fakultas Teknik-UIKA <br>Sholeh Iskandar km.2 Bogor 16162<br>
   Tel.Fax.0251-380993</p>
   <table style="width: 100%;" class="table table-bordered">
@@ -24,7 +29,7 @@
       </td>
     </tr>
   </table>
-  <p>Run date (tgl cetak)</p>
+  <p>Run date(<?= date('d-m-Y') ?>)</p>
   <table class="table table-bordered">
     <tr>
       <td >
@@ -39,8 +44,8 @@
       <td  colspan="2">
         10
         <br><?php echo $rt['nama'];?>
-        <br>RP.
-        <br>Remedial teaching <?php echo $rt['matkul'];?>
+        <br>RP. <?= $harga ?>
+        <br>Remedial teaching <?= count($remedialt) ?> Mata Kuliah
       </td>
       <td colspan="2"></td>
     </tr>
@@ -53,7 +58,7 @@
     </tr>
     <tr>
       <td>RP.</td>
-      <td>0</td>
+      <td><?= $harga ?></td>
       <td>Yang Menerima,</td>
     </tr>
     <tr>

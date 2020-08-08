@@ -47,7 +47,7 @@
         10
         <br><?php echo $susulan_uas['nama_mahasiswa']; ?>
         <br>RP. <?= $harga ?>
-        <br>UTS Susulan <?= count($susulan_uas) ?> Mata Kuliah
+        <br>UTS Susulan <?= count($susulan_uast) ?> Mata Kuliah
       </td>
 
       <td colspan="2"></td>
@@ -61,7 +61,7 @@
     </tr>
     <tr>
       <td>RP.</td>
-      <td>0</td>
+      <td><?= $harga ?></td>
       <td>Yang Menerima,</td>
     </tr>
     <tr>

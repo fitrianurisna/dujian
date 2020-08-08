@@ -39,8 +39,8 @@
               </td>
               <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
               <td><?php echo $s->ta; ?></td>
-              <td align="center"><a href="<?= base_url()?>C_prt/kwitansi_rtpdf/<?= $s->id?>" class="fa fa-download" >CETAK</a></td>
-              <td align="center"><a href="<?= base_url()?>C_prt/form_rt_pdf/<?= $s->id?>" class="fa fa-download" >CETAK</a></td>
+              <td align="center"><a href="<?= base_url()?>C_prt/kwitansi_rtpdf/<?= $s->id?>"  target="_blank"  class="fa fa-download" >CETAK</a></td>
+              <td align="center"><a href="<?= base_url()?>C_prt/form_rt_pdf/<?= $s->id?>" target="_blank"  class="fa fa-download" >CETAK</a></td>
         </tr>
       <?php } ?>
       </tbody>

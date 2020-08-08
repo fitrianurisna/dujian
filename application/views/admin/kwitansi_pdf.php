@@ -63,7 +63,7 @@
     </tr>
     <tr>
       <td>RP.</td>
-      <td>0</td>
+      <td><?= $harga ?></td>
       <td>Yang Menerima,</td>
     </tr>
     <tr>
