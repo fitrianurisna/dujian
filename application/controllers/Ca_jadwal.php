@@ -15,7 +15,7 @@ class Ca_jadwal extends CI_Controller
 		$data['ta'] = $this->M_jadwal->get_ta()->result();
 		$data['matkul'] = $this->M_jadwal->get_matkul()->result();
 		$data['dosen'] = $this->M_jadwal->get_dosen()->result();
-		$data['jadwal'] = $this->M_jadwal->get_jadwal()->result();
+		$data['jadwal'] = $this->M_jadwal->get_jadwal('tipe',1,'jadwal')->result();
 		// echo "<pre>";
 
 		// print_r($data['jadwal']);
@@ -29,9 +29,21 @@ class Ca_jadwal extends CI_Controller
 	}
 	public function dh_uts_pdf($id = '')
 	{
+		$data["jadwalt"] = $this->M_jadwal->Get($id);
+		$data['jadwalk'] = $this->M_jadwal->get_jadwal()->result();
+        $this->db->select('*')->from('jadwal');
+        // $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
+        // $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
+        // $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
+        // $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
+        $this->db->where('id', $id);
+        // $data = $this->db->get();
+        // return $query;
+        $data['jadwal'] = $this->db->get()->row_array();
+  //       echo "<pre>";
 
-		$data["jadwal"] = $this->M_jadwal->Get($id);
-
+		// print_r($data['jadwalk']);
+		// echo "</pre>";
 		$this->load->library('pdf');
 
 		$this->pdf->setPaper('A4', 'potrait');
@@ -49,4 +61,11 @@ class Ca_jadwal extends CI_Controller
 		$this->pdf->filename = "Rekap Pendaftar Susulan UTS.pdf";
 		$this->pdf->load_view('admin/rekap_uts_pdf', $data);
 	}
+	 public function delete($id)
+        {
+            $where = array('id' => $id);
+            $this->M_jadwal->delete($where, 'jadwal');
+            $this->session->set_flashdata('message', '<div class="alert-danger" role="alert">Data berhasil dihapus</div>');
+            redirect('Ca_jadwal');
+        }
 }

@@ -17,10 +17,10 @@ class C_admin extends CI_Controller
     }
     public function update()
     {
-        $npm = $this->input->post('npm');
-        $where = array('npm' => $npm);
+        $id = $this->input->post('id');
+        $where = array('id' => $id);
         $data = $this->input->post();
-        unset($data['npm']);
+        unset($data['id']);
 
         // print_r($where);
 

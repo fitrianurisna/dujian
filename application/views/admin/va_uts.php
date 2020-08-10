@@ -43,7 +43,8 @@
                     ?>
                    <td><?php echo $no++ ?></td>
                    <td><?php echo $suts->nama_mahasiswa; ?></td>
-                   <td><input type="hidden" name="npm" value="<?php echo $suts->npm; ?>" class="form-control"><?php echo $suts->npm; ?></td>
+                   <td><?php echo $suts->npm; ?></td>
+                   <input type="hidden" name="id" value="<?php echo $suts->id; ?>" class="form-control">
                    <td><?php echo $suts->semester; ?></td>
                    <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
                    <td></td>

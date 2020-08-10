@@ -24,14 +24,16 @@ class M_jadwal extends CI_Model
         $query = $this->db->get('dosen');
         return $query;
     }
-    public function get_jadwal()
+    public function get_jadwal($field, $where, $table)
     {
         $this->db->select('*')->from('jadwal');
         $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
         $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
         $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
         $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
+        $this->db->where($field, $where);
         $query = $this->db->get();
+        // $query = $this->db->get();
         return $query;
     }
     public function Get($id = '')
@@ -46,7 +48,7 @@ class M_jadwal extends CI_Model
             'ta_id' => $this->input->post('ta_id'),
             'matkul' => $this->input->post('matkul'),
             'dosen' => $this->input->post('dosen'),
-            'dosen_penguji' => $this->input->post('dosen_penguji'),
+            // 'dosen_penguji' => $this->input->post('dosen_penguji'),
             'Hari' => $this->input->post('Hari'),
             'tanggal' => $this->input->post('tanggal'),
             'pukul' => $this->input->post('pukul'),

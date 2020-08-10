@@ -20,7 +20,7 @@
         <th>Nama</th>
         <th>NPM</th>
         <th>Jumlah Mata Kuliah</th>
-        <th>Detail Mata Kuliah</th>
+        <!-- <th>Detail Mata Kuliah</th> -->
         <th>Tahun Ajaran</th>
         <th>Created At</th>
         <th>Cetak Invoice</th>
@@ -45,8 +45,8 @@
           <td><?= $No++; ?></td>
           <td><?= $v->nama_mahasiswa; ?></td>
           <td><?= $v->npm; ?></td>
-          <td><?= $this->db->get()->row_array()['jumlah'] ?></td>
-          <td><?= $v->matkul; ?></td>
+          <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
+          <!-- <td><?= $v->matkul; ?></td> -->
           <td><?= $v->tahun_ajaran; ?></td>
           <td><?= $v->createdAt ?></td>
           <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $v->id ?>/uts" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
@@ -62,7 +62,7 @@
         <th>Nama</th>
         <th>NPM</th>
         <th>Jumlah Mata Kuliah</th>
-        <th>Detail Mata Kuliah</th>
+        <!-- <th>Detail Mata Kuliah</th> -->
         <th>Tahun Ajaran</th>
         <th>Created At</th>
         <th>Cetak Invoice</th>
@@ -87,8 +87,8 @@
           <td><?= $No++; ?></td>
           <td><?= $f->nama_mahasiswa; ?></td>
           <td><?= $f->npm; ?></td>
-          <td><?= $this->db->get()->row_array()['jumlah'] ?></td>
-          <td><?= $f->matkul; ?></td>
+          <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
+          <!-- <td><?= $f->matkul; ?></td> -->
           <td><?= $f->tahun_ajaran; ?></td>
           <td><?= $f->createdAt ?></td>
           <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $f->id ?>/uas" target="_blank" class="fa fa-download">Cetak Invoice</a></td>

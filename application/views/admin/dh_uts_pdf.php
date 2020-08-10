@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
@@ -32,11 +32,12 @@
     <tr>
       <td align="center"  colspan="4">
         <span style="line-height: 1.6; font-weight: bold;">
-          DAFTAR PESERTA DAN NILAI AKHIR (DPNA) 
+          <br>DAFTAR PESERTA DAN NILAI AKHIR (DPNA) 
           <br>UJIAN TENGAH SEMESTER (UTS) SUSULAN Ganjil/Genap <?php echo $jadwal['ta_id'];?>
         </span>
       </td>
     </tr>
+
     <tr align="left">
       <td>
         kode Matakuliah
@@ -44,7 +45,7 @@
         <br>Dosen Penguji
       </td>
       <td>:test
-        <br>:<br>:</td>
+        <br>:<?php echo $jadwalk['matkul']; ?><br>:</td>
       <td>
         Dosen Pengampu
         <br>Semester
@@ -77,6 +78,8 @@
       <td></td>
       <td></td>
       <td></td>
+      <td></td>
+      <td></td>
     </tr>
   <?php } ?>
   </table>
@@ -84,14 +87,14 @@
       <tr>
         <td>
           Interval Nilai Akhir  :
-          <br>83 < A £ 100
-          <br>76 < AB £ 83
-          <br>69 < B £ 76
-          <br>62 < BC £ 69
-          <br>55 < C £ 62
-          <br>48 < CD £ 55
-          <br>41 < D £ 48
-          <br>E £ 41
+          <br><a> 83 < A £ 100</a>
+          <br><a>76 < AB £ 83</a>
+          <br><a>69 < B £ 76</a>
+          <br><a>62 < BC £ 69</a>
+          <br><a>55 < C £ 62</a>
+          <br><a>48 < CD £ 55</a>
+          <br><a>41 < D £ 48</a>
+          <br><a>E £ 41</a>
         </td>
         <td></td>
         <td>Bogor,.........................

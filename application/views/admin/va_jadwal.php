@@ -5,7 +5,7 @@
       <br><br>
       <div class="col-md-4">
         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addNewjadwal">Tambah Jadwal</button>
-        <br><a href="<?= base_url() ?>Ca_jadwal/rekap_uts_pdf" target="_blank" class="fa fa-download">Cetak Daftar</a>
+        <a type="button" href="<?= base_url() ?>Ca_jadwal/rekap_uts_pdf" target="_blank" class="btn btn-round btn-info">Cetak Rekap</a>
       </div>
       <ul class="nav navbar-center panel_toolbox">
         <li><a class="collapse-link"><i class="fa fa-chevron-center"></i></a>
@@ -34,13 +34,6 @@
 
               <tr>
                 <?php $no = 1;
-                // $tabel = 'matkul';
-                // $join = 'matkul.id_matkul=jadwal.matkul';
-                // $this->db->select('*')->from('jadwal');
-                // $this->db->join($tabel, $join, 'left');
-                // $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
-                // $this->db->where('matkul', $id_matkul);
-                // $result = $this->db->get()->result();
                 foreach ($jadwal as $j) { ?>
                   <td><?php echo $no++ ?></td>
                   <td><?php echo $j->tahun; ?></td>
@@ -49,7 +42,7 @@
                   <td><?php echo $j->Hari; ?>,<?php echo $j->Tanggal; ?></td>
                   <td><?php echo $j->Pukul; ?></td>
                   <td><a href="<?= base_url() ?>Ca_jadwal/dh_uts_pdf/<?= $j->id ?>" target="_blank" class="fa fa-download">Cetak Daftar</a></td>
-                  <td><button type="button" class="btn btn-primary">Edit</button> <button type="button" class="btn btn-danger">Hapus</button> </td>
+                  <td> <a type="button" href="<?= base_url() ?>Ca_jadwal/delete/<?= $j->id ?>" class="btn btn-danger">Hapus</a> </td>
               </tr>
             <?php } ?>
             </tbody>
@@ -73,17 +66,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <div class="form-group row">
-            <label class="control-label col-md-3 col-sm-3 ">Jadwal</label>
-            <div class="col-md-9 col-sm-9 ">
-              <select class="form-control" class="custom-select" name="tipe">
-                <option selected>Option</option>
-                <?php foreach ($tb_durt as $row) : ?>
-                  <option value="<?php echo $row->id_durt; ?>"><?php echo $row->nama_durt; ?></option>
-                <?php endforeach; ?>
-              </select>
-            </div>
-          </div>
+          <input type="hidden" name="tipe" class="form-control" value="1">
           <div class="form-group row">
             <label class="control-label col-md-3 col-sm-3 ">Tahun Ajaran</label>
             <div class="col-md-9 col-sm-9 ">
@@ -125,7 +108,7 @@
                   <div class="invalid-feedback">
                   </div>
                 </div>
-                <div class="col-md-3 mb-3">
+                <!-- <div class="col-md-3 mb-3">
                   <label for="inputdosen1">Dosen Penguji</label>
                   <select class="custom-select" name="dosen_penguji">
                     <option selected>Dosen Penguji</option>
@@ -138,7 +121,7 @@
                   </select>
                   <div class="invalid-feedback">
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-3 mb-3">
                   <label for="inputdosen1">Hari</label>
                   <input type='text' id='' name="Hari" class="form-control" placeholder="Senin" />

@@ -2,18 +2,32 @@
 
 class M_matkul extends CI_Model
 { 
+    private $_table = "matkul";
     public function Tmatkul()
     {
         $query = $this->db->get('matkul');
         return $query;
     }
-    public function Get()
+    public function dosen()
     {
-        $this->db->select('*');
-        $this->db->from('dosen');
-        $this->db->join('matkul','matkul.kode_matkul=dosen.matkul_kode');
-        $this->db->order_by('id_matkul','DESC');
-        $query = $this->db->get();
+        $query = $this->db->get('dosen');
         return $query;
+    }
+    public function save()
+    {
+        $data = [
+            'kode_matkul' => $this->input->post('kode_matkul'),
+            'nama_matkul' => $this->input->post('nama_matkul'),
+            'semester' => $this->input->post('semester'),
+            'sks' => $this->input->post('sks'),
+            // 'createdAt' => date("Y-m-d")
+        ];
+        $inputan = $this->db->insert($this->_table, $data);
+        return $inputan;
+    }
+    public function delete($where, $table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
     }
 }

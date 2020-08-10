@@ -62,36 +62,44 @@ if (isset($error)) {
   echo "<hr/>";
 } ?>
 
+<form action="<?php echo base_url('Ca_adm/add'); ?>" method="post" enctype="multipart/form-data">
 <div class="modal fade" id="addNewadm" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Pendaftaran UTS</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Pendaftaran Admin</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="<?php echo base_url('Ca_adm/add'); ?>" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <input type="hidden" name="role_id" class="form-control" value="1">
             <input type="hidden" name="aktif" class="form-control" value="1">
           </div>
-          <div class="col-md-12 mb-12">
-            <label>Nama</label>
-            <input type="text" name="nama" placeholder="nama">
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 ">Nama</label>
+            <div class="col-md-9 col-sm-9 ">
+              <input class="form-control" type="text" name="nama" placeholder="nama">
+            </div>
           </div>
-          <div class="col-md-12 mb-12">
-            <label>Email</label>
-            <input type="text" name="email" placeholder="email">
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 ">Email</label>
+            <div class="col-md-9 col-sm-9 ">
+              <input class="form-control" type="text" name="email" placeholder="email">
+            </div>
           </div>
-          <div class="col-md-12 mb-12">
-            <label>NIK</label>
-            <input type="text" name="nik" placeholder="nik">
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 ">NIK</label>
+            <div class="col-md-9 col-sm-9 ">
+              <input class="form-control" type="text" name="nik" placeholder="nik">
+            </div>
           </div>
-          <div class="col-md-12 mb-12">
-            <label>Password</label>
-            <input type="password" name="password" placeholder="password">
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 ">Password</label>
+            <div class="col-md-9 col-sm-9 ">
+              <input class="form-control" type="password" name="password" placeholder="password">
+            </div>
           </div>
           <div class="col-md-12 mb-12">
             <label class="control-label col-md-10 col-sm-10" for="ControlFile1">Upload Tanda Tangan:</label>

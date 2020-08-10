@@ -9,7 +9,7 @@
         <th>Nama</th>
         <th>NPM</th>
         <th>Jumlah Mata Kuliah</th>
-        <th>Detail Mata Kuliah</th>
+        <!-- <th>Detail Mata Kuliah</th> -->
         <th>Tahun Ajaran</th>
         <th>Created At</th>
         <th>Cetak Invoice</th>
@@ -34,10 +34,10 @@
           <td><?= $No++; ?></td>
           <td><?= $v->nama; ?></td>
           <td><?= $v->npm; ?></td>
-          <td><?= $this->db->get()->row_array()['jumlah'] ?></td>
-          <td><?= $v->matkul; ?></td>
+          <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
+          <!-- <td><?= $v->matkul; ?></td> -->
           <td><?= $v->ta; ?></td>
-          <td><!-- <?= $v->createdAt ?> --></td>
+          <td><?= $v->createdAt ?></td>
           <td><a href="<?= base_url() ?>C_prt/invoice_rt/<?= $v->id ?>/remedial" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
           <td></td>
         </tr>
