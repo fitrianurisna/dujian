@@ -30,7 +30,8 @@ class Ca_jadwal extends CI_Controller
 	public function dh_uts_pdf($id = '')
 	{
 		$data["jadwalt"] = $this->M_jadwal->Get($id);
-		$data['jadwalk'] = $this->M_jadwal->get_jadwal()->result();
+		$data['jadwalk'] = $this->M_jadwal->get_jadwal()->row_array();
+		$data['jadwalq'] = $this->M_jadwal->getmahasiswa()->row_array();
         $this->db->select('*')->from('jadwal');
         // $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
         // $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');

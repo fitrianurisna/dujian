@@ -33,7 +33,7 @@
       <td align="center"  colspan="4">
         <span style="line-height: 1.6; font-weight: bold;">
           <br>DAFTAR PESERTA DAN NILAI AKHIR (DPNA) 
-          <br>UJIAN TENGAH SEMESTER (UTS) SUSULAN Ganjil/Genap <?php echo $jadwal['ta_id'];?>
+          <br>UJIAN TENGAH SEMESTER (UTS) SUSULAN <?php echo $jadwalk['semester']; ?> <?php echo $jadwalk['tahun'];?>
         </span>
       </td>
     </tr>
@@ -44,15 +44,15 @@
         <br>MataKuliah
         <br>Dosen Penguji
       </td>
-      <td>:test
-        <br>:<?php echo $jadwalk['matkul']; ?><br>:</td>
+      <td>:<?php echo $jadwalk['kode_matkul']; ?>
+        <br>:<?php echo $jadwalk['nama_matkul']; ?><br>:</td>
       <td>
         Dosen Pengampu
         <br>Semester
         <br>Hari/Tanggal
       </td>
-      <td>:test
-        <br>:<br>:</td>
+      <td>:<?php echo $jadwalk['nama_dosen']; ?>
+        <br>:<?php echo $jadwalk['semester']; ?><br>:<?php echo $jadwalk['Hari']; ?>, <?php echo $jadwalk['Tanggal']; ?></td>
     </tr>
   </table>
 
@@ -69,19 +69,15 @@
         <th>Huruf</th>
     </tr>
     <tr>
-      <!-- <?php $no=1; { ?>
-      <td><?php echo $no++; ?></td>
-      <td><?php echo $rt['matkul'];?></td>
-      <td><?php echo $rt['dosen'];?></td> -->
       <td></td>
-      <td></td>
+      <td><?php echo $jadwalq['nama_mahasiswa']; ?></td>
       <td></td>
       <td></td>
       <td></td>
       <td></td>
       <td></td>
     </tr>
-  <?php } ?>
+  
   </table>
   <table style="width: 100%;">
       <tr>

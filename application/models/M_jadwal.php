@@ -24,17 +24,36 @@ class M_jadwal extends CI_Model
         $query = $this->db->get('dosen');
         return $query;
     }
-    public function get_jadwal($field, $where, $table)
+    public function get_package()
+    {
+        $query = $this->db->get('d_package');
+        return $query;
+    }
+    public function get_jadwal()
     {
         $this->db->select('*')->from('jadwal');
         $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
         $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
         $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
         $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
-        $this->db->where($field, $where);
+        // $this->db->join('d_package', 'd_package.matkul_id=matkul.id_matkul', 'left');
+        // $this->db->join('susulan_uts', 'susulan_uts.id=d_package.susulan_id', 'left');
+        // $this->db->join('jadwal', 'jadwal.matkul=d_package.matkul_id', 'left');
         $query = $this->db->get();
         // $query = $this->db->get();
         return $query;
+    }
+    public function getmahasiswa()
+    {
+        $this->db->select('*')->from('d_package');
+        $this->db->join('matkul', 'matkul.id_matkul=d_package.matkul_id', 'left');
+        $this->db->join('susulan_uts', 'susulan_uts.id=d_package.susulan_id', 'left');
+        $this->db->join('jadwal', 'jadwal.matkul=d_package.matkul_id', 'left');
+        // $this->db->join('', 'jadwal.matkul=d_package.matkul_id', 'left');
+        // $this->db->where($field, $where);
+        $query = $this->db->get();
+        return $query;
+        // $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
     }
     public function Get($id = '')
     {
