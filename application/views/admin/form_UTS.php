@@ -70,19 +70,22 @@
         <th>Hari,Tanggal</th>
         <th>Pukul (WIB)</th>
     </tr>
-    <tr>
       <?php
-      // $tabel = 'susulan_uts';
-      // $join = 'susulan_uts.id=d_package.susulan_id';
+      $id = $this->uri->segment(3);
       $this->db->select('*')->from('d_package');
       $this->db->join('susulan_uts', 'susulan_uts.id=d_package.susulan_id', 'left');
       $this->db->join('matkul', 'matkul.id_matkul=d_package.matkul_id', 'left');
       $this->db->join('dosen', 'dosen.id_dosen=d_package.dosen_id', 'left');
       $this->db->where('susulan_id', $id);
-      $dta = $this->db->get()->result();
+      $this->db->where('tipe', 1);
+      $data = $this->db->get()->result();
        $no=1; 
-        foreach ($dta as $k)
+        foreach ($data as $k)
           { ?>
+    <tr>
+      // $tabel = 'susulan_uts';
+      // $join = 'susulan_uts.id=d_package.susulan_id';
+      // $data["susulan_uts"] = $this->M_uts->Get($id);
       <td><?php echo $no++; ?></td>
       <td><?php echo $k->nama_matkul; ?></td>
       <td><?php echo $k->nama_dosen; ?></td>
@@ -106,10 +109,13 @@
       <tr>
         <td></td>
         <td></td>
-        <td>Bogor,(tgl)
+        <td>Bogor,<?= date('d-m-Y') ?>
         <br>Ketua Program Studi Teknik Informatika
         </td>
+      </tr>
       <tr>
+        <td></td>
+        <td></td>
         <td>Fitrah Satrya Fajar
           <br>NIK:410 100 569</td>
       </tr> 
