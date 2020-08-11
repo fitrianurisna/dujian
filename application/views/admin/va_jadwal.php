@@ -5,7 +5,7 @@
       <br><br>
       <div class="col-md-4">
         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addNewjadwal">Tambah Jadwal</button>
-        <a type="button" href="<?= base_url() ?>Ca_jadwal/rekap_uts_pdf" target="_blank" class="btn btn-round btn-info">Cetak Rekap</a>
+        <!-- <a type="button" href="<?= base_url() ?>Ca_jadwal/rekap_uts_pdf" target="_blank" class="btn btn-round btn-info">Cetak Rekap</a> -->
       </div>
       <ul class="nav navbar-center panel_toolbox">
         <li><a class="collapse-link"><i class="fa fa-chevron-center"></i></a>
@@ -26,7 +26,7 @@
                 <th>Dosen Pengajar</th>
                 <th>Hari/Tanggal</th>
                 <th>Pukul</th>
-                <th>Daftar Hadir</th>
+                <!-- <th>Daftar Hadir</th> -->
                 <th>Action</th>
               </tr>
             </thead>
@@ -41,7 +41,7 @@
                   <td><?php echo $j->nama_dosen; ?></td>
                   <td><?php echo $j->Hari; ?>,<?php echo $j->Tanggal; ?></td>
                   <td><?php echo $j->Pukul; ?></td>
-                  <td><a href="<?= base_url() ?>Ca_jadwal/dh_uts_pdf/<?= $j->id ?>" target="_blank" class="fa fa-download">Cetak Daftar</a></td>
+                  <!-- <td><a href="<?= base_url() ?>Ca_jadwal/dh_uts_pdf/<?= $j->id ?>" target="_blank" class="fa fa-download">Cetak Daftar</a></td> -->
                   <td> <a type="button" href="<?= base_url() ?>Ca_jadwal/delete/<?= $j->id ?>" class="btn btn-danger">Hapus</a> </td>
               </tr>
             <?php } ?>
