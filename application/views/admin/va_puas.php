@@ -39,7 +39,7 @@
               <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
               <td><?php echo $s->tahun_ajaran; ?></td>
               <td align="center"><a href="<?= base_url()?>C_uas/kwitansi_uaspdf/<?= $s->id?>" target="_blank" class="fa fa-download" >CETAK</a></td>
-              <td align="center"><a href="<?= base_url()?>C_uas/form_uas_pdf/<?= $s->id?>" class="fa fa-download" >CETAK</a></td>
+              <td align="center"><a href="<?= base_url()?>C_uas/form_uas_pdf/<?= $s->id?>" target="_blank" class="fa fa-download" >CETAK</a></td>
         </tr>
       <?php } ?>
       </tbody>

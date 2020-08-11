@@ -101,7 +101,7 @@
   <table class="table table-bordered">
     <tr>
       <th>Catatan</th>
-      <th>Bogor (Tanggal)</th>
+      <th>Bogor <?= date('d-m-Y') ?></th>
     </tr>
   </table>
 

@@ -70,11 +70,22 @@
         <th>Hari,Tanggal</th>
         <th>Pukul (WIB)</th>
     </tr>
+      <?php 
+      $id = $this->uri->segment(3);
+      $this->db->select('*')->from('d_package');
+      $this->db->join('susulan_uas', 'susulan_uas.id=d_package.susulan_id', 'left');
+      $this->db->join('matkul', 'matkul.id_matkul=d_package.matkul_id', 'left');
+      $this->db->join('dosen', 'dosen.id_dosen=d_package.dosen_id', 'left');
+      $this->db->where('susulan_id', $id);
+      $this->db->where('tipe', 2);
+      $data = $this->db->get()->result();
+       $no=1; 
+        foreach ($data as $k)
+          { ?>
     <tr>
-      <?php $no=1; { ?>
       <td><?php echo $no++; ?></td>
-      <td><?php echo $susulan_uas['matkul'];?></td>
-      <td><?php echo $susulan_uas['dosen'];?></td>
+      <td><?php echo $k->nama_matkul; ?></td>
+      <td><?php echo $k->nama_dosen; ?></td>
       <td></td>
       <td></td>
     </tr>
@@ -95,13 +106,16 @@
       <tr>
         <td></td>
         <td></td>
-        <td>Bogor,(tgl)
+        <td>Bogor,<?= date('d-m-Y') ?>
         <br>Ketua Program Studi Teknik Informatika
         </td>
+      </tr>
       <tr>
+        <td></td>
+        <td></td>
         <td>Fitrah Satrya Fajar
           <br>NIK:410 100 569</td>
-      </tr> 
+      </tr>  
       <tr>
         <td>
           Tembusan

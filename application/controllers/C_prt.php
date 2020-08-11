@@ -112,7 +112,10 @@ class C_prt extends CI_Controller
     public function form_rt_pdf($id = '')
     {
 
-        $data["rt"] = $this->M_rt->Get($id);
+        $data["rts"] = $this->M_rt->Get($id);
+        $this->db->select('*')->from('rt');
+        $this->db->where('id', $id);
+        $data['rt'] = $this->db->get()->row_array();
 
         $this->load->library('pdf');
 

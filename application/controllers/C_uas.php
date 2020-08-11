@@ -101,7 +101,10 @@ class C_uas extends CI_Controller {
     // PDF form_uts
     public function form_uas_pdf($id =''){
 
-    $data["susulan_uas"] = $this->M_uas->Get($id); 
+    $data["susulan_uast"] = $this->M_uas->Get($id);
+    $this->db->select('*')->from('susulan_uas');
+    $this->db->where('id', $id);
+    $data['susulan_uas'] = $this->db->get()->row_array(); 
 
     $this->load->library('pdf');
 
