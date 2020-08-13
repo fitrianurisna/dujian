@@ -68,35 +68,41 @@
         <th>Angka</th>
         <th>Huruf</th>
     </tr>
+      <?php
+      $no = 1; 
+      foreach ($jadwalq as $k) { ?>
     <tr>
-      <td></td>
-      <td><?php echo $jadwalq['nama_mahasiswa']; ?></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <td><?php echo $no++ ?></td>
+      <td><?php echo $k['npm']; ?></td>
+      <td><?php echo $k['nama_mahasiswa']; ?></td>
       <td></td>
       <td></td>
+      <td></td>
+      
     </tr>
+    <?php } ?>
   
   </table>
   <table style="width: 100%;">
       <tr>
         <td>
+          
           Interval Nilai Akhir  :
-          <br><a> 83 < A £ 100</a>
-          <br><a>76 < AB £ 83</a>
-          <br><a>69 < B £ 76</a>
-          <br><a>62 < BC £ 69</a>
-          <br><a>55 < C £ 62</a>
-          <br><a>48 < CD £ 55</a>
-          <br><a>41 < D £ 48</a>
-          <br><a>E £ 41</a>
+          <br>83 &#60; A &#8804;  100
+          <br>76 &#60; AB &#8804; 83
+          <br>69 &#60; B &#8804; 76
+          <br>62 &#60; BC &#8804; 69
+          <br>55 &#60; C &#8804; 62
+          <br>48 &#60; CD &#8804; 55
+          <br>41 &#60; D &#8804; 48
+          <br>E &#8804; 41
         </td>
         <td></td>
-        <td>Bogor,.........................
-        <br>Dosen Penguji
+        <td align="right">Bogor,..................................
+        <br>Dosen Penguji,                             
         <br><br><br>(_____________________)
         </td>
+      </tr>
       
   </table>
 

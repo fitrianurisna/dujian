@@ -83,8 +83,8 @@
                 <li><a href="<?php echo base_url('C_uas/puas'); ?>"><i class="fa fa-credit-card"></i>Pembayaran UAS</span></a></li>
                 <li><a href="<?php echo base_url('C_prt/brt'); ?>"><i class="fa fa-credit-card"></i>Pembayaran Remedial Teaching</span></a></li>
                 <li><a href="<?php echo base_url('Ca_jadwal'); ?>"><i class="fa fa-archive"></i>Jadwal </span></a></li>
-                <!-- <li><a href="<?php echo base_url('Ca_juas'); ?>"><i class="fa fa-archive"></i>Jadwal UAS</span></a></li>
-                <li><a href="<?php echo base_url('Ca_jrt'); ?>"><i class="fa fa-archive"></i>Jadwal Remedial Teaching</span></a></li> -->
+                <li><a href="<?php echo base_url('Ca_juas'); ?>"><i class="fa fa-archive"></i>Jadwal UAS</span></a></li>
+                <li><a href="<?php echo base_url('Ca_jrt'); ?>"><i class="fa fa-archive"></i>Jadwal Remedial Teaching</span></a></li>
                 <li><a href="<?php echo base_url('Ca_adm'); ?>"><i class="fa fa-archive"></i>Admin</span></a></li>
                 <li><a href="<?php echo base_url('Ca_matkul'); ?>"><i class="fa fa-archive"></i>Mata kuliah</span></a></li>
                 <li><a href="<?php echo base_url('Ca_dosen'); ?>"><i class="fa fa-archive"></i>Dosen</span></a></li>
