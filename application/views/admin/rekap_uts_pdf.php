@@ -20,7 +20,7 @@
     <tr>
       <td align="center" colspan="4">
         <span style="line-height: 1.6; font-weight: bold;">
-          <br>Rekap UTS Susulan Semester ___ tahun ____
+          <br>Rekap UTS Susulan Semester <?php echo $a['semester']; ?> tahun <?php echo $c['tahun']; ?>
           <br>FAKULTAS TEKNIK DAN SAINS UIKA BOGOR
         </span>
       </td>
@@ -39,16 +39,21 @@
       <th >Nilai</th>
       <th >Pembayaran</th>
     </tr>
+    <?php 
+      $no=1;
+      foreach ($d as $d ) {
+     ?>
     <tr>
+        <td><?php echo $no++; ?></td>
+        <td><?php echo $d['createdAt']; ?></td>
+        <td> <?php echo $d['nama_mahasiswa']; ?></td>
+        <td><?php echo $d['npm']; ?></td>
+        <td><?php echo $d['nama_matkul']; ?></td>
+        <td><?php echo $d['nama_dosen']; ?></td>
         <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><?php echo $d['harga_susulan']; ?></td>
     </tr>
+  <?php } ?>
   </table>
   <table style="width: 100%;">
       <tr>
@@ -57,11 +62,13 @@
         <br><br><br>(_____________________)
         <br>NIK.
         </td>
+        <td></td>
         <td>Bogor,.........................
         <br>Tata Usaha Teknik Informatika
         <br><br><br>(_____________________)
         <br>NIK.
         </td>
+      </tr>
       
   </table>
 

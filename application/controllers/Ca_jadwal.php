@@ -58,21 +58,27 @@ class Ca_jadwal extends CI_Controller
 	}
 	public function rekap_uts_pdf($ta_id = '')
 	{
-
-		$data['c'] = $this->M_jadwal->coba($this->input->post('ta_id'))->result_array();
-		$data['d'] = $this->M_jadwal->get_tahun_where($ta_id)->result_array();
+		$ta_id = $this->input->post('ta_id');
+		$data['c'] = $this->M_jadwal->coba($ta_id)->row_array();
+		$data['a'] = $this->M_jadwal->getu($ta_id)->row_array();
+		$data['d'] = $this->M_jadwal->getu($ta_id)->result_array();
+		// $data['d'] = $this->M_jadwal->get_ma_where($ta_id)->rroway();
+		// $data['b'] = $this->M_jadwal->getmahasiswa($data['d']['ta_id'])->result_array();
+		// $data['jadwalk'] = $this->M_jadwal->get_jadwal_where($id)->row_array();
+		// $data['a'] = $this->M_jadwal->getma($data['d']['matkul'])->result_array();
 		// $data["jadwal"] = $this->M_jadwal->Get();
 
-		// $this->load->library('pdf');
+		$this->load->library('pdf');
 
-		// $this->pdf->setPaper('A4', 'landscape');
-		// $this->pdf->filename = "Rekap Pendaftar Susulan UTS.pdf";
-		// $this->pdf->load_view('admin/rekap_uts_pdf', $data);
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "Rekap Pendaftar Susulan UTS.pdf";
+		$this->pdf->load_view('admin/rekap_uts_pdf', $data);
 
-		echo "<pre>";
-		print_r($data['c']);
-		echo "<pre>";
-		print_r($data['d']);
+		// echo "<pre>";
+		// print_r($data['d']);
+		// echo "<pre>";
+		// print_r($data['b']);
+		// print_r($data['a']);
 		// print_r();
 		echo "</pre>";
 	}

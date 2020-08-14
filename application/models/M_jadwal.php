@@ -52,26 +52,30 @@ class M_jadwal extends CI_Model
         $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
         $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
         $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
-        // $this->db->join('d_package', 'd_package.matkul_id=matkul.id_matkul', 'left');
-        // $this->db->join('susulan_uts', 'susulan_uts.id=d_package.susulan_id', 'left');
-        // $this->db->join('jadwal', 'jadwal.matkul=d_package.matkul_id', 'left');
         $this->db->where('id', $id);
         $query = $this->db->get();
-        // $query = $this->db->get();
         return $query;
     }
     
     public function getmahasiswa($where)
     {
         $this->db->select('*')->from('d_package');
-        // $this->db->join('matkul', 'matkul.id_matkul=d_package.matkul_id', 'left');
         $this->db->join('susulan_uts', 'susulan_uts.id=d_package.susulan_id');
-        // $this->db->join('jadwal', 'jadwal.matkul=d_package.matkul_id', 'left');
-        // $this->db->join('', 'jadwal.matkul=d_package.matkul_id', 'left');
         $this->db->where('d_package.matkul_id', $where);
         $query = $this->db->get();
         return $query;
-        // $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
+    }
+    public function getu($where)
+    {
+        $this->db->select('*')->from('d_package');
+        $this->db->join('susulan_uts', 'susulan_uts.id=d_package.susulan_id');
+        // $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
+        $this->db->join('matkul', 'matkul.id_matkul=d_package.matkul_id', 'left');
+        $this->db->join('dosen', 'dosen.id_dosen=d_package.dosen_id', 'left');
+        $this->db->where('susulan_uts.tahun_ajaran', $where);
+        $this->db->where('d_package.tipe', 1);
+        $query = $this->db->get();
+        return $query;
     }
     function hitCountYear($year){
             // $this->db->select('*');
@@ -89,27 +93,28 @@ class M_jadwal extends CI_Model
     public function coba($ta){
         $this->db->select('*');
         $this->db->from('jadwal');
+        $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
+        $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
+        $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
+        $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
+        $this->db->join('susulan_uts', 'susulan_uts.tahun_ajaran=jadwal.ta_id');
         $this->db->where('ta_id',$ta);
         // $this->db->where('year(Tanggal) BETWEEN '.$tahun1.' AND '.$tahun2);
         $q = $this->db->get();
         return $q;
     }
-    public function get_tahun_where($ta_id = '')
+    public function get_ma_where($ta_id = '')
     {
         $this->db->select('*')->from('jadwal');
         $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
         $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
         $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
         $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
-        // $this->db->join('d_package', 'd_package.matkul_id=matkul.id_matkul', 'left');
-        // $this->db->join('susulan_uts', 'susulan_uts.id=d_package.susulan_id', 'left');
-        // $this->db->join('jadwal', 'jadwal.matkul=d_package.matkul_id', 'left');
+        $this->db->join('susulan_uts', 'susulan_uts.tahun_ajaran=jadwal.ta_id', 'left');
         $this->db->where('ta_id', $ta_id);
         $query = $this->db->get();
-        // $query = $this->db->get();
         return $query;
     }
-
     public function save()
     {
         $data = [
