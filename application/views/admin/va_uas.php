@@ -51,7 +51,7 @@
                   </td>
                   <td align="center"><input type="submit" value="Simpan" class="fa fa-save"></td>
                   <!-- <td align="center"><a href="<?= base_url() ?>C_uas/invoice_uaspdf/<?= $s->id ?>" class="fa fa-download">Cetak Invoice</a></td> -->
-                  <td align="center"><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $s->id ?>/uas" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
+                  <td align="center"><a href="<?= base_url() ?>C_uas/invoice_uas/<?= $s->id ?>/uas" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
 
               </tr>
             <?php } ?>

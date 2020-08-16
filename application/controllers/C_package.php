@@ -17,6 +17,7 @@
 			$data['matkul'] = $this->M_package->get_matkul()->result();
 			$data['dosen'] = $this->M_package->get_dosen()->result();
 			$data['tb_durt'] = $this->M_package->get_durt()->result();
+			// $data['jadwal'] = $this->M_jadwal->get_jadwal('tipe',1,'jadwal')->result();
 			// $data['susulan_uts'] = $this->M_package->Get();
 			// $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 			// $data['susulan_uts'] = $this->M_package->getbynpm($npm);
@@ -26,6 +27,22 @@
 			// echo "</pre>";
 			$this->template->load('v_staticl', 'v_rpendaftaran', $data);
 		}
+		// public function invoice_pdf($id = '')
+  //   	{
+
+  //      $data["susulan_utst"] = $this->M_package->Get($id);
+  //       $this->db->select('*')->from('susulan_uts');
+  //       $this->db->where('id', $id);
+  //       $data['susulan_uts'] = $this->db->get()->row_array();
+
+  //       $this->load->library('pdf');
+
+  //       $this->pdf->setPaper('A4', 'potrait');
+  //       $this->pdf->filename = "invoice.pdf";
+		// 	$this->pdf->load_view('admin/invoice_pdf', $data);
+  //       // $this->pdf->filename = "invoicert.pdf";
+  //       // $this->pdf->load_view('admin/invoice_rt', $data);
+  //  	 	}
 		public function invoice_pdf($id = '', $tipe)
 		{
 

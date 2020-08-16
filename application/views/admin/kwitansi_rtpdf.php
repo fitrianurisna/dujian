@@ -32,41 +32,35 @@
   <p>Run date(<?= date('d-m-Y') ?>)</p>
   <table class="table table-bordered">
     <tr>
-      <td >
-        No
-        <br>Telah Terima Dari
-        <br>Uang Sejumlah
-        <br>Untuk Pembayaran
+      <td colspan="4">
+        No &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 10
+        <br>Telah Terima Dari &nbsp;&nbsp;&nbsp;: <?php echo $rt['nama'];?>
+        <br>Uang Sejumlah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : RP. <?= $harga ?> 
+        <br>Untuk Pembayaran &nbsp; : Remedial teaching <?= count($remedialt) ?> Mata Kuliah
       </td>
-      <td>
-        :<br>:<br>:<br>:
-      </td>
-      <td  colspan="2">
-        10
-        <br><?php echo $rt['nama'];?>
-        <br>RP. <?= $harga ?>
-        <br>Remedial teaching <?= count($remedialt) ?> Mata Kuliah
-      </td>
-      <td colspan="2"></td>
     </tr>
 
     <tr>
       <td></td>
       <td></td>
-      <td>Bogor</td>
-      <td>tgl</td>
+      <td></td>
+      <td>Bogor,<?= date('d-m-Y') ?></td>
+      
     </tr>
     <tr>
-      <td>RP.</td>
-      <td><?= $harga ?></td>
+      <td>RP. <?= $harga ?></td>
+      <td></td>
+      <td></td>
       <td>Yang Menerima,</td>
     </tr>
     <tr>
       <td></td>
       <td></td>
       <td></td>
+      <td></td>
     </tr>
     <tr>
+      <td></td>
       <td></td>
       <td></td>
       <td><?php echo $this->session->userdata('nama'); ?></td>

@@ -36,44 +36,44 @@
   <p>Run date (<?= date('d-m-Y') ?>)</p>
   <table class="table table-bordered">
     <tr>
-      <td>
-        No
-        <br>Telah Terima Dari
-        <br>Uang Sejumlah
-        <br>Untuk Pembayaran
+      <td colspan="4">
+        No &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 10
+        <br>Telah Terima Dari &nbsp;&nbsp;&nbsp;: <?php echo $susulan_uts['nama_mahasiswa']; ?>
+        <br>Uang Sejumlah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : RP. <?= $harga ?>
+        <br>Untuk Pembayaran &nbsp;: UTS Susulan <?= count($susulan_utst) ?> Mata Kuliah 
       </td>
-      <td>
-        :<br>:<br>:<br>:
-      </td>
-      <td colspan="2">
-        10
-        <br><?php echo $susulan_uts['nama_mahasiswa']; ?>
-        <br>RP. <?= $harga ?>
-        <br>UTS Susulan <?= count($susulan_utst) ?> Mata Kuliah
+      <!-- <td>
+        
+        <br>
+        <br>
+        <br>
       </td>
 
-      <td colspan="2"></td>
+      <td colspan="2"></td> -->
     </tr>
 
     <tr>
       <td></td>
       <td></td>
-      <td>Bogor</td>
-      <td>tgl</td>
+      <td></td>
+      <td>Bogor,<?= date('d-m-Y') ?></td>
     </tr>
     <tr>
-      <td>RP.</td>
-      <td><?= $harga ?></td>
+      <td>RP. <?= $harga ?></td>
+      <td></td>
+      <td></td>
       <td>Yang Menerima,</td>
     </tr>
     <tr>
       <td></td>
       <td></td>
       <td></td>
+      <td></td>
     </tr>
     <tr>
       <td></td>
-      <td><img width="" src="<?php echo base_url(); ?>ttd/<?php echo $this->session->userdata('ttd'); ?>" /></td>
+      <td><!-- <img width="" src="<?php echo base_url(); ?>ttd/<?php echo $this->session->userdata('ttd'); ?>" /> --></td>
+      <td></td>
       <td><?php echo $this->session->userdata('nama'); ?></td>
     </tr>
   </table>

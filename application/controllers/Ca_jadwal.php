@@ -80,7 +80,7 @@ class Ca_jadwal extends CI_Controller
 		// print_r($data['b']);
 		// print_r($data['a']);
 		// print_r();
-		echo "</pre>";
+		// echo "</pre>";
 	}
 	 public function delete($id)
         {

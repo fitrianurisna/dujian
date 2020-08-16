@@ -10,15 +10,18 @@ class C_uas extends CI_Controller {
 	}
 
     // PDF inivoice Pembayaran
-    public function invoice_rt($npm = ''){
+    public function invoice_uas($id = ''){
 
-    $data["rt"] = $this->M_uas->Get($npm); 
+    $data["susulan_uast"] = $this->M_uas->Get($id);
+        $this->db->select('*')->from('susulan_uas');
+        $this->db->where('id', $id);
+        $data['susulan_uas'] = $this->db->get()->row_array();
 
     $this->load->library('pdf');
 
     $this->pdf->setPaper('A4', 'potrait');
     $this->pdf->filename = "invoice.pdf";
-    $this->pdf->load_view('admin/invoice_rt', $data);
+    $this->pdf->load_view('admin/invoice_uaspdf', $data);
     }
 	public function index()
 	{

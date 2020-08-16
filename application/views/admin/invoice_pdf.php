@@ -79,6 +79,7 @@
     $this->db->join($tabel, $join, 'left');
     $this->db->join('matkul', 'matkul.id_matkul=d_package.matkul_id', 'left');
     $this->db->where('susulan_id', $id);
+    $this->db->where('tipe', 1);
     $result = $this->db->get()->result();
     $no = 1;
     $total = 0;

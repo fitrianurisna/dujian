@@ -19,12 +19,34 @@ class M_package extends CI_Model
 	public $pukul;
 	public $verivikasi;
 
-
 	public function Get($id = '')
-	{
-		$this->db->where('id', $id);
-		return $this->db->get('susulan_uts')->row_array();
-	}
+    {
+        // $this->db->where('id', $id);
+        // return $this->db->get('susulan_uts')->row_array();
+        $this->db->select('matkul.harga_susulan')->from('d_package');
+        $this->db->join('matkul', 'matkul.id_matkul=d_package.matkul_id', ' left');
+        $this->db->where('susulan_id', $id);
+        $this->db->where('tipe', 1);
+
+        $this->db->group_by('matkul_id');
+        return $this->db->get('susulan_uts')->result();
+    }
+	// public function Get($id = '')
+	// {
+	// 	$this->db->where('id', $id);
+	// 	return $this->db->get('susulan_uts')->row_array();
+	// }
+	// public function get_jadwal_where($id = '')
+ //    {
+ //        $this->db->select('*')->from('jadwal');
+ //        $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
+ //        $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
+ //        $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
+ //        $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
+ //        $this->db->where('id', $id);
+ //        $query = $this->db->get();
+ //        return $query;
+ //    }
 	public function Get_invoices($id, $tabel)
 	{
 		$this->db->where('id', $id);

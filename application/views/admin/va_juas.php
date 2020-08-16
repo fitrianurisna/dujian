@@ -5,7 +5,7 @@
       <br><br>
       <div class="col-md-4">
         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addNewjadwal">Tambah Jadwal</button>
-        <a type="button" href="<?= base_url() ?>Ca_jadwal/rekap_uts_pdf" target="_blank" class="btn btn-round btn-info">Cetak Rekap</a>
+        <button type="button" class="btn btn-round btn-info" data-toggle="modal" data-target="#addNewrekap">Cetak Rekap</button>
       </div>
       <ul class="nav navbar-center panel_toolbox">
         <li><a class="collapse-link"><i class="fa fa-chevron-center"></i></a>
@@ -150,6 +150,43 @@
             <button type="submit" class="btn btn-success btn-sm">Save</button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</form>
+<form action="<?php echo base_url('Ca_juas/rekap_uas_pdf'); ?>" method="post">
+  <div class="modal fade" id="addNewrekap" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Cetak Rekap</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="tipe" class="form-control" value="2">
+          <div class="form-group row">
+            <label class="control-label col-md-3 col-sm-3 ">Tahun Ajaran</label>
+            <div class="col-md-9 col-sm-9 ">
+              <select class="form-control" class="custom-select" name="ta_id">
+                <option selected disabled>Option</option>
+                <?php foreach ($ta as $row) : ?>
+                  <option value="<?php echo $row->id_ta; ?>"><?php echo $row->tahun; ?></option>
+                <?php endforeach; ?>
+              </select>
+            </div>
+          </div>
+          <button  type="submit"  target="_blank" class="btn btn-round btn-info">Cetak Rekap</button>
+
+              </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+          <!--   <button type="submit" class="btn btn-success btn-sm">Save</button> -->
+        </div>
+            </div>
+          </div>
+          </div>
       </div>
     </div>
   </div>

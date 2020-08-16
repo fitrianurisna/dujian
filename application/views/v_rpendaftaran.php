@@ -91,7 +91,7 @@
           <!-- <td><?= $f->matkul; ?></td> -->
           <td><?= $f->tahun_ajaran; ?></td>
           <td><?= $f->createdAt ?></td>
-          <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $f->id ?>/uas" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
+          <td><a href="<?= base_url() ?>C_uas/invoice_uas/<?= $f->id ?>/uas" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
         </tr>
       <?php } ?>
     </tbody>
