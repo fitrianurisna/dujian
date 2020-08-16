@@ -64,11 +64,11 @@ class Ca_juas extends CI_Controller
 		// $data['a'] = $this->M_jadwal->getma($data['d']['matkul'])->result_array();
 		// $data["jadwal"] = $this->M_jadwal->Get();
 
-		// $this->load->library('pdf');
+		$this->load->library('pdf');
 
-		// $this->pdf->setPaper('A4', 'landscape');
-		// $this->pdf->filename = "Rekap Pendaftar Susulan UAS.pdf";
-		// $this->pdf->load_view('admin/rekap_uass_pdf', $data);
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "Rekap Pendaftar Susulan UAS.pdf";
+		$this->pdf->load_view('admin/rekap_uas_pdf', $data);
 		echo "<pre>";
 		print_r($data['d']);
 		echo "<pre>";
