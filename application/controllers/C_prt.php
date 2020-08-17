@@ -17,7 +17,7 @@ class C_prt extends CI_Controller
     }
     public function prt()
     {
-        $data["rt"] = $this->M_rt->getwhere('verivikasi', 0, 'rt')->result();
+        $data["rt"] = $this->M_rt->getwh('verivikasi', 0, 'rt')->result();
         $this->template->load('admin/va_static', 'admin/va_rt', $data);
     }
     public function brt()

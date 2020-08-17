@@ -37,7 +37,7 @@
               <td><?php echo $s->nama_mahasiswa; ?></td>
               <td><input type="hidden" name="npm" value="<?php echo $s->npm; ?>" class="form-control"><?php echo $s->npm; ?></td>
               <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
-              <td><?php echo $s->tahun_ajaran; ?></td>
+              <td><?php echo $s->tahun; ?></td>
               <td align="center"><a href="<?= base_url()?>C_uas/kwitansi_uaspdf/<?= $s->id?>" target="_blank" class="fa fa-download" >CETAK</a></td>
               <td align="center"><a href="<?= base_url()?>C_uas/form_uas_pdf/<?= $s->id?>" target="_blank" class="fa fa-download" >CETAK</a></td>
         </tr>

@@ -55,6 +55,15 @@ class M_rt extends CI_Model
         $query = $this->db->get($table);
         return $query;
     }
+    public function getwh()
+    {
+        $this->db->select('*')->from('rt');
+        $this->db->join('ta', 'ta.id_ta=rt.ta', 'left');
+        $this->db->where('verivikasi', 0);
+        // $this->db->where($field, $where);
+        $query = $this->db->get();
+        return $query;
+    }
     public function update($where, $data, $table)
     {
         $this->db->where($where);

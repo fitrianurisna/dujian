@@ -25,7 +25,7 @@ class C_uas extends CI_Controller {
     }
 	public function index()
 	{
-		$data["susulan_uas"] = $this->M_uas->getwhere('verivikasi',0,'susulan_uas')->result();
+		$data["susulan_uas"] = $this->M_uas->getwh('verivikasi',0,'susulan_uas')->result();
 		$this->template->load('admin/va_static','admin/va_uas',$data);
 	}
 	public function update()

@@ -12,7 +12,7 @@ class C_admin extends CI_Controller
     }
     public function uts()
     {
-        $data["susulan_uts"] = $this->M_uts->getwhere('verivikasi', 0, 'susulan_uts')->result();
+        $data["susulan_uts"] = $this->M_uts->getwh('verivikasi', 0, 'susulan_uts')->result();
         $this->template->load('admin/va_static', 'admin/va_uts', $data);
     }
     public function update()
@@ -30,7 +30,7 @@ class C_admin extends CI_Controller
     public function puts()
     {
         // print_r($this->session->userdata());
-        $data["susulan_uts"] = $this->M_uts->getwhere('verivikasi', 1)->result();
+        $data["susulan_uts"] = $this->M_uts->getwhere('verivikasi', 1, 'susulan_uts')->result();
         $this->template->load('admin/va_static', 'admin/va_puts', $data);
     }
 

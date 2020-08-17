@@ -79,10 +79,22 @@ class M_uas extends CI_Model
         $inputan = $this->db->insert($this->_table, $data);
         return $inputan;
     }
-    public function getwhere($field, $where, $table)
+    public function getwhere()
     {
-        $this->db->where($field, $where);
-        $query = $this->db->get($table);
+        $this->db->select('*')->from('susulan_uas');
+        $this->db->join('ta', 'ta.id_ta=susulan_uas.tahun_ajaran', 'left');
+        $this->db->where('verivikasi', 1);
+        // $this->db->where($field, $where);
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getwh()
+    {
+        $this->db->select('*')->from('susulan_uas');
+        $this->db->join('ta', 'ta.id_ta=susulan_uas.tahun_ajaran', 'left');
+        $this->db->where('verivikasi', 0);
+        // $this->db->where($field, $where);
+        $query = $this->db->get();
         return $query;
     }
 

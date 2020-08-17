@@ -20,7 +20,7 @@
                 <th>NPM</th>
                 <th>Semester</th>
                 <th>Jumlah Mata Kuliah</th>
-                <th></th>
+                <th>Tahun Ajaran</th>
                 <th>Verifikasi Pembayaran</th>
                 <th>Action</th>
                 <th>Cetak Invoice</th>
@@ -42,7 +42,7 @@
                   <input type="hidden" name="id" value="<?php echo $s->id; ?>" class="form-control">
                   <td><?php echo $s->semester; ?></td>
                   <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
-                  <td></td>
+                  <td><?php echo $s->tahun; ?></td>
                   <td>
                     <select name="verivikasi">
                       <option value="0">Belum dibayar</option>
