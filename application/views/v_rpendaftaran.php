@@ -31,6 +31,7 @@
       $No = 1;
       $npm = $this->session->userdata('npm');
       $this->db->select('*')->from('susulan_uts');
+      $this->db->join('ta', 'ta.id_ta=susulan_uts.tahun_ajaran', 'left');
       $this->db->where('npm', $npm);
 
       $verifikasi = $this->db->get()->result();
@@ -47,7 +48,7 @@
           <td><?= $v->npm; ?></td>
           <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
           <!-- <td><?= $v->matkul; ?></td> -->
-          <td><?= $v->tahun_ajaran; ?></td>
+          <td><?= $v->tahun; ?></td>
           <td><?= $v->createdAt ?></td>
           <td><a href="<?= base_url() ?>C_package/invoice_pdf/<?= $v->id ?>/uts" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
         </tr>
@@ -73,6 +74,7 @@
       $No = 1;
       $npm = $this->session->userdata('npm');
       $this->db->select('*')->from('susulan_uas');
+      $this->db->join('ta', 'ta.id_ta=susulan_uas.tahun_ajaran', 'left');
       $this->db->where('npm', $npm);
 
       $verifikasi = $this->db->get()->result();
@@ -89,7 +91,7 @@
           <td><?= $f->npm; ?></td>
           <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
           <!-- <td><?= $f->matkul; ?></td> -->
-          <td><?= $f->tahun_ajaran; ?></td>
+          <td><?= $f->tahun; ?></td>
           <td><?= $f->createdAt ?></td>
           <td><a href="<?= base_url() ?>C_uas/invoice_uas/<?= $f->id ?>/uas" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
         </tr>
@@ -142,7 +144,7 @@
               <select class="form-control" class="custom-select" name="tahun_ajaran">
                 <option selected>Option</option>
                 <?php foreach ($ta as $row) : ?>
-                  <option value="<?php echo $row->tahun; ?>"><?php echo $row->tahun; ?></option>
+                  <option value="<?php echo $row->id_ta; ?>"><?php echo $row->tahun; ?></option>
                 <?php endforeach; ?>
               </select>
             </div>
@@ -238,7 +240,7 @@
               <select class="form-control" class="custom-select" name="tahun_ajaran">
                 <option selected>Option</option>
                 <?php foreach ($ta as $row) : ?>
-                  <option value="<?php echo $row->tahun; ?>"><?php echo $row->tahun; ?></option>
+                  <option value="<?php echo $row->id_ta; ?>"><?php echo $row->tahun; ?></option>
                 <?php endforeach; ?>
               </select>
             </div>

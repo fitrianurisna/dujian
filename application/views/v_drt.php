@@ -20,6 +20,7 @@
       $No = 1;
      $npm = $this->session->userdata('npm');
       $this->db->select('*')->from('rt');
+      $this->db->join('ta', 'ta.id_ta=rt.ta', 'left');
       $this->db->where('npm', $npm);
       $verifikasis = $this->db->get()->result();
 
@@ -36,7 +37,7 @@
           <td><?= $v->npm; ?></td>
           <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
           <!-- <td><?= $v->matkul; ?></td> -->
-          <td><?= $v->ta; ?></td>
+          <td><?= $v->tahun; ?></td>
           <td><?= $v->createdAt ?></td>
           <td><a href="<?= base_url() ?>C_prt/invoice_rt/<?= $v->id ?>/remedial" target="_blank" class="fa fa-download">Cetak Invoice</a></td>
           <td></td>
@@ -98,7 +99,7 @@ if (isset($error)) {
               <select class="form-control" name="ta">
                 <option>Option</option>
                 <?php foreach ($ta as $row) : ?>
-                  <option value="<?php echo $row->tahun; ?>"><?php echo $row->tahun; ?></option>
+                  <option value="<?php echo $row->id_ta; ?>"><?php echo $row->tahun; ?></option>
                 <?php endforeach; ?>
               </select>
             </div>
