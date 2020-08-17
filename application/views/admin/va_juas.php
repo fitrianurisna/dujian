@@ -1,7 +1,7 @@
 <div class="col-md-12 col-sm-12  ">
   <div class="x_panel">
     <div class="x_title">
-      <h2>JADWAL UJIAN SUSULAN &REMEDIAL TEACHING</h2>
+      <h2>JADWAL UJIAN AKHIR SEMESTER SUSULAN </h2>
       <br><br>
       <div class="col-md-4">
         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addNewjadwal">Tambah Jadwal</button>
@@ -41,7 +41,7 @@
                   <td><?php echo $j->nama_dosen; ?></td>
                   <td><?php echo $j->Hari; ?>,<?php echo $j->Tanggal; ?></td>
                   <td><?php echo $j->Pukul; ?></td>
-                  <td><a href="<?= base_url() ?>Ca_juas/dh_uts_pdf/<?= $j->id ?>" target="_blank" class="fa fa-download">Cetak Daftar</a></td>
+                  <td><a href="<?= base_url() ?>Ca_juas/dh_uas_pdf/<?= $j->id ?>" target="_blank" class="fa fa-download">Cetak Daftar</a></td>
                   <td> <a type="button" href="<?= base_url() ?>Ca_juas/delete/<?= $j->id ?>" class="btn btn-danger">Hapus</a> </td>
               </tr>
             <?php } ?>

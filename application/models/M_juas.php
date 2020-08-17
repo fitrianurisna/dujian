@@ -41,6 +41,26 @@ class M_juas extends CI_Model
         $this->db->where('id', $id);
         return $this->db->get('jadwal')->row_array();
     }
+    public function get_jadwal_where($id = '')
+    {
+        $this->db->select('*')->from('jadwal');
+        $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
+        $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
+        $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
+        $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
+        $this->db->where('id', $id);
+        // $this->db->where('tipe', 2);
+        $query = $this->db->get();
+        return $query;
+    }
+    public function getmahasiswa($where)
+    {
+        $this->db->select('*')->from('d_package');
+        $this->db->join('susulan_uas', 'susulan_uas.id=d_package.susulan_id');
+        $this->db->where('d_package.matkul_id', $where);
+        $query = $this->db->get();
+        return $query;
+    }
     public function getu($where)
     {
         $this->db->select('*')->from('d_package');

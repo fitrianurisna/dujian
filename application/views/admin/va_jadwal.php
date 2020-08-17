@@ -1,7 +1,7 @@
 <div class="col-md-12 col-sm-12  ">
   <div class="x_panel">
     <div class="x_title">
-      <h2>JADWAL UJIAN SUSULAN &REMEDIAL TEACHING</h2>
+      <h2>JADWAL UJIAN TENGAH SEMESTER SUSULAN </h2>
       <br><br>
       <div class="col-md-4">
         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#addNewjadwal">Tambah Jadwal</button>
