@@ -39,24 +39,20 @@
     </tr>
 
     <tr align="left">
-      <td>
-        kode Matakuliah
-        <br>MataKuliah
-        <br>Dosen Penguji
+      <td colspan=" 2">
+        kode Matakuliah :&nbsp;<?php echo $jadwalk['kode_matkul']; ?>
+        <br>MataKuliah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<?php echo $jadwalk['nama_matkul']; ?> 
+        <br>Dosen Penguji &nbsp;&nbsp;&nbsp;:
       </td>
-      <td>:<?php echo $jadwalk['kode_matkul']; ?>
-        <br>:<?php echo $jadwalk['nama_matkul']; ?><br>:</td>
-      <td>
-        Dosen Pengampu
-        <br>Semester
-        <br>Hari/Tanggal
+      <td colspan=" 2">
+        Dosen Pengampu :&nbsp; <?php echo $jadwalk['nama_dosen']; ?>
+        <br>Semester &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp; <?php echo $jadwalk['semester']; ?>
+        <br>Hari/Tanggal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;<?php echo $jadwalk['Hari']; ?>, <?php echo $jadwalk['Tanggal']; ?>
       </td>
-      <td>:<?php echo $jadwalk['nama_dosen']; ?>
-        <br>:<?php echo $jadwalk['semester']; ?><br>:<?php echo $jadwalk['Hari']; ?>, <?php echo $jadwalk['Tanggal']; ?></td>
     </tr>
   </table>
 
-  <table class="table table-bordered">
+  <table border="1" width="100%">
     <tr>
       <th rowspan="2">No</th>
       <th rowspan="2">NPM</th>

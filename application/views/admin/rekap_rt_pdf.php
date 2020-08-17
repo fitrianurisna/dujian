@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Daftar Hadir Susulan UTS</title>
+  <title>Daftar Rekap Remedial Teaching</title>
   <link rel="stylesheet" href="">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <style>
@@ -15,29 +15,37 @@
   </style>
 </head>
 <body>
-  <img src="assets/img/ft.jpg" style="position: absolute; width: 100px; height: auto;">
+  <!-- <img src="assets/img/ft.jpg" style="position: absolute; width: 100px; height: auto;"> -->
   <table style="width: 100%;">
     <tr>
       <td align="center" colspan="4">
         <span style="line-height: 1.6; font-weight: bold;">
-          <br>Rekap UTS Susulan Semester <?php echo $a['semester']; ?> tahun <?php echo $c['tahun']; ?>
-          <br>FAKULTAS TEKNIK DAN SAINS UIKA BOGOR
+          <br>Daftar Peserta Remedial Teaching 
+          <br> Semester <?php echo $a['semester']; ?> tahun <?php echo $c['tahun']; ?>
         </span>
       </td>
     </tr>
   </table>
   <br><br>
 
-  <table class="table table-bordered">
+  <table border="1" width="100%">
     <tr>
-      <th >No</th>
-      <th >Tanggal Pendaftaran</th>
-      <th >Nama Mahasiswa</th>
-      <th >NPM</th>
-      <th >Mata Kuliah</th>
-      <th >Dosen</th>
-      <th >Nilai</th>
-      <th >Pembayaran</th>
+      <th rowspan="2">No</th>
+      <th rowspan="2">Nama</th>
+      <th rowspan="2">NPM</th>
+      <th rowspan="2">Kelas</th>
+      <th rowspan="2">Mata Kuliah</th>
+      <th rowspan="2">SKS</th>
+      <th colspan="2">Dosen Penguji</th>
+      <th colspan="2">Nilai</th>
+      <th rowspan="2">Total</th>
+      <th rowspan="2">No Hp</th>
+    </tr>
+    <tr>
+      <th>Dosen Sebelumnya</th>
+      <th>Penguji</th>
+      <th>Awal</th>
+      <th>Perbaikan</th>
     </tr>
     <?php 
       $no=1;
@@ -45,13 +53,17 @@
      ?>
     <tr>
         <td><?php echo $no++; ?></td>
-        <td><?php echo $d['createdAt']; ?></td>
         <td> <?php echo $d['nama']; ?></td>
         <td><?php echo $d['npm']; ?></td>
+        <td></td>
         <td><?php echo $d['nama_matkul']; ?></td>
+        <td><?php echo $d['sks']; ?></td>
         <td><?php echo $d['nama_dosen']; ?></td>
         <td></td>
-        <td><?php echo $d['harga_remedial']; ?></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
     </tr>
   <?php } ?>
   </table>
