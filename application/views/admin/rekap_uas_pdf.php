@@ -20,7 +20,7 @@
     <tr>
       <td align="center" colspan="4">
         <span style="line-height: 1.6; font-weight: bold;">
-          <br>Rekap UTS Susulan Semester <?php echo $a['semester']; ?> tahun <?php echo $c['tahun']; ?>
+          <br>Rekap UAS Susulan Semester <?php echo $a['semester']; ?> tahun <?php echo $c['tahun']; ?>
           <br>FAKULTAS TEKNIK DAN SAINS UIKA BOGOR
         </span>
       </td>

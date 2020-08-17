@@ -30,43 +30,46 @@
 
   <table style="width: 100%;">
     <tr>
-      <td align="center"  colspan="4">
+      <td align="center"  colspan="5">
         <span style="line-height: 1.6; font-weight: bold;">
           <br>DAFTAR PESERTA DAN NILAI AKHIR (DPNA) 
-          <br>UJIAN TENGAH SEMESTER (UTS) SUSULAN <?php echo $jadwalk['semester']; ?> <?php echo $jadwalk['tahun'];?>
+          <br>UJIAN AKHIR SEMESTER (UAS) SUSULAN <?php echo $jadwalk['semester']; ?> <?php echo $jadwalk['tahun'];?>
         </span>
       </td>
     </tr>
 
     <tr align="left">
-      <td>
-        kode Matakuliah
-        <br>MataKuliah
-        <br>Dosen Penguji
+      <td colspan=" 2">
+        kode Matakuliah :&nbsp;<?php echo $jadwalk['kode_matkul']; ?>
+        <br>MataKuliah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<?php echo $jadwalk['nama_matkul']; ?> 
+        <br>Dosen Penguji &nbsp;&nbsp;&nbsp;:
       </td>
-      <td>:<?php echo $jadwalk['kode_matkul']; ?>
-        <br>:<?php echo $jadwalk['nama_matkul']; ?><br>:</td>
-      <td>
-        Dosen Pengampu
-        <br>Semester
-        <br>Hari/Tanggal
+      <td colspan=" 3">
+        Dosen Pengampu :&nbsp; <?php echo $jadwalk['nama_dosen']; ?>
+        <br>Semester &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp; <?php echo $jadwalk['semester']; ?>
+        <br>Hari/Tanggal &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;<?php echo $jadwalk['Hari']; ?>, <?php echo $jadwalk['Tanggal']; ?>
       </td>
-      <td>:<?php echo $jadwalk['nama_dosen']; ?>
-        <br>:<?php echo $jadwalk['semester']; ?><br>:<?php echo $jadwalk['Hari']; ?>, <?php echo $jadwalk['Tanggal']; ?></td>
     </tr>
   </table>
 
-  <table class="table table-bordered">
-    <tr>
-      <th rowspan="2">No</th>
-      <th rowspan="2">NPM</th>
-      <th rowspan="2">Nama</th>
-      <th colspan="2">Nilai Akhir</th>
-      <th rowspan="2">Tanda Tangan</th>
+  <table   border="1" width="100%">
+    <tr >
+      <th align="center" rowspan="3">No</th>
+      <th  align="center" rowspan="3">NPM</th>
+      <th align="center" rowspan="3">Nama</th>
+      <th align="center" colspan="6">Nilai</th>
+      <th align="center" rowspan="3">Tanda Tangan</th>
     </tr>
     <tr>
-        <th>Angka</th>
-        <th>Huruf</th>
+        <th rowspan="2">Kehadiran<br>(10&#37;)</th>
+        <th rowspan="2">Tugas<br>(15&#37;)</th>
+        <th rowspan="2">UTS<br>(25&#37;)</th>
+        <th rowspan="2">UAS<br>(50&#37;)</th>
+        <th colspan="2">Akhir</th>
+    </tr>
+    <tr>
+      <th>Angka</th>
+      <th>Huruf</th>
     </tr>
       <?php
       $no = 1; 
@@ -78,7 +81,10 @@
       <td></td>
       <td></td>
       <td></td>
-      
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
     <?php } ?>
   
