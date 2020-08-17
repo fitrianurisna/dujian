@@ -65,10 +65,12 @@ class M_uts extends CI_Model
         $inputan = $this->db->insert($this->_table, $data);
         return $inputan;
     }
-    public function getwhere($field, $where, $table)
+    public function getwhere($field, $where)
     {
-        $this->db->where($field, $where);
-        $query = $this->db->get($table);
+        $this->db->select('*')->from('ta');
+        $this->db->join('susulan_uts', 'susulan_uts.tahun_ajaran=ta.id_ta', 'left');
+        $this->db->where('verivikasi', 1);
+        $query = $this->db->get();
         return $query;
     }
 

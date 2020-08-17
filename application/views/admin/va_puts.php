@@ -37,7 +37,7 @@
                 <td><?php echo $suts->nama_mahasiswa; ?></td>
                 <td><input type="hidden" name="npm" value="<?php echo $suts->npm; ?>" class="form-control"><?php echo $suts->npm; ?></td>
                 <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
-                <td><?= $suts->tahun_ajaran; ?></td>
+                <td><?= $suts->tahun; ?></td>
                 <td align="center"><a href="<?= base_url() ?>C_admin/kwitansi_pdf/<?= $suts->id ?>" target="_blank" class="fa fa-download">CETAK</a></td>
                 <td align="center"><a href="<?= base_url() ?>C_admin/form_uts_pdf/<?= $suts->id ?>" target="_blank" class="fa fa-download">CETAK</a></td>
             </tr>
