@@ -38,7 +38,7 @@
               <td><input type="hidden" name="npm" value="<?php echo $s->npm; ?>" class="form-control"><?php echo $s->npm; ?></td>
               </td>
               <td><?= $this->db->get()->row_array()['jumlah'] ?> Mata Kuliah</td>
-              <td><?php echo $s->ta; ?></td>
+              <td><?php echo $s->tahun; ?></td>
               <td align="center"><a href="<?= base_url()?>C_prt/kwitansi_rtpdf/<?= $s->id?>"  target="_blank"  class="fa fa-download" >CETAK</a></td>
               <td align="center"><a href="<?= base_url()?>C_prt/form_rt_pdf/<?= $s->id?>" target="_blank"  class="fa fa-download" >CETAK</a></td>
         </tr>

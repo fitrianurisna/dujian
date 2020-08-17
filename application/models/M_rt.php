@@ -49,10 +49,19 @@ class M_rt extends CI_Model
         $inputan = $this->db->insert($this->_table, $data);
         return $inputan;
     }
-    public function getwhere($field, $where, $table)
+    // public function getwhere($field, $where, $table)
+    // {
+    //     $this->db->where($field, $where);
+    //     $query = $this->db->get($table);
+    //     return $query;
+    // }
+    public function getwhere()
     {
-        $this->db->where($field, $where);
-        $query = $this->db->get($table);
+        $this->db->select('*')->from('rt');
+        $this->db->join('ta', 'ta.id_ta=rt.ta', 'left');
+        $this->db->where('verivikasi', 1);
+        // $this->db->where($field, $where);
+        $query = $this->db->get();
         return $query;
     }
     public function getwh()
