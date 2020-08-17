@@ -46,12 +46,12 @@
     <tr>
         <td><?php echo $no++; ?></td>
         <td><?php echo $d['createdAt']; ?></td>
-        <td> <?php echo $d['nama_mahasiswa']; ?></td>
+        <td> <?php echo $d['nama']; ?></td>
         <td><?php echo $d['npm']; ?></td>
         <td><?php echo $d['nama_matkul']; ?></td>
         <td><?php echo $d['nama_dosen']; ?></td>
         <td></td>
-        <td><?php echo $d['harga_susulan']; ?></td>
+        <td><?php echo $d['harga_remedial']; ?></td>
     </tr>
   <?php } ?>
   </table>

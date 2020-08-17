@@ -27,19 +27,21 @@ class Ca_jrt extends CI_Controller
 		$dujian = $this->M_jrt->save();
 		redirect('Ca_jrt');
 	}
-	public function dh_uts_pdf($id = '')
+	public function dh_rt_pdf($id = '')
 	{
 		$data["jadwalt"] = $this->M_jrt->Get($id);
+		$data['jadwalk'] = $this->M_jrt->get_jadwal_where($id)->row_array();
+		$data['jadwalq'] = $this->M_jrt->getmahasiswa($data['jadwalk']['matkul'])->result_array();
 		// $data['jadwalk'] = $this->M_jrt->get_jadwal()->result();
-        $this->db->select('*')->from('jadwal');
+        // $this->db->select('*')->from('jadwal');
         // $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
         // $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
         // $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
         // $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
-        $this->db->where('id', $id);
+        // $this->db->where('id', $id);
         // $data = $this->db->get();
         // return $query;
-        $data['jadwal'] = $this->db->get()->row_array();
+        // $data['jadwal'] = $this->db->get()->row_array();
   //       echo "<pre>";
 
 		// print_r($data['jadwalk']);
@@ -47,19 +49,22 @@ class Ca_jrt extends CI_Controller
 		$this->load->library('pdf');
 
 		$this->pdf->setPaper('A4', 'potrait');
-		$this->pdf->filename = "Daftar Hadir Susulan UTS.pdf";
-		$this->pdf->load_view('admin/dh_uts_pdf', $data);
+		$this->pdf->filename = "Daftar Hadir remedial teaching.pdf";
+		$this->pdf->load_view('admin/dh_rt_pdf', $data);
 	}
-	public function rekap_uts_pdf()
+	public function rekap_rt_pdf($ta_id = '')
 	{
+		$ta_id = $this->input->post('ta_id');
+		$data['c'] = $this->M_jrt->coba($ta_id)->row_array();
+		$data['a'] = $this->M_jrt->getu($ta_id)->row_array();
+		$data['d'] = $this->M_jrt->getu($ta_id)->result_array();
 
-		$data["jadwal"] = $this->M_jrt->Get();
 
 		$this->load->library('pdf');
 
 		$this->pdf->setPaper('A4', 'landscape');
-		$this->pdf->filename = "Rekap Pendaftar Susulan UTS.pdf";
-		$this->pdf->load_view('admin/rekap_uts_pdf', $data);
+		$this->pdf->filename = "Rekap Pendaftar remedial teaching.pdf";
+		$this->pdf->load_view('admin/rekap_rt_pdf', $data);
 	}
 	 public function delete($id)
         {
