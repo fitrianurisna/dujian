@@ -78,6 +78,23 @@ class Ca_juas extends CI_Controller
 		// print_r($data['c']);
 		// echo "</pre>";
 	}
+	public function jadwal_uas_pdf($ta_id = '',$tipe = '')
+	{
+		$ta_id = $this->input->post('ta_id');
+		$tipe = $this->input->post('tipe');
+		$data['c'] = $this->M_juas->jadwaluts($ta_id,$tipe)->result();
+		$data['e'] = $this->M_juas->jadwaluts($ta_id,$tipe)->row_array();
+		// $data['jadwal'] = $this->M_jadwal->get_jadwal('tipe',1,'jadwal')->result();
+		//  echo "<pre>";
+		// print_r($data['c']);
+		// // print_r($data['jadwal']);
+		// echo "<pre>";
+		$this->load->library('pdf');
+
+		$this->pdf->setPaper('A4', 'potrait');
+		$this->pdf->filename = "Jadwal Susulan UTS.pdf";
+		$this->pdf->load_view('admin/jadwal_uts_pdf', $data);
+	}
 	
 	 public function delete($id)
         {

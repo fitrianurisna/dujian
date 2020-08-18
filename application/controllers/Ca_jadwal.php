@@ -33,23 +33,7 @@ class Ca_jadwal extends CI_Controller
 		$data['jadwalk'] = $this->M_jadwal->get_jadwal_where($id)->row_array();
 		$data['jadwalq'] = $this->M_jadwal->getmahasiswa($data['jadwalk']['matkul'])->result_array();
         $this->db->select('*')->from('jadwal');
-        // $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
-        // $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
-        // $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
-        // $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
-        // $this->db->where('id', $id);
-        // $data = $this->db->get();
-        // return $query;
-        // $data['jadwal'] = $this->db->get()->row_array();
-  //       echo "<pre>";
-
-		// print_r($data['jadwalk']);
-		// echo "</pre>";
-
-		//  echo "<pre>";
-
-		// print_r($data['jadwalq']);
-		// echo "</pre>";
+     
 		$this->load->library('pdf');
 
 		$this->pdf->setPaper('A4', 'potrait');
@@ -62,25 +46,29 @@ class Ca_jadwal extends CI_Controller
 		$data['c'] = $this->M_jadwal->coba($ta_id)->row_array();
 		$data['a'] = $this->M_jadwal->getu($ta_id)->row_array();
 		$data['d'] = $this->M_jadwal->getu($ta_id)->result_array();
-		// $data['d'] = $this->M_jadwal->get_ma_where($ta_id)->rroway();
-		// $data['b'] = $this->M_jadwal->getmahasiswa($data['d']['ta_id'])->result_array();
-		// $data['jadwalk'] = $this->M_jadwal->get_jadwal_where($id)->row_array();
-		// $data['a'] = $this->M_jadwal->getma($data['d']['matkul'])->result_array();
-		// $data["jadwal"] = $this->M_jadwal->Get();
-
+	
 		$this->load->library('pdf');
 
 		$this->pdf->setPaper('A4', 'landscape');
 		$this->pdf->filename = "Rekap Pendaftar Susulan UTS.pdf";
 		$this->pdf->load_view('admin/rekap_uts_pdf', $data);
+	}
+	public function jadwal_uts_pdf($ta_id = '',$tipe = '')
+	{
+		$ta_id = $this->input->post('ta_id');
+		$tipe = $this->input->post('tipe');
+		$data['c'] = $this->M_jadwal->jadwaluts($ta_id,$tipe)->result();
+		$data['e'] = $this->M_jadwal->jadwaluts($ta_id,$tipe)->row_array();
+		// $data['jadwal'] = $this->M_jadwal->get_jadwal('tipe',1,'jadwal')->result();
+		//  echo "<pre>";
+		// print_r($data['c']);
+		// // print_r($data['jadwal']);
+		// echo "<pre>";
+		$this->load->library('pdf');
 
-		// echo "<pre>";
-		// print_r($data['d']);
-		// echo "<pre>";
-		// print_r($data['b']);
-		// print_r($data['a']);
-		// print_r();
-		// echo "</pre>";
+		$this->pdf->setPaper('A4', 'potrait');
+		$this->pdf->filename = "Jadwal Susulan UTS.pdf";
+		$this->pdf->load_view('admin/jadwal_uts_pdf', $data);
 	}
 	 public function delete($id)
         {

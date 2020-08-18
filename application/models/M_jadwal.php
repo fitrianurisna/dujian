@@ -29,7 +29,7 @@ class M_jadwal extends CI_Model
         $query = $this->db->get('d_package');
         return $query;
     }
-    public function get_jadwal()
+    public function get_jadwal($field, $where, $table)
     {
         $this->db->select('*')->from('jadwal');
         $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
@@ -39,7 +39,7 @@ class M_jadwal extends CI_Model
         // $this->db->join('d_package', 'd_package.matkul_id=matkul.id_matkul', 'left');
         // $this->db->join('susulan_uts', 'susulan_uts.id=d_package.susulan_id', 'left');
         // $this->db->join('jadwal', 'jadwal.matkul=d_package.matkul_id', 'left');
-        // $this->db->where('id', $id);
+        $this->db->where($field, $where);
         $query = $this->db->get();
         // $query = $this->db->get();
         return $query;
@@ -98,6 +98,20 @@ class M_jadwal extends CI_Model
         $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
         $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
         $this->db->join('susulan_uts', 'susulan_uts.tahun_ajaran=jadwal.ta_id');
+        $this->db->where('ta_id',$ta);
+        // $this->db->where('year(Tanggal) BETWEEN '.$tahun1.' AND '.$tahun2);
+        $q = $this->db->get();
+        return $q;
+    }
+    public function jadwaluts($ta,$tipe){
+       $this->db->select('*')->from('jadwal');
+        $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
+        $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
+        $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
+        $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
+        // $this->db->join('susulan_uts', 'susulan_uts.tahun_ajaran=jadwal.ta_id');
+        $this->db->where('tipe',$tipe);
+        // $this->db->where('tipe',1);
         $this->db->where('ta_id',$ta);
         // $this->db->where('year(Tanggal) BETWEEN '.$tahun1.' AND '.$tahun2);
         $q = $this->db->get();

@@ -95,23 +95,22 @@ class M_rt extends CI_Model
         $this->db->group_by('matkul_id');
         return $this->db->get('rt')->result();
     }
+    public function jadwaluts($ta,$tipe){
+       $this->db->select('*')->from('jadwal');
+        $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
+        $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
+        $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
+        $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
+        // $this->db->join('susulan_uts', 'susulan_uts.tahun_ajaran=jadwal.ta_id');
+        $this->db->where('tipe',$tipe);
+        // $this->db->where('tipe',1);
+        $this->db->where('ta_id',$ta);
+        // $this->db->where('year(Tanggal) BETWEEN '.$tahun1.' AND '.$tahun2);
+        $q = $this->db->get();
+        return $q;
+    }
     function get_packages()
     {
-        // $this->db->select('d_package.*,COUNT(daftar_id) AS item_product');
-        // $this->db->from('d_package');
-        // $this->db->join('detail', 'package_id=detail_package_id');
-        // $this->db->join('daftar', 'detail_daftar_id=daftar_id');
-        // $this->db->group_by('package_id');
-        // $query = $this->db->get();
-        // return $query;
-        // tadi isna coba yg ini 
-        // $this->db->select('d_package.*,COUNT(matkul_id) AS item_product');
-        // $this->db->from('d_package');
-        // $this->db->join('susulan_uts', 'susulan_id=id');
-        // // $this->db->join('daftar', 'detail_daftar_id=daftar_id');
-        // $this->db->group_by('susulan_id');
-        // $query = $this->db->get();
-        // return $query;
         $this->db->select('*');
         $this->db->from('d_package');
         $this->db->INNERJOIN('rt');

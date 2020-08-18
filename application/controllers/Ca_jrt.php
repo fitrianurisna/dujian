@@ -66,6 +66,23 @@ class Ca_jrt extends CI_Controller
 		$this->pdf->filename = "Rekap Pendaftar remedial teaching.pdf";
 		$this->pdf->load_view('admin/rekap_rt_pdf', $data);
 	}
+	public function jadwal_rt_pdf($ta_id = '',$tipe = '')
+	{
+		$ta_id = $this->input->post('ta_id');
+		$tipe = $this->input->post('tipe');
+		$data['c'] = $this->M_jrt->jadwaluts($ta_id,$tipe)->result();
+		$data['e'] = $this->M_jrt->jadwaluts($ta_id,$tipe)->row_array();
+		// $data['jadwal'] = $this->M_jadwal->get_jadwal('tipe',1,'jadwal')->result();
+		//  echo "<pre>";
+		// print_r($data['c']);
+		// // print_r($data['jadwal']);
+		// echo "<pre>";
+		$this->load->library('pdf');
+
+		$this->pdf->setPaper('A4', 'potrait');
+		$this->pdf->filename = "Jadwal remedial Teaching.pdf";
+		$this->pdf->load_view('admin/jadwal_rt_pdf', $data);
+	}
 	 public function delete($id)
         {
             $where = array('id' => $id);

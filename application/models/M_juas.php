@@ -108,6 +108,20 @@ class M_juas extends CI_Model
         $inputan = $this->db->insert($this->_table, $data);
         return $inputan;
     }
+    public function jadwaluts($ta,$tipe){
+       $this->db->select('*')->from('jadwal');
+        $this->db->join('tb_durt', 'tb_durt.id_durt=jadwal.tipe', 'left');
+        $this->db->join('ta', 'ta.id_ta=jadwal.ta_id', 'left');
+        $this->db->join('matkul', 'matkul.id_matkul=jadwal.matkul', 'left');
+        $this->db->join('dosen', 'dosen.id_dosen=jadwal.dosen', 'left');
+        // $this->db->join('susulan_uts', 'susulan_uts.tahun_ajaran=jadwal.ta_id');
+        $this->db->where('tipe',$tipe);
+        // $this->db->where('tipe',1);
+        $this->db->where('ta_id',$ta);
+        // $this->db->where('year(Tanggal) BETWEEN '.$tahun1.' AND '.$tahun2);
+        $q = $this->db->get();
+        return $q;
+    }
 
     public function delete($where, $table)
     {
