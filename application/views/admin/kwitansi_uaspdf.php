@@ -37,7 +37,7 @@
       <td colspan="4">
         No &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 10
         <br>Telah Terima Dari &nbsp;&nbsp;&nbsp; : <?php echo $susulan_uas['nama_mahasiswa']; ?>
-        <br>Uang Sejumlah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : RP. <?= $harga ?>
+        <br>Uang Sejumlah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : RP. <?= $harga ?>.000
         <br>Untuk Pembayaran &nbsp; : UTS Susulan <?= count($susulan_uast) ?> Mata Kuliah
       </td>
     </tr>
@@ -50,7 +50,7 @@
       
     </tr>
     <tr>
-      <td>RP.<?= $harga ?></td>
+      <td>RP.<?= $harga ?>.000</td>
       <td></td>
       <td></td>
       <td>Yang Menerima,</td>

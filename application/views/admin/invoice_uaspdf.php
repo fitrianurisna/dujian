@@ -93,7 +93,7 @@
       <tr>
         <th></th>
         <th>Jumlah</th>
-        <th><?= $total ?></th>
+        <th><?= $total ?>.000</th>
       </tr>
   </table>
 

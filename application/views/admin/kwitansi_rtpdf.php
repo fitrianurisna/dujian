@@ -35,7 +35,7 @@
       <td colspan="4">
         No &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 10
         <br>Telah Terima Dari &nbsp;&nbsp;&nbsp;: <?php echo $rt['nama'];?>
-        <br>Uang Sejumlah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : RP. <?= $harga ?> 
+        <br>Uang Sejumlah &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : RP. <?= $harga ?>.000 
         <br>Untuk Pembayaran &nbsp; : Remedial teaching <?= count($remedialt) ?> Mata Kuliah
       </td>
     </tr>
@@ -48,7 +48,7 @@
       
     </tr>
     <tr>
-      <td>RP. <?= $harga ?></td>
+      <td>RP. <?= $harga ?>.000</td>
       <td></td>
       <td></td>
       <td>Yang Menerima,</td>
